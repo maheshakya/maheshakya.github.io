@@ -3,3 +3,4 @@ auto: true
 safe: true
 server: true
 pygments: true
+markdown: redcarpet

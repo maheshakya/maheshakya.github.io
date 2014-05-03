@@ -13,7 +13,7 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <title> Maheshakyas' Blog </title>
+    <title> {{ page.title }} </title>
   </head>
 
   <body>
@@ -29,14 +29,7 @@
       <div class="inner clearfix">
         <section id="main-content">
           
-          <div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    
-      <li><span>06 Apr 2014</span> &raquo; <a href="/jekyll/update/2014/04/06/welcome-to-jekyll.html">The Pythonizer!</a></li>
-    
-  </ul>
-</div>
+          {{ content }}
 
         </section>
 
