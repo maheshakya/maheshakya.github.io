@@ -19,6 +19,7 @@
 
 
   <body>
+  {% include facebook_share.html %}
     <header>
       <div class="inner">
         <h1 > <a href="/" style="color:white"> Espy Yonder </a></h1>  
@@ -35,6 +36,7 @@
           
           {{ content }}
 
+          
         </section>
 
         <aside id="sidebar">
@@ -44,10 +46,14 @@
             .zip file
           </a>
 
+          <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
 
         </aside>
       </div>
     </div>
+
+    
 
   </body>
 </html>
