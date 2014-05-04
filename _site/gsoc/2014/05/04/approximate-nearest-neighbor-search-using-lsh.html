@@ -13,9 +13,8 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <title> Approximate nearest neighbor search using LSH </title>
-  </head>
-  <script>
+    <title> GSoC2014: Approximate nearest neighbor search using LSH </title>
+    <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -25,6 +24,8 @@
   ga('send', 'pageview');
 
 </script>
+  </head>
+
 
   <body>
     <header>
@@ -41,12 +42,58 @@
       <div class="inner clearfix">
         <section id="main-content">
           
-          <h1>Approximate nearest neighbor search using LSH</h1>
+          <h1>GSoC2014: Approximate nearest neighbor search using LSH</h1>
 <p class="meta">04 May 2014</p>
 
-<h1>About the project</h1>
+<p>This project has been initiated as a Google summer of code project. <a href="https://www.python.org/">Python Software foundation</a> serves as an &quot;umbrella organization&quot; to a variety of Python related open source projects. <a href="http://scikit-learn.org/stable/index.html">Scikit-learn</a> is a machine learning module which operates under that umbrella. I&#39;m instigating this project under that module. In the following sections, I will describe what this really is with help of the essence of my project proposal. This is just a head start of the journey and you will will be able to obtain a clear picture as this proceeds.</p>
+
+<h2>The struggle for nearest neighbor search</h2>
+
+<p>Nearest neighbor search is a well known problem which can be defined as follows: given a collection of n data points, create a data structure which, given any query point, reports the data points that is closest to the query. This problem holds a major importance in certain applications: data mining, databases, data analysis, pattern recognition, similarity search, machine learning, image and video processing, information retrieval and statistics. To perform nearest neighbor search, there are several efficient algorithms known for the case where the dimension is low. But those methods suffer from either space or query time that is exponential in dimension.</p>
+
+<p>In order to address the “Curse of Dimensionality” in large data sets, recent researches had been lead based on approximating neighbor search. It has been proven that in many cases, approximate nearest neighbor is as almost good as the exact one[1]. Locality Sensitive Hashing is one of those approximating methods. The key idea of LSH is to hash data points using several hash functions to ensure that for each function the probability of collision is much higher for objects that are close to each other than for those that are far apart.</p>
+
+<h2>What does this have to do with me?</h2>
+
+<p>In scikit-learn, currently exact nearest neighbor search is implemented, but when it comes to higher dimensions, it fails to perform efficiently[2]. So I&#39;m taking an initiative to implement LSH based ANN for scikit-learn. In this project, several variants of LSH-ANN methods will be prototyped and evaluated. After identifying the most appropriate method for scikit-learn, it will be implemented in accordance with scikit-learn&#39;s API and documentation levels, which includes narrative documentation. Then with the results obtained from prototyping stage, storing and querying structure of ANN will be implemented. After that, ANN part will be integrated into <code>sklearn.neighbors</code> module. Next comes the application of this method. Most of clustering algorithms use nearest neighbor search, therefore this method will be adapted to use in those modules in order to improve their operational speed. As these activities proceed, testing, examples and documentation will be covered. Bench marking will be done to assess the implementation.</p>
+
+<h2>Milestones of the project</h2>
+
+<ol>
+<li>Prototyping/Evaluating existing LSH based ANN methods (vanilla and others) in order to find the most appropriate method to have in scikit-learn. There is no point of having methods in scikit-learn which are impractical to use with real data.</li>
+<li>Approximating neighbor search uses hashing algorithms of LSH family. These algorithms will be implemented.</li>
+<li>Implementation of an efficient storing structure to retain trained/hashed data.</li>
+<li>Integrating the ANN search into current implementation of neighbor search, so that this can be used with the existing API.</li>
+<li>Improving speed of existing clustering models with the implemented ANN search.</li>
+<li>Completing tests, examples, documentation and bench marking.</li>
+</ol>
+
+<p>Well that&#39;s it for the moment. I will guide you through when the things are in motion. </p>
+
+<h2>Abbreviations</h2>
+
+<ul>
+<li>LSH : Locality sensitive hashing</li>
+<li>ANN : Approximate nearest neighbor</li>
+<li>API : Application programming interface</li>
+</ul>
+
+<h2>References</h2>
+
+<ol>
+<li>A. Andoni and P. Indyk,&quot;Near-Optimal Hashing Algorithms for Approximate Nearest Neighbor in High Dimensions&quot;, Available[online]:<a href="http://people.csail.mit.edu/indyk/p117-andoni.pdf">http://people.csail.mit.edu/indyk/p117-andoni.pdf</a></li>
+<li>R. Rehurek, &quot;Performance Shootout of Nearest Neighbours: Contestants&quot;, Available[online]:<a href="http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/">http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/</a></li>
+</ol>
 
 
+If you have any questions or comments, please post them below. If
+you liked this post, you can
+<a href="https://twitter.com/intent/tweet?url=/gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html&text=GSoC2014: Approximate nearest neighbor search using LSH&via=Wmaheshakya" 
+   target="_blank">
+  share it with your followers</a> 
+or 
+<a href="https://twitter.com/Wmaheshakya">
+  follow me on Twitter</a>!
   <!-- Add Disqus comments. -->
   <div id="disqus_thread"></div>
   <script type="text/javascript">
