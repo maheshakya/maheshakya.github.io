@@ -4,3 +4,6 @@ safe: true
 server: true
 pygments: true
 markdown: redcarpet
+
+#permalinks
+permalinks: pretty
