@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Espy Yonder</title>
+		<description>This is my personal blog created in order to espy yonder</description>		
+		<link>http://maheshakya.github.io/</link>
+		<atom:link href="http://maheshakya.github.io//feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>GSoC2014: Approximate nearest neighbor search using LSH</title>
+				<description>&lt;p&gt;This project has been initiated as a Google summer of code project. &lt;a href=&quot;https://www.python.org/&quot;&gt;Python Software foundation&lt;/a&gt; serves as an &amp;quot;umbrella organization&amp;quot; to a variety of Python related open source projects. &lt;a href=&quot;http://scikit-learn.org/stable/index.html&quot;&gt;Scikit-learn&lt;/a&gt; is a machine learning module which operates under that umbrella. I&amp;#39;m instigating this project under that module. In the following sections, I will describe what this really is with help of the essence of my project proposal. This is just a head start of the journey and you will be able to obtain a clear picture as this proceeds.&lt;/p&gt;
+
+&lt;h2&gt;The struggle for nearest neighbor search&lt;/h2&gt;
+
+&lt;p&gt;Nearest neighbor search is a well known problem which can be defined as follows: given a collection of n data points, create a data structure which, given any query point, reports the data points that is closest to the query. This problem holds a major importance in certain applications: data mining, databases, data analysis, pattern recognition, similarity search, machine learning, image and video processing, information retrieval and statistics. To perform nearest neighbor search, there are several efficient algorithms known for the case where the dimension is low. But those methods suffer from either space or query time that is exponential in dimension.&lt;/p&gt;
+
+&lt;p&gt;In order to address the “Curse of Dimensionality” in large data sets, recent researches had been lead based on approximating neighbor search. It has been proven that in many cases, approximate nearest neighbor is as almost good as the exact one[1]. Locality Sensitive Hashing is one of those approximating methods. The key idea of LSH is to hash data points using several hash functions to ensure that for each function the probability of collision is much higher for objects that are close to each other than for those that are far apart.&lt;/p&gt;
+
+&lt;h2&gt;What does this have to do with me?&lt;/h2&gt;
+
+&lt;p&gt;In scikit-learn, currently exact nearest neighbor search is implemented, but when it comes to higher dimensions, it fails to perform efficiently[2]. So I&amp;#39;m taking an initiative to implement LSH based ANN for scikit-learn. In this project, several variants of LSH-ANN methods will be prototyped and evaluated. After identifying the most appropriate method for scikit-learn, it will be implemented in accordance with scikit-learn&amp;#39;s API and documentation levels, which includes narrative documentation. Then with the results obtained from prototyping stage, storing and querying structure of ANN will be implemented. After that, ANN part will be integrated into &lt;code&gt;sklearn.neighbors&lt;/code&gt; module. Next comes the application of this method. Most of clustering algorithms use nearest neighbor search, therefore this method will be adapted to use in those modules in order to improve their operational speed. As these activities proceed, testing, examples and documentation will be covered. Bench marking will be done to assess the implementation.&lt;/p&gt;
+
+&lt;h2&gt;Milestones of the project&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Prototyping/Evaluating existing LSH based ANN methods (vanilla and others) in order to find the most appropriate method to have in scikit-learn. There is no point of having methods in scikit-learn which are impractical to use with real data.&lt;/li&gt;
+&lt;li&gt;Approximating neighbor search uses hashing algorithms of LSH family. These algorithms will be implemented.&lt;/li&gt;
+&lt;li&gt;Implementation of an efficient storing structure to retain trained/hashed data.&lt;/li&gt;
+&lt;li&gt;Integrating the ANN search into current implementation of neighbor search, so that this can be used with the existing API.&lt;/li&gt;
+&lt;li&gt;Improving speed of existing clustering models with the implemented ANN search.&lt;/li&gt;
+&lt;li&gt;Completing tests, examples, documentation and bench marking.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Well that&amp;#39;s it for the moment. I will guide you through when the things are in motion. &lt;/p&gt;
+
+&lt;h2&gt;Abbreviations&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;LSH : Locality sensitive hashing&lt;/li&gt;
+&lt;li&gt;ANN : Approximate nearest neighbor&lt;/li&gt;
+&lt;li&gt;API : Application programming interface&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;References&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;A. Andoni and P. Indyk,&amp;quot;Near-Optimal Hashing Algorithms for Approximate Nearest Neighbor in High Dimensions&amp;quot;, Available[online]:&lt;a href=&quot;http://people.csail.mit.edu/indyk/p117-andoni.pdf&quot;&gt;http://people.csail.mit.edu/indyk/p117-andoni.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;R. Rehurek, &amp;quot;Performance Shootout of Nearest Neighbours: Contestants&amp;quot;, Available[online]:&lt;a href=&quot;http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/&quot;&gt;http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+				<pubDate>Sun, 04 May 2014 15:44:56 +0530</pubDate>
+				<link>http://maheshakya.github.io//gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html</link>
+				<guid isPermaLink="true">http://maheshakya.github.io//gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html</guid>
+			</item>
+		
+			<item>
+				<title>The Pythonizer!</title>
+				<description>&lt;p&gt;Though I&amp;#39;m a Python fanatic, Jekyll is inconceivably awesome! (It&amp;#39;s Ruby)&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Hi, &amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;Jekyll&amp;#39;s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+</description>
+				<pubDate>Sun, 06 Apr 2014 21:10:56 +0530</pubDate>
+				<link>http://maheshakya.github.io//jekyll/update/2014/04/06/welcome-to-jekyll.html</link>
+				<guid isPermaLink="true">http://maheshakya.github.io//jekyll/update/2014/04/06/welcome-to-jekyll.html</guid>
+			</item>
+		
+	</channel>
+</rss>

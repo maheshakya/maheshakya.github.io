@@ -7,3 +7,7 @@ markdown: redcarpet
 
 #permalinks
 permalinks: pretty
+
+name: Espy Yonder
+description: This is my personal blog created in order to espy yonder 
+url: http://maheshakya.github.io/
