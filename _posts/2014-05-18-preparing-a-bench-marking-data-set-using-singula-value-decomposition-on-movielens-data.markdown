@@ -126,6 +126,7 @@ The `svds` method performs the SVD. Parameter `k` is the number of singular valu
 After this decomposition you will get `u`, `s` and `vt`. They have (`number of users`, `k`), (`k`, ) and (`k`, `number of movies`) shapes respectively.
 
 6)  Recomposing the lower rank matrix.
+
 As `s` is a vector, we need to create a diagonal matrix form that with the diagonal containing the values of that vector. It is done as follows:
 {% highlight python %}
 s_diag_matrix = np.zeros((s.shape[0], s.shape[0]))
