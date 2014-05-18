@@ -53,7 +53,7 @@ So the entire procedure can be boiled down to following three steps:
 
 ## Implementation
 
-To perform SVD on MovieLens data set and re-compose the the matrix with a lower rank, I used scipy sparse mtrix, numpy and pandas. It has been done in following steps.
+To perform SVD on MovieLens data set and recompose the matrix with a lower rank, I used scipy sparse matrix, numpy and pandas. It has been done in following steps.
 
 1)  Import required packages.
 {% highlight python %}
