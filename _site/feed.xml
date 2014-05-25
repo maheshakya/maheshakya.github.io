@@ -37,7 +37,7 @@ In addition, \(U^T U = I _ n\) and \(V^T V = I _ d\)&lt;/p&gt;
 
 &lt;h3&gt;What is the significance of the SVD(Singular Value Decomposition) in machine learning and what does it have to do with MovieLens data?&lt;/h3&gt;
 
-&lt;p&gt;We can represent each movie from a dimension and each user corresponds to a data point in this high dimensional space. But we are not able to visualize more than three dimensions. This data can be represented by a matrix(The \(X\) in the above equation). A sample depiction of the matrix can may look as follows. 
+&lt;p&gt;We can represent each movie from a dimension and each user corresponds to a data point in this high dimensional space. But we are not able to visualize more than three dimensions. This data can be represented by a matrix(The \(X\) in the above equation). A sample depiction of the matrix may look as follows. 
 &lt;img src=&quot;https://docs.google.com/drawings/d/1oBQ7iNf-c6GCYBvalyM7HXlcscX1ATz9lQsxzpHdCyQ/pub?w=960&amp;amp;h=720&quot; alt=&quot;user_movie_matrix&quot;&gt;
 Because number of ratings for a movie by users is significantly low when considered with the number of users, this matrix contains a large number of empty entries. Therefore this matrix will be a very sparse matrix. Hence, approximating this matrix with a lower rank matrix is a worthwhile attempt.&lt;/p&gt;
 
@@ -61,7 +61,7 @@ Because number of ratings for a movie by users is significantly low when conside
 
 &lt;h2&gt;Implementation&lt;/h2&gt;
 
-&lt;p&gt;To perform SVD on MovieLens data set and re-compose the the matrix with a lower rank, I used scipy sparse mtrix, numpy and pandas. It has been done in following steps.&lt;/p&gt;
+&lt;p&gt;To perform SVD on MovieLens data set and recompose the matrix with a lower rank, I used scipy sparse matrix, numpy and pandas. It has been done in following steps.&lt;/p&gt;
 
 &lt;p&gt;1)  Import required packages.&lt;/p&gt;
 
@@ -133,8 +133,9 @@ Because number of ratings for a movie by users is significantly low when conside
 
 &lt;p&gt;After this decomposition you will get &lt;code&gt;u&lt;/code&gt;, &lt;code&gt;s&lt;/code&gt; and &lt;code&gt;vt&lt;/code&gt;. They have (&lt;code&gt;number of users&lt;/code&gt;, &lt;code&gt;k&lt;/code&gt;), (&lt;code&gt;k&lt;/code&gt;, ) and (&lt;code&gt;k&lt;/code&gt;, &lt;code&gt;number of movies&lt;/code&gt;) shapes respectively.&lt;/p&gt;
 
-&lt;p&gt;6)  Recomposing the lower rank matrix.
-As &lt;code&gt;s&lt;/code&gt; is a vector, we need to create a diagonal matrix form that with the diagonal containing the values of that vector. It is done as follows:&lt;/p&gt;
+&lt;p&gt;6)  Recomposing the lower rank matrix.&lt;/p&gt;
+
+&lt;p&gt;As &lt;code&gt;s&lt;/code&gt; is a vector, we need to create a diagonal matrix form that with the diagonal containing the values of that vector. It is done as follows:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;s_diag_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
 
