@@ -24,6 +24,7 @@ There are three main considerations in this evaluation framework.
 For each of these aspects, there are separated tests which I will explain in the upcoming sections. In addition to these, from [scikit-learn](http://scikit-learn.org/stable/) community, another requirement emerged to consider the index building time in order to assist with incremental learning. This is an optimization which has to be done in the ANN version that will be implemented in [scikit-learn](http://scikit-learn.org/stable/). 
 
 Note: The evaluation framework will be run on a system with following configurations:
+
 * Memory : 16 GB (1600 MHz)
 * CPU    : Intel® Core™ i7-4700MQ CPU @ 2.40GHz × 8 
 
@@ -33,8 +34,8 @@ In this post, I will discuss the evaluation done for memory consumption.
 
 Memory consumption corresponds to the index building step in a nearest neighbor search data structure since it is the process which stores the data in the data structure accordingly. In this framework, there are two main aspects taken into account to express the memory consumption of an index building process. 
 
-1. **Peak memory consumption**: While the index building process takes place, there is a maximum amount of memory used. No amount of memory beyond this peak memory will be consumed during this process.
-2. **Overall increment**: This is the actual memory used by the data structure after the index building process. This may be less than or equal to the peak memory consumption.
+1. **Peak memory consumption** : While the index building process takes place, there is a maximum amount of memory used. No amount of memory beyond this peak memory will be consumed during this process.
+2. **Overall increment** : This is the actual memory used by the data structure after the index building process. This may be less than or equal to the peak memory consumption.
 
 These two aspects of the above mentioned ANN implementations were measured. The results are as follows.
 
