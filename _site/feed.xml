@@ -7,6 +7,65 @@
 		<atom:link href="http://maheshakya.github.io//feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Performance evaluation of Approximate Nearest Neighbor search implementations - Part 1</title>
+				<description>&lt;p&gt;This typifies the official instigation of my GSoC project. In my &lt;a href=&quot;/gsoc/2014/05/18/preparing-a-bench-marking-data-set-using-singula-value-decomposition-on-movielens-data.html&quot;&gt;previous post&lt;/a&gt;, I have discussed how to create the bench marking data set which will be used from here on. 
+I will discuss how the evaluation framework is designed to evaluate the performance of the existing approximate nearest neighbor search implementations. For this evaluation, I have chosen the following implementations:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Spotify &lt;a href=&quot;https://github.com/spotify/annoy&quot;&gt;ANNOY&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cs.ubc.ca/research/flann/&quot;&gt;FLANN&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.kgraph.org/&quot;&gt;KGraph&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://nearpy.io/&quot;&gt;nearpy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://pypi.python.org/pypi/lshash/0.0.4dev&quot;&gt;lshash&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Evaluation framework&lt;/h2&gt;
+
+&lt;p&gt;There are three main considerations in this evaluation framework. &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Memory consumption&lt;/li&gt;
+&lt;li&gt;Precision&lt;/li&gt;
+&lt;li&gt;Query speed&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For each of these aspects, there are separated tests which I will explain in the upcoming sections. In addition to these, from &lt;a href=&quot;http://scikit-learn.org/stable/&quot;&gt;scikit-learn&lt;/a&gt; community, another requirement emerged to consider the index building time in order to assist with incremental learning. This is an optimization which has to be done in the ANN version that will be implemented in &lt;a href=&quot;http://scikit-learn.org/stable/&quot;&gt;scikit-learn&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;Note: The evaluation framework will be run on a system with following configurations:
+* Memory : 16 GB (1600 MHz)
+* CPU    : Intel® Core™ i7-4700MQ CPU @ 2.40GHz × 8 &lt;/p&gt;
+
+&lt;p&gt;In this post, I will discuss the evaluation done for memory consumption.&lt;/p&gt;
+
+&lt;h3&gt;Memory consumption of existing ANN methods&lt;/h3&gt;
+
+&lt;p&gt;Memory consumption corresponds to the index building step in a nearest neighbor search data structure since it is the process which stores the data in the data structure accordingly. In this framework, there are two main aspects taken into account to express the memory consumption of an index building process. &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Peak memory consumption&lt;/strong&gt;: While the index building process takes place, there is a maximum amount of memory used. No amount of memory beyond this peak memory will be consumed during this process.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Overall increment&lt;/strong&gt;: This is the actual memory used by the data structure after the index building process. This may be less than or equal to the peak memory consumption.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;These two aspects of the above mentioned ANN implementations were measured. The results are as follows.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://docs.google.com/drawings/d/1gCLDnk_UJ-kk5bkY-g-jp1hnqO5GcDqusQch2OHw0VI/pub?w=668&amp;amp;h=468&quot; alt=&quot;Memory_usage_table&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Following graph illustrates the peak memory consumptions in log scale.
+&lt;img src=&quot;https://docs.google.com/drawings/d/1j7BjozhffmhVMbJHtymDYtlKFvxo1LQRQnHY2PHDIQU/pub?w=804&amp;amp;h=614&quot; alt=&quot;Peak_memory_usage&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Following graph illustrates the overall memory increments in log scale.
+&lt;img src=&quot;https://docs.google.com/drawings/d/1EhBe1c45BIn5tEs6hzqF8MNMzrYs_NZEivii8Wqs0A0/pub?w=808&amp;amp;h=614&quot; alt=&quot;Overall_memory_increment&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;In the upcoming posts, I will discuss the other two aspects in the evaluation framework in detail and the performance of LSH-Forest implementation as well. &lt;/p&gt;
+
+&lt;p&gt;Cheers!&lt;/p&gt;
+</description>
+				<pubDate>Sun, 25 May 2014 00:00:00 +0530</pubDate>
+				<link>http://maheshakya.github.io//gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html</link>
+				<guid isPermaLink="true">http://maheshakya.github.io//gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html</guid>
+			</item>
+		
+			<item>
 				<title>Singular value decomposition to create a bench marking data set from MovieLens data</title>
 				<description>&lt;p&gt;This is the second article on my Google Summer of Code project and this follows from my &lt;a href=&quot;/gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html&quot;&gt;previous post&lt;/a&gt; about the description about my project: Approximate nearest neighbor search using Locality sensitive hashing. Here, I will elaborate how I created my data set for prototyping, evaluating and bench marking purposes in the project. I have used &lt;a href=&quot;http://en.wikipedia.org/wiki/Singular_value_decomposition&quot;&gt;Singular value decomposition&lt;/a&gt; on the &lt;a href=&quot;http://grouplens.org/datasets/movielens/&quot;&gt;MovieLens 1M&lt;/a&gt; data to create this sample data set.&lt;/p&gt;
 
