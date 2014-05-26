@@ -3,7 +3,7 @@ layout: page
 title: "About me"
 description: ""
 ---
-Agonizing to death! It's something you will never want to know. Trust me.
+It's something you will never want to know. Trust me.
 
 But here are some clues:
 
