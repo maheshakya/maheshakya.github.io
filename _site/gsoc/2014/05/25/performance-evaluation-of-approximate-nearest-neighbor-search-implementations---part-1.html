@@ -90,9 +90,12 @@ I will discuss how the evaluation framework is designed to evaluate the performa
 
 <p>For each of these aspects, there are separated tests which I will explain in the upcoming sections. In addition to these, from <a href="http://scikit-learn.org/stable/">scikit-learn</a> community, another requirement emerged to consider the index building time in order to assist with incremental learning. This is an optimization which has to be done in the ANN version that will be implemented in <a href="http://scikit-learn.org/stable/">scikit-learn</a>. </p>
 
-<p>Note: The evaluation framework will be run on a system with following configurations:
-* Memory : 16 GB (1600 MHz)
-* CPU    : Intel® Core™ i7-4700MQ CPU @ 2.40GHz × 8 </p>
+<p>Note: The evaluation framework will be run on a system with following configurations:</p>
+
+<ul>
+<li>Memory : 16 GB (1600 MHz)</li>
+<li>CPU    : Intel® Core™ i7-4700MQ CPU @ 2.40GHz × 8 </li>
+</ul>
 
 <p>In this post, I will discuss the evaluation done for memory consumption.</p>
 
@@ -101,8 +104,8 @@ I will discuss how the evaluation framework is designed to evaluate the performa
 <p>Memory consumption corresponds to the index building step in a nearest neighbor search data structure since it is the process which stores the data in the data structure accordingly. In this framework, there are two main aspects taken into account to express the memory consumption of an index building process. </p>
 
 <ol>
-<li><strong>Peak memory consumption</strong>: While the index building process takes place, there is a maximum amount of memory used. No amount of memory beyond this peak memory will be consumed during this process.</li>
-<li><strong>Overall increment</strong>: This is the actual memory used by the data structure after the index building process. This may be less than or equal to the peak memory consumption.</li>
+<li><strong>Peak memory consumption</strong> : While the index building process takes place, there is a maximum amount of memory used. No amount of memory beyond this peak memory will be consumed during this process.</li>
+<li><strong>Overall increment</strong> : This is the actual memory used by the data structure after the index building process. This may be less than or equal to the peak memory consumption.</li>
 </ol>
 
 <p>These two aspects of the above mentioned ANN implementations were measured. The results are as follows.</p>
