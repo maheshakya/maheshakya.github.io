@@ -2,9 +2,9 @@
 layout: post
 title: "LSH Forest with sorted arrays and binary search"
 description: ""
-category: 
+category: GSoC
 ---
-LSH forest is a promising, novel and alternative method introduced in order to alleviate the drawbacks from which vanilla LSH suffers. I assume you have a passable idea of what LSH means. If not, I suggest you to refer to this: [Locality-sensitive hashing](http://en.wikipedia.org/wiki/Locality-sensitive_hashing). LSH forest has a theoretical guarantee of its' suggested improvements. For more information, refer to the published paper: [LSH Forest: Self-Tuning Indexes for Similarity Search](http://ilpubs.stanford.edu:8090/678/1/2005-14.pdf)
+More on GSoC with [scikit-learn](http://scikit-learn.org/stable/index.html)! LSH forest is a promising, novel and alternative method introduced in order to alleviate the drawbacks from which vanilla LSH suffers. I assume you have a passable idea of what LSH means. If not, I suggest you to refer to this: [Locality-sensitive hashing](http://en.wikipedia.org/wiki/Locality-sensitive_hashing). LSH forest has a theoretical guarantee of its' suggested improvements. For more information, refer to the published paper: [LSH Forest: Self-Tuning Indexes for Similarity Search](http://ilpubs.stanford.edu:8090/678/1/2005-14.pdf)
 
 In general, the data structure used to implement LSH forest is a [prefix tree](http://en.wikipedia.org/wiki/Trie)(trie). In this article, I will elaborate how to implement it with sorted arrays and binary search. This will reduce the complexity involved with a separate data structure(such as a tree). You can see the complete implementation in this [gist](https://gist.github.com/maheshakya/b22f640f67d7b574fd56).
 
