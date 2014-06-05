@@ -133,7 +133,7 @@ In the descending phase, the longest matching hash length for a particular query
 
 The query function accept a value for \\(c\\) (refer to the paper) as well. This determines the number of candidates returned from the function. This is \\(M\\) which is equal to \\(c \times numberOfTrees\\). In asynchronous ascend phase, starting from `x`, every matching `x` long entry from each tree is collected(in a loop). Then `x` is decreased by one. Same is done repeatedly for each tree until the required number of candidates are retrieved. During the process, the length of candidate list may grow greater than required number of candidates. But the search does not end until the following condition is sufficed(As described in the synchronous ascend algorithm in the paper).
 
-$$x>0 and (lenth(candidates) > c or length(unique(candidates)) > m$$
+$$x>0 && (lenth(candidates) > c || length(unique(candidates)) > m$$
 
 \\(M >> m\\) where \\(m\\) is the actual number of neighbors required. So after selecting the candidates, a true distance measure will be used to determine the actual neighbors. This will be done later as the project proceeds. The current implementation will be used to perform the tasks in the [evaluation criteria]({% post_url 2014-05-25-performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1 %}) that I have discussed in my earlier post. 
 
