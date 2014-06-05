@@ -8,7 +8,7 @@
 		
 			<item>
 				<title>LSH Forest with sorted arrays and binary search</title>
-				<description>&lt;p&gt;LSH forest is a promising, novel and alternative method introduced in order to alleviate the drawbacks from which vanilla LSH suffers. I assume you have a passable idea of what LSH means. If not, I suggest you to refer to this: &lt;a href=&quot;http://en.wikipedia.org/wiki/Locality-sensitive_hashing&quot;&gt;Locality-sensitive hashing&lt;/a&gt;. LSH forest has a theoretical guarantee of its&amp;#39; suggested improvements. For more information, refer to the published paper: &lt;a href=&quot;http://ilpubs.stanford.edu:8090/678/1/2005-14.pdf&quot;&gt;LSH Forest: Self-Tuning Indexes for Similarity Search&lt;/a&gt;&lt;/p&gt;
+				<description>&lt;p&gt;More on GSoC with &lt;a href=&quot;http://scikit-learn.org/stable/index.html&quot;&gt;scikit-learn&lt;/a&gt;! LSH forest is a promising, novel and alternative method introduced in order to alleviate the drawbacks from which vanilla LSH suffers. I assume you have a passable idea of what LSH means. If not, I suggest you to refer to this: &lt;a href=&quot;http://en.wikipedia.org/wiki/Locality-sensitive_hashing&quot;&gt;Locality-sensitive hashing&lt;/a&gt;. LSH forest has a theoretical guarantee of its&amp;#39; suggested improvements. For more information, refer to the published paper: &lt;a href=&quot;http://ilpubs.stanford.edu:8090/678/1/2005-14.pdf&quot;&gt;LSH Forest: Self-Tuning Indexes for Similarity Search&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;In general, the data structure used to implement LSH forest is a &lt;a href=&quot;http://en.wikipedia.org/wiki/Trie&quot;&gt;prefix tree&lt;/a&gt;(trie). In this article, I will elaborate how to implement it with sorted arrays and binary search. This will reduce the complexity involved with a separate data structure(such as a tree). You can see the complete implementation in this &lt;a href=&quot;https://gist.github.com/maheshakya/b22f640f67d7b574fd56&quot;&gt;gist&lt;/a&gt;.&lt;/p&gt;
 
@@ -139,12 +139,14 @@
 
 &lt;ol&gt;
 &lt;li&gt;Descending phase.&lt;/li&gt;
-&lt;li&gt;Asynchronous ascending phase. &lt;/li&gt;
+&lt;li&gt;Synchronous ascending phase. &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;In the descending phase, the longest matching hash length for a particular query is retrieved from all the tree. This step is quite straightforward as all is does is using the above described longest prefix match function on each tree. From this &lt;code&gt;max_depth&lt;/code&gt; (&lt;code&gt;x&lt;/code&gt; in the paper) is found.&lt;/p&gt;
 
-&lt;p&gt;The query function accept a value for \(c\) (refer to the paper) as well. This determines the number of candidates returned from the function. This is \(M\) which is equal to \(c \times numberOfTrees\). In asynchronous ascend phase, starting from &lt;code&gt;x&lt;/code&gt;, every matching &lt;code&gt;x&lt;/code&gt; long entry from each tree is collected(in a loop). Then &lt;code&gt;x&lt;/code&gt; is decreased by one. Same is done repeatedly for each tree until the required number of candidates are retrieved. Each time an entry is added, set of the candidates list is taken to ignore duplicate entries. By using &lt;a href=&quot;http://code.activestate.com/recipes/576694/&quot;&gt;OrderedSet&lt;/a&gt;, inserted order is also maintained. During the process, the length of candidate list may grow greater than required number of candidates as it checks the number after each iteration over &lt;code&gt;x&lt;/code&gt;. Therefore finally, first \(n\) entries are chosen from the candidate list where \(n\) is the required number of candidates. As it is an ordered set, it gets the closest entries first. &lt;/p&gt;
+&lt;p&gt;The query function accept a value for \(c\) (refer to the paper) as well. This determines the number of candidates returned from the function. This is \(M\) which is equal to \(c \times numberOfTrees\). In asynchronous ascend phase, starting from &lt;code&gt;x&lt;/code&gt;, every matching &lt;code&gt;x&lt;/code&gt; long entry from each tree is collected(in a loop). Then &lt;code&gt;x&lt;/code&gt; is decreased by one. Same is done repeatedly for each tree until the required number of candidates are retrieved. During the process, the length of candidate list may grow greater than required number of candidates. But the search does not end until the following condition is sufficed(As described in the synchronous ascend algorithm in the paper).&lt;/p&gt;
+
+&lt;p&gt;$$x&amp;gt;0 and (lenth(candidates) &amp;gt; c or length(unique(candidates)) &amp;gt; m$$&lt;/p&gt;
 
 &lt;p&gt;\(M &amp;gt;&amp;gt; m\) where \(m\) is the actual number of neighbors required. So after selecting the candidates, a true distance measure will be used to determine the actual neighbors. This will be done later as the project proceeds. The current implementation will be used to perform the tasks in the &lt;a href=&quot;/gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html&quot;&gt;evaluation criteria&lt;/a&gt; that I have discussed in my earlier post. &lt;/p&gt;
 
@@ -157,8 +159,8 @@
 &lt;/ol&gt;
 </description>
 				<pubDate>Sun, 01 Jun 2014 00:00:00 +0530</pubDate>
-				<link>http://maheshakya.github.io//2014/06/01/lsh-forest-with-sorted-arrays-and-binary-search.html</link>
-				<guid isPermaLink="true">http://maheshakya.github.io//2014/06/01/lsh-forest-with-sorted-arrays-and-binary-search.html</guid>
+				<link>http://maheshakya.github.io//gsoc/2014/06/01/lsh-forest-with-sorted-arrays-and-binary-search.html</link>
+				<guid isPermaLink="true">http://maheshakya.github.io//gsoc/2014/06/01/lsh-forest-with-sorted-arrays-and-binary-search.html</guid>
 			</item>
 		
 			<item>
