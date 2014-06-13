@@ -7,6 +7,80 @@
 		<atom:link href="http://maheshakya.github.io//feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Performance evaluation of Approximate Nearest Neighbor search implementations - Part 2</title>
+				<description>&lt;p&gt;This continues from the post &lt;a href=&quot;/gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html&quot;&gt;Performance evaluation of Approximate Nearest Neighbor search implementations - Part 1&lt;/a&gt;. The evaluation about the memory consumption is already completed in that post. In this post, the next two aspects of the evaluation framework, precision and query speed will be discussed. &lt;/p&gt;
+
+&lt;p&gt;When measuring the performance of Approximate nearest neighbor search methods, expressing precision and the query speed independently is less useful since the entire idea of approximating is to obtain the desired precision within a better time period. In order to evaluate precision, an ANN implementation should be able to provide a multiple number of neighbors(rather than just the nearest neighbor). After obtaining all data points in the data set from the ANN method, first few entires in the that neighbors list(ten neighbors in my evaluation tests) are taken as the neighbors of ground truth of that particular ANN method. These set of data points are compared against neighbors retrieved when the number of queried neighbors is varied. Precision tests are adapted from the &lt;a href=&quot;https://github.com/spotify/annoy/blob/master/examples/precision_test.py&quot;&gt;tests performed for ANNOY&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This precision measure eliminates some of our candidate ANN implementations because those are not capable of producing a multiple number of neighbors. Obtaining multiple neighbors is an essential requirement of for precision tests described above as well the general applications of nearest neighbor search. Therefore, for the precision tests, only &lt;a href=&quot;https://github.com/spotify/annoy&quot;&gt;ANNOY&lt;/a&gt;, &lt;a href=&quot;http://www.cs.ubc.ca/research/flann/&quot;&gt;FLANN&lt;/a&gt;, &lt;a href=&quot;http://www.kgraph.org/&quot;&gt;KGraph&lt;/a&gt; and LSH Forest are taken into consideration. All evaluation tests, LSH forest implementation and the plots can be found in &lt;a href=&quot;https://github.com/maheshakya/Performance_evaluations_ANN&quot;&gt;this Github repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Before jumping into comparisons, I thought it is imperative to get a notion on the characteristics of the LSH forest implementation. Unlike other ANN implementations, LSH forest provides some user controlled parameters to tune the forest and queries in different scenarios.  &lt;/p&gt;
+
+&lt;p&gt;For the entire forest: &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Number of trees&lt;/li&gt;
+&lt;li&gt;Maximum hash length&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For queries:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;c : A value which determines the number of candidates chosen into the neighbors set. This acts with the number of trees.&lt;/li&gt;
+&lt;li&gt;A lower bound for the maximum depth of hashes considered.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In these precision tests, all the those factors but &lt;code&gt;c&lt;/code&gt; are fixed to constant values as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Number of trees = 10&lt;/li&gt;
+&lt;li&gt;Maximum hash length = 32&lt;/li&gt;
+&lt;li&gt;Lower bound = 4&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The same data set which has been prepared using &lt;a href=&quot;/gsoc/2014/05/18/preparing-a-bench-marking-data-set-using-singula-value-decomposition-on-movielens-data.html&quot;&gt;singular value decomposition on movielens data&lt;/a&gt; is used in all of these tests. Following are the resulting graphs of the performance of LSH forest. Time is measured in seconds.
+&lt;img src=&quot;https://docs.google.com/drawings/d/14CLx4l4VNxJzINJUurlSsrXGl9iWH9fjVH1OideeVO0/pub?w=960&amp;amp;h=720&quot; alt=&quot;precision vs c LSHF&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1Qr0bHs9Q9pnoszRn-PgGEC5mFMNhwQzqkJ4K4vHYjCw/pub?w=960&amp;amp;h=720&quot; alt=&quot;precision vs time LSHF&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1EPkeWOfMt7y6_nKk0StNri71xkrwEtoX-8TySqmM8tk/pub?w=960&amp;amp;h=720&quot; alt=&quot;precision vs number of candidates LSHF&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1klhtpde7N5YLHuCZHX6ekTEuD54IPVM5Tgltj5Xukqk/pub?w=960&amp;amp;h=720&quot; alt=&quot;number of candidates vs c LSHF&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The next section of this post illustrates the performance comparisons among ANNOY, FLANN, LSH forest and KGraph. Precision vs. time graphs are used for this comparison. 
+&lt;img src=&quot;https://docs.google.com/drawings/d/1Lx8jRYyGbHBD8JzCG_0-HpO14fXyu-pMcto26gsa5zw/pub?w=960&amp;amp;h=720&quot; alt=&quot;precision vs time LSHF and ANNOY&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1kfUAr2W6WP_OL4l_vGZ-zaEXirG0jstFkk-r2TAH6rU/pub?w=960&amp;amp;h=720&quot; alt=&quot;precision vs time FLANN &amp;amp; LSHF&quot;&gt;
+Comparing ANNOY, FLANN and LSHF in one place:
+&lt;img src=&quot;https://docs.google.com/drawings/d/1EQTMURuWB7hjoi9r0sGS2Z-IqL_Z_4kg7K5hC6sSt-g/pub?w=960&amp;amp;h=720&quot; alt=&quot;precision vs time LSHF, ANNOY &amp;amp; FLANN&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;KGraph has a significantly higher precision rate than other ANN implementations.(Rather than approximating, it give the actual nearest neighbors according the KGraph documentation)
+&lt;img src=&quot;https://docs.google.com/drawings/d/1HRED65X5AlRuYIo1YaeU6D6ouVufdD8N3v1FFldNESg/pub?w=960&amp;amp;h=720&quot; alt=&quot;precision vs time LSHF &amp;amp; KGraph&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;One of the main considerations of these evaluations is the maintainability of the code. Therefore, any implementation which goes into &lt;a href=&quot;http://scikit-learn.org/stable/&quot;&gt;scikit-learn&lt;/a&gt; should have reasonably less complex code. Both FLANN and KGraph use complex data structures and algorithms to achieve higher speeds. ANNOY has a reasonably passable precision-query speed combination with a less complex implementation. Our current implementation of LSH forest has been able to beat ANNOY in precision-query speed comparison. &lt;/p&gt;
+
+&lt;h2&gt;Indexing speeds of ANN implementations&lt;/h2&gt;
+
+&lt;p&gt;In addition to precision and query speed, a measure of indexing speed has a major importance. Therefore as a final step for this evaluation, I will provide you a description on indexing speed for the same data set used above for each ANN implementation.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;KGraph                   : 65.1286380291 seconds&lt;/li&gt;
+&lt;li&gt;ANNOY (metric=&amp;#39;Angular&amp;#39;) : 47.5299789906 seconds&lt;/li&gt;
+&lt;li&gt;FLANN                    : 0.314314842224 seconds&lt;/li&gt;
+&lt;li&gt;LSHF                     : 3.73900985718 seconds&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In my next post, I will discuss about the implementation of LSH forest in detail and how ANN methods will be implemented in scikit-learn.&lt;/p&gt;
+
+&lt;h3&gt;Acronyms:&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;ANN : Approximate Nearest Neighbors&lt;/li&gt;
+&lt;li&gt;LSH : Locality Sensitive Hashing&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+				<pubDate>Sat, 14 Jun 2014 00:00:00 +0530</pubDate>
+				<link>http://maheshakya.github.io//gsoc/2014/06/14/performance-evaluation-of-approximate-nearest-neighbor-search-implementations-part-2.html</link>
+				<guid isPermaLink="true">http://maheshakya.github.io//gsoc/2014/06/14/performance-evaluation-of-approximate-nearest-neighbor-search-implementations-part-2.html</guid>
+			</item>
+		
+			<item>
 				<title>LSH Forest with sorted arrays and binary search</title>
 				<description>&lt;p&gt;More on GSoC with &lt;a href=&quot;http://scikit-learn.org/stable/index.html&quot;&gt;scikit-learn&lt;/a&gt;! LSH forest is a promising, novel and alternative method introduced in order to alleviate the drawbacks from which vanilla LSH suffers. I assume you have a passable idea of what LSH means. If not, I suggest you to refer to this: &lt;a href=&quot;http://en.wikipedia.org/wiki/Locality-sensitive_hashing&quot;&gt;Locality-sensitive hashing&lt;/a&gt;. LSH forest has a theoretical guarantee of its&amp;#39; suggested improvements. For more information, refer to the published paper: &lt;a href=&quot;http://ilpubs.stanford.edu:8090/678/1/2005-14.pdf&quot;&gt;LSH Forest: Self-Tuning Indexes for Similarity Search&lt;/a&gt;&lt;/p&gt;
 
@@ -146,7 +220,7 @@
 
 &lt;p&gt;The query function accept a value for \(c\) (refer to the paper) as well. This determines the number of candidates returned from the function. This is \(M\) which is equal to \(c \times numberOfTrees\). In asynchronous ascend phase, starting from &lt;code&gt;x&lt;/code&gt;, every matching &lt;code&gt;x&lt;/code&gt; long entry from each tree is collected(in a loop). Then &lt;code&gt;x&lt;/code&gt; is decreased by one. Same is done repeatedly for each tree until the required number of candidates are retrieved. During the process, the length of candidate list may grow greater than required number of candidates. But the search does not end until the following condition is sufficed(As described in the synchronous ascend algorithm in the paper).&lt;/p&gt;
 
-&lt;p&gt;$$x&amp;gt;0 and (lenth(candidates) &amp;gt; c or length(unique(candidates)) &amp;gt; m$$&lt;/p&gt;
+&lt;p&gt;condition: \(x&amp;gt;0\) and \((lenth(candidates) &amp;gt; c \) or  \(length(unique(candidates)) &amp;gt; m)\)&lt;/p&gt;
 
 &lt;p&gt;\(M &amp;gt;&amp;gt; m\) where \(m\) is the actual number of neighbors required. So after selecting the candidates, a true distance measure will be used to determine the actual neighbors. This will be done later as the project proceeds. The current implementation will be used to perform the tasks in the &lt;a href=&quot;/gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html&quot;&gt;evaluation criteria&lt;/a&gt; that I have discussed in my earlier post. &lt;/p&gt;
 

@@ -205,7 +205,7 @@
 
 <p>The query function accept a value for \(c\) (refer to the paper) as well. This determines the number of candidates returned from the function. This is \(M\) which is equal to \(c \times numberOfTrees\). In asynchronous ascend phase, starting from <code>x</code>, every matching <code>x</code> long entry from each tree is collected(in a loop). Then <code>x</code> is decreased by one. Same is done repeatedly for each tree until the required number of candidates are retrieved. During the process, the length of candidate list may grow greater than required number of candidates. But the search does not end until the following condition is sufficed(As described in the synchronous ascend algorithm in the paper).</p>
 
-<p>$$x&gt;0 and (lenth(candidates) &gt; c or length(unique(candidates)) &gt; m$$</p>
+<p>condition: \(x&gt;0\) and \((lenth(candidates) &gt; c \) or  \(length(unique(candidates)) &gt; m)\)</p>
 
 <p>\(M &gt;&gt; m\) where \(m\) is the actual number of neighbors required. So after selecting the candidates, a true distance measure will be used to determine the actual neighbors. This will be done later as the project proceeds. The current implementation will be used to perform the tasks in the <a href="/gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html">evaluation criteria</a> that I have discussed in my earlier post. </p>
 
