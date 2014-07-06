@@ -13,7 +13,7 @@ Following configuration of the LSH forest has been selected for this illustratio
 * Number of trees = 1
 * Hash length= 32
 * c = 1
-* lower bound hash length at termination = 4
+* Lower bound of hash length at termination = 4
 * Expecting number of neighbors = 10
 
 You can get an idea of these parameters from my [previous article on the LSH forest]({% post_url 2014-06-01-lsh-forest-with-sorted-arrays-and-binary-search %})
