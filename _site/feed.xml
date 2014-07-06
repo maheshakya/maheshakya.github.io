@@ -7,6 +7,46 @@
 		<atom:link href="http://maheshakya.github.io//feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>An Illustration of the functionality of the LSH Forest</title>
+				<description>&lt;p&gt;Before digging into more technical detail on the implementation of LSH forest, I thought it would be useful to provide an insightful illustration on how the best candidates are selected from the fitted data points.&lt;/p&gt;
+
+&lt;p&gt;For this task, I decided to use a randomly generated dataset of the sample size of 10000 in the two dimensional space. The reason of using two dimensions is that it is convenient to depict the vectors in 2D space and the a normal human being can easily grasp the idea of convergence in a 2D space. &lt;/p&gt;
+
+&lt;p&gt;Following configuration of the LSH forest has been selected for this illustration. &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Number of trees = 1&lt;/li&gt;
+&lt;li&gt;Hash length= 32&lt;/li&gt;
+&lt;li&gt;c = 1&lt;/li&gt;
+&lt;li&gt;lower bound hash length at termination = 4&lt;/li&gt;
+&lt;li&gt;Expecting number of neighbors = 10&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can get an idea of these parameters from my &lt;a href=&quot;/gsoc/2014/06/01/lsh-forest-with-sorted-arrays-and-binary-search.html&quot;&gt;previous article on the LSH forest&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The following illustrations show the convergence of data points towards the query point as the considered hash length is increased. The important fact I want to emphasize here is that candidates chosen by matching the most significant hash bits converge into the actual data point we are interested in. This happens because of the &lt;a href=&quot;http://en.wikipedia.org/wiki/Locality-sensitive_hashing#Amplification&quot;&gt;amplification property&lt;/a&gt; of Locality sensitive hashing algorithm. &lt;/p&gt;
+
+&lt;p&gt;(Beware! The query point is in RED)
+&lt;img src=&quot;https://docs.google.com/drawings/d/1R8cajY5tZMxy9Q2_JlPCB2UV3FX8Uifw6tY57kY14Uk/pub?w=960&amp;amp;h=720&quot; alt=&quot;hash length = 0&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1xJfWym3OXfWMx9BZzLLX7iweWC4NVj7vqgxoijhEDlI/pub?w=960&amp;amp;h=720&quot; alt=&quot;hash length = 1&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1IOjYl-JsUxTzegKdCYK4C8jvGLV77d0FAhZAXLaj9Jk/pub?w=960&amp;amp;h=720&quot; alt=&quot;hash length = 3&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1lGJrddMp54dOk6pC6_miJUxjlwEGm8wfbF5Xj7x7N6w/pub?w=960&amp;amp;h=720&quot; alt=&quot;hash length = 4&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1CwUGIY4iiBEcyQhuV_zguvNQZx1LBR1Gg734Gx2nw7k/pub?w=960&amp;amp;h=720&quot; alt=&quot;hash length = 5&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1_2NU__OJ_5dio6KWDAb8FZoMHJqM-7XyQaw8-RvvH3A/pub?w=960&amp;amp;h=720&quot; alt=&quot;hash length = 7&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1IhoEw-k66h4EXa1g07_ywvmyrrbGsVyby4mnhRrmydk/pub?w=960&amp;amp;h=720&quot; alt=&quot;hash length = 8&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1oII5NtKCH3WYThoQuOVfx4JNrRbOLANGf5GGXSEmvt0/pub?w=960&amp;amp;h=720&quot; alt=&quot;hash length = 24&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1rxYddtwfE1ZGmTBLBJp1xhTCclYRF-KsLrWjFsesRHY/pub?w=960&amp;amp;h=720&quot; alt=&quot;hash length = 32&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Only if the required number of candidates are not reached during the early sweeps, the algorithm will search for more candidates in smaller matching hash lengths. The the best neighbors are selected from that set of candidates by calculating the actual distance. &lt;/p&gt;
+
+&lt;p&gt;In my next post, I will enlighten you about the subtle optimizations done on the LSH forest data structure to find the best candidates at a maximum speed.&lt;/p&gt;
+</description>
+				<pubDate>Sat, 28 Jun 2014 00:00:00 +0530</pubDate>
+				<link>http://maheshakya.github.io//gsoc/2014/06/28/what-does-locality-sensitive-hashing-forests-do.html</link>
+				<guid isPermaLink="true">http://maheshakya.github.io//gsoc/2014/06/28/what-does-locality-sensitive-hashing-forests-do.html</guid>
+			</item>
+		
+			<item>
 				<title>Performance evaluation of Approximate Nearest Neighbor search implementations - Part 2</title>
 				<description>&lt;p&gt;This continues from the post &lt;a href=&quot;/gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html&quot;&gt;Performance evaluation of Approximate Nearest Neighbor search implementations - Part 1&lt;/a&gt;. The evaluation about the memory consumption is already completed in that post. In this post, the next two aspects of the evaluation framework, precision and query speed will be discussed. &lt;/p&gt;
 
@@ -50,7 +90,7 @@
 Comparing ANNOY, FLANN and LSHF in one place:
 &lt;img src=&quot;https://docs.google.com/drawings/d/1EQTMURuWB7hjoi9r0sGS2Z-IqL_Z_4kg7K5hC6sSt-g/pub?w=960&amp;amp;h=720&quot; alt=&quot;precision vs time LSHF, ANNOY &amp;amp; FLANN&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;KGraph has a significantly higher precision rate than other ANN implementations.(Rather than approximating, it give the actual nearest neighbors according the KGraph documentation)
+&lt;p&gt;KGraph has a significantly higher precision rate than other ANN implementations.(Rather than approximating, it gives the actual nearest neighbors according the KGraph documentation )
 &lt;img src=&quot;https://docs.google.com/drawings/d/1HRED65X5AlRuYIo1YaeU6D6ouVufdD8N3v1FFldNESg/pub?w=960&amp;amp;h=720&quot; alt=&quot;precision vs time LSHF &amp;amp; KGraph&quot;&gt; &lt;/p&gt;
 
 &lt;p&gt;One of the main considerations of these evaluations is the maintainability of the code. Therefore, any implementation which goes into &lt;a href=&quot;http://scikit-learn.org/stable/&quot;&gt;scikit-learn&lt;/a&gt; should have reasonably less complex code. Both FLANN and KGraph use complex data structures and algorithms to achieve higher speeds. ANNOY has a reasonably passable precision-query speed combination with a less complex implementation. Our current implementation of LSH forest has been able to beat ANNOY in precision-query speed comparison. &lt;/p&gt;

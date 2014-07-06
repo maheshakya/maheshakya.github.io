@@ -109,7 +109,7 @@
 Comparing ANNOY, FLANN and LSHF in one place:
 <img src="https://docs.google.com/drawings/d/1EQTMURuWB7hjoi9r0sGS2Z-IqL_Z_4kg7K5hC6sSt-g/pub?w=960&amp;h=720" alt="precision vs time LSHF, ANNOY &amp; FLANN"></p>
 
-<p>KGraph has a significantly higher precision rate than other ANN implementations.(Rather than approximating, it give the actual nearest neighbors according the KGraph documentation)
+<p>KGraph has a significantly higher precision rate than other ANN implementations.(Rather than approximating, it gives the actual nearest neighbors according the KGraph documentation )
 <img src="https://docs.google.com/drawings/d/1HRED65X5AlRuYIo1YaeU6D6ouVufdD8N3v1FFldNESg/pub?w=960&amp;h=720" alt="precision vs time LSHF &amp; KGraph"> </p>
 
 <p>One of the main considerations of these evaluations is the maintainability of the code. Therefore, any implementation which goes into <a href="http://scikit-learn.org/stable/">scikit-learn</a> should have reasonably less complex code. Both FLANN and KGraph use complex data structures and algorithms to achieve higher speeds. ANNOY has a reasonably passable precision-query speed combination with a less complex implementation. Our current implementation of LSH forest has been able to beat ANNOY in precision-query speed comparison. </p>
