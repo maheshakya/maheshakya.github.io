@@ -82,10 +82,10 @@ def _generate_masks(hash_size):
     left_masks, right_masks = [], []        
     for length in range(hash_size+1):
         left_mask  = int("".join(['1' for i in range(length)])
-                         + "".join(['0' for i in range(self.max_label_length-length)]), 2)
+                         + "".join(['0' for i in range(hash_size-length)]), 2)
         left_masks.append(left_mask)
         right_mask = int("".join(['0' for i in range(length)])
-                         + "".join(['1' for i in range(self.max_label_length-length)]), 2)
+                         + "".join(['1' for i in range(hash_size-length)]), 2)
         right_masks.append(right_mask)
     return left_masks, right_masks
 {% endhighlight %}
