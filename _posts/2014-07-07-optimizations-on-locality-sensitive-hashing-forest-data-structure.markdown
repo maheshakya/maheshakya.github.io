@@ -99,7 +99,7 @@ def apply_masks(item, left_masks, right_masks, h):
 The left most and right most indices of a sorted array can be obtained in the following fashion.
 {% highlight python %}
 import numpy as np
-def apply_masks(sorted_array, item_left, item_right):
+def find_matching_indices(sorted_array, item_left, item_right):
     left_index = np.searchsorted(sorted_array, item_left)
     right_index = np.searchsorted(sorted_array, item_right, side = 'right')
     return np.arange(left_index, right_index)
