@@ -150,4 +150,4 @@ In addition to the above tests, precision should also be tested against `c` valu
 
 ## About Nose
 
-As provided in the guidelines scikit-learn [contributors' page](http://scikit-learn.org/stable/developers/), [Nose](http://nose.readthedocs.org/en/latest/index.html) testing framework has been used to automate the testing process.
+As provided in the guidelines in scikit-learn [contributors' page](http://scikit-learn.org/stable/developers/), [Nose](http://nose.readthedocs.org/en/latest/index.html) testing framework has been used to automate the testing process.
