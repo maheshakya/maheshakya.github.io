@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+    <title> Testing LSH Forest </title>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50627295-1', 'maheshakya.github.io');
+  ga('send', 'pageview');
+
+</script>
+  </head>
+
+
+  <body>
+  <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '282511005256163',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <header>
+      <div class="inner">
+        <h1 > <a href="/" style="color:white"> Espy Yonder </a></h1>  
+        <h2>Maheshakyas' personal blog</h2>
+        
+        <a href="https://github.com/maheshakya" class="button"><small>View my profile on</small>GitHub</a>
+
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          
+          <h1>Testing LSH Forest</h1>
+<p class="meta">24 Jul 2014</p>
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<p>There are two types of tests to perform in order to ensure the correct functionality the LSH Forest.</p>
+
+<ol>
+<li>Tests for individual functions of the LSHForest class.</li>
+<li>Tests for accuracy variation with parameters of implementation.</li>
+</ol>
+
+<p>scikit-learn provides a nice set testing tools for this task. It is elaborated in the <a href="http://scikit-learn.org/stable/developers/utilities.html">utilities for developers</a> section. I have used following assertions which were imported from <code>sklearn.utils.testing</code>. Note that <code>numpy</code> as imported as <code>np</code>.</p>
+
+<ol>
+<li><code>assert_array_equal</code> - Compares each element in an array.</li>
+<li><code>assert_equal</code> - Compares two values.</li>
+<li><code>assert_raises</code> - Checks whether the given type of error is raised.</li>
+</ol>
+
+<h2>Testing individual functions</h2>
+
+<h3>Testing <code>fit</code> function</h3>
+
+<p>Requirement of this test is to ensure that the fit function does not work without the necessary arguments provision and it produces correct attributes in the class object(in the sense of dimensions of arrays).</p>
+
+<p>Suppose we initialize a LSHForest as <code>lshf = LSHForest()</code></p>
+
+<p>If the estimator is not fitted with a proper data, it will produce a value error and it is testes as follows:</p>
+
+<div class="highlight"><pre><code class="python">    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+    <span class="n">lshf</span> <span class="o">=</span> <span class="n">LSHForest</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="n">n_trees</span><span class="p">)</span>
+    <span class="n">lshf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</code></pre></div>
+
+<p>We define the sample size and the dimension of the dataset as <code>samples</code> and <code>dim</code> respectively and the number of trees in the LSH forest as <code>n_trees</code>.</p>
+
+<div class="highlight"><pre><code class="python">    <span class="c"># Test whether a value error is raised when X=None</span>
+    <span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">lshf</span><span class="o">.</span><span class="n">fit</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Then after fitting the estimator, following assertions should hold true.</p>
+
+<div class="highlight"><pre><code class="python">    <span class="c"># _input_array = X</span>
+    <span class="n">assert_array_equal</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">lshf</span><span class="o">.</span><span class="n">_input_array</span><span class="p">)</span>
+    <span class="c"># A hash function g(p) for each tree</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">n_trees</span><span class="p">,</span> <span class="n">lshf</span><span class="o">.</span><span class="n">hash_functions_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c"># Hash length = 32</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">lshf</span><span class="o">.</span><span class="n">hash_functions_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c"># Number of trees in the forest</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">n_trees</span><span class="p">,</span> <span class="n">lshf</span><span class="o">.</span><span class="n">_trees</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c"># Each tree has entries for every data point</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">lshf</span><span class="o">.</span><span class="n">_trees</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c"># Original indices after sorting the hashes</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">n_trees</span><span class="p">,</span> <span class="n">lshf</span><span class="o">.</span><span class="n">_original_indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c"># Each set of original indices in a tree has entries for every data point</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">lshf</span><span class="o">.</span><span class="n">_original_indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+
+<p>All the other tests for functions also contain the tests for valid arguments, therefore I am not going to describe them in those sections.</p>
+
+<h3>Testing <code>kneighbors</code> function</h3>
+
+<p><code>kneighbors</code> tests are based on the number of neighbors returned, neighbors for a single data point and multiple data points.</p>
+
+<p>We define the required number of neighbors as <code>n_neighbors</code> and crate a LSHForest.</p>
+
+<div class="highlight"><pre><code class="python">    <span class="n">n_neighbors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+    <span class="n">point</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">samples</span><span class="p">)]</span>
+    <span class="n">neighbors</span> <span class="o">=</span> <span class="n">lshf</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
+                                <span class="n">return_distance</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="c"># Desired number of neighbors should be returned.</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">neighbors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n_neighbors</span><span class="p">)</span>
+</code></pre></div>
+
+<p>For multiple data points, we define number of points as <code>n_points</code>:</p>
+
+<div class="highlight"><pre><code class="python">    <span class="n">points</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)]</span>
+    <span class="n">neighbors</span> <span class="o">=</span> <span class="n">lshf</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                <span class="n">return_distance</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">neighbors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_points</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The above tests ensures that the maximum hash length is also exhausted because the data points in the same data set are used in queries. But to ensure that hash lengths less than the maximum hash length also get involved, there is another test. </p>
+
+<div class="highlight"><pre><code class="python">    <span class="c"># Test random point(not in the data set)</span>
+    <span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+    <span class="n">lshf</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">return_distance</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Testing distances of the <code>kneighbors</code> function</h3>
+
+<p>Returned distances should be in sorted order, therefore it is tested as follows:
+Suppose <code>distances</code> is the returned distances from the <code>kneighbors</code> function when the <code>return_distances</code> parameter is set to <code>True</code>.</p>
+
+<div class="highlight"><pre><code class="python">    <span class="n">assert_array_equal</span><span class="p">(</span><span class="n">distances</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">distances</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</code></pre></div>
+
+<h3>Testing <code>insert</code> function</h3>
+
+<p>Testing <code>insert</code> is somewhat similar to testing <code>fit</code> because what we have to ensure are dimensions and sample sizes. Following assertions should hold true after fitting the LSHFores.</p>
+
+<div class="highlight"><pre><code class="python">    <span class="c"># Insert wrong dimension</span>
+    <span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">lshf</span><span class="o">.</span><span class="n">insert</span><span class="p">,</span>
+                  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">dim</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="c"># Insert 2D array</span>
+    <span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">lshf</span><span class="o">.</span><span class="n">insert</span><span class="p">,</span>
+                  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">lshf</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">dim</span><span class="p">))</span>
+
+    <span class="c"># size of _input_array = samples + 1 after insertion</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">lshf</span><span class="o">.</span><span class="n">_input_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c"># size of _original_indices[1] = samples + 1</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">lshf</span><span class="o">.</span><span class="n">_original_indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">samples</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c"># size of _trees[1] = samples + 1</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">lshf</span><span class="o">.</span><span class="n">_trees</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">samples</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Testing accuracy variation with parameters</h2>
+
+<p>The accuracy of the results obtained from the queries depends on two major parameters.</p>
+
+<ol>
+<li>c value - <code>c</code>.</li>
+<li>number of trees - <code>n_trees</code>.</li>
+</ol>
+
+<p>Separate tests have been written to ensure that the accuracy variation is correct with these parameter variation.</p>
+
+<h3>Testing accuracy against <code>c</code> variation</h3>
+
+<p>Accuracy should be in an increasing order as the value of <code>c</code> is raised. Here, the average accuracy is calculated for different <code>c</code> values. </p>
+
+<div class="highlight"><pre><code class="python">    <span class="n">c_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">250</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Then the calculated accuracy values of each <code>c</code> value is stored in an array. Following assertion should hold true in order to make sure that, higher the <code>c</code> value, higher the accuracy.</p>
+
+<div class="highlight"><pre><code class="python">    <span class="c"># Sorted accuracies should be equal to original accuracies</span>
+    <span class="n">assert_array_equal</span><span class="p">(</span><span class="n">accuracies</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">accuracies</span><span class="p">))</span>
+</code></pre></div>
+
+<h3>Testing accuracy against <code>n_trees</code> variation</h3>
+
+<p>This is as almost same as the above test. First <code>n_trees</code> are stored in the ascending order.</p>
+
+<div class="highlight"><pre><code class="python">    <span class="n">n_trees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+</code></pre></div>
+
+<p>After calculating average accuracies, the assertion is performed.</p>
+
+<div class="highlight"><pre><code class="python">    <span class="c"># Sorted accuracies should be equal to original accuracies</span>
+    <span class="n">assert_array_equal</span><span class="p">(</span><span class="n">accuracies</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">accuracies</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>What is left?</h2>
+
+<p>In addition to the above tests, precision should also be tested against <code>c</code> values and <code>n_trees</code>. But it has already been tested in the prototyping stage and those tests consume a reasonably large amount of time which makes them unable to be performed in the scikit-learn test suit. Therefore, a separate benchmark will be done on this topic.</p>
+
+<h2>About Nose</h2>
+
+<p>As provided in the guidelines scikit-learn <a href="http://scikit-learn.org/stable/developers/">contributors&#39; page</a>, <a href="http://nose.readthedocs.org/en/latest/index.html">Nose</a> testing framework has been used to automate the testing process.</p>
+
+
+If you have any questions or comments, please post them below. If
+you liked this post, you can
+<a href="https://twitter.com/intent/tweet?url=http://maheshakya.github.io//gsoc/2014/07/24/testing-lsh-forest.html&text=Testing LSH Forest&via=Wmaheshakya" 
+   target="_blank">
+  share it with your followers.</a> 
+And don't forget to  
+<a href="https://twitter.com/Wmaheshakya">
+  follow me on Twitter</a>!
+  <!-- Add Disqus comments. -->
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'maheshakya'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+          
+        </section>
+
+        <aside id="sidebar">
+          <a href="/pages/about" class="button">about me</a>
+          <a href="/feed.xml" class="button">RSS feed</a>
+          <a href="https://github.com/maheshakya/maheshakya.github.io/archive/master.zip" class="button">
+            <small>Download this blog</small>
+            .zip file
+          </a>
+
+          <div class="fb-like" data-href="/gsoc/2014/07/24/testing-lsh-forest.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+
+        </aside>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
