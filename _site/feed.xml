@@ -7,6 +7,40 @@
 		<atom:link href="http://maheshakya.github.io//feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Performance comparison among LSH Forest, ANNOY and FLANN</title>
+				<description>&lt;p&gt;Finally, it is time to compare performance of Locality Sensitive Hashing Forest(approximate nearest neighbor search implementation in &lt;a href=&quot;http://scikit-learn.org/stable/&quot;&gt;scikit-learn&lt;/a&gt;), &lt;a href=&quot;https://github.com/spotify/annoy&quot;&gt;Spotify Annoy&lt;/a&gt; and &lt;a href=&quot;http://www.cs.ubc.ca/research/flann/&quot;&gt;FLANN&lt;/a&gt;. &lt;/p&gt;
+
+&lt;h2&gt;Criteria&lt;/h2&gt;
+
+&lt;p&gt;Synthetic datasets of different sizes (varying &lt;code&gt;n_samples&lt;/code&gt; and &lt;code&gt;n_features&lt;/code&gt;) are used for this evalutation. For each data set, following measures were calculated.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Index building time of each ANN (Approximate Nearest Neighbor) implementation.&lt;/li&gt;
+&lt;li&gt;Accuracy of nearest neighbors queries with their query times.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Python code used for this evaluation can be found in this &lt;a href=&quot;https://gist.github.com/maheshakya/b7bcf915c9d5bab89d8d&quot;&gt;Gist&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Results&lt;/h2&gt;
+
+&lt;p&gt;For each dataset, two graphs have been plotted according to the measures expressed in the above section.
+&lt;img src=&quot;https://docs.google.com/drawings/d/1PqPDygNOpIIicm4YEdN5FwLgECzPSa2toAsGsczIUP0/pub?w=960&amp;amp;h=720&quot; alt=&quot;n_samples=1000, n_features=100&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1v7mtz_xC_9njA-d3rzUYYfbJrzKr0kX5-sBfVOj-yCs/pub?w=960&amp;amp;h=720&quot; alt=&quot;n_samples=1000, n_features=500&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1gl65_N8mKJPGFardWwUt-8WXtqYbIeJM2jbAuk5qKJg/pub?w=960&amp;amp;h=720&quot; alt=&quot;n_samples=6000, n_features=3000&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1GIIjyHOG03WxNOEHhF4p19uP_9JZ9ctyYRRJp2HvCp4/pub?w=960&amp;amp;h=720&quot; alt=&quot;n_samples=10000, n_features=100&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1DFA6i-s661Liplq_lysUyz0KvIH4CnByA5jsEuCw7ig/pub?w=960&amp;amp;h=720&quot; alt=&quot;n_samples=10000, n_features=500&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/14ta-LAR9KdPRaTDDJgKWYHpPsVhqvxCs9rjwHStbRz0/pub?w=960&amp;amp;h=720&quot; alt=&quot;n_samples=10000, n_features=1000&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1KoQ3wXMb-rm4ZGW8d2mMGCcsvxGPU1lgSJTCA0IbRec/pub?w=960&amp;amp;h=720&quot; alt=&quot;n_samples=10000, n_features=6000&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1RIr-jf818iQIIaOOi5C_sX87ynAR6cBVI1FF25Wbq9o/pub?w=960&amp;amp;h=720&quot; alt=&quot;n_samples=50000, n_features=5000&quot;&gt;
+&lt;img src=&quot;https://docs.google.com/drawings/d/1onzy44K6Yk4CcX4msTGLJK61UFNOqkkEzZLH3yZrKtY/pub?w=960&amp;amp;h=720&quot; alt=&quot;n_samples=100000, n_features=1000&quot;&gt;
+It is evident that index building times of LSH Forest and FLANN are almost incomparable to that of Annoy for almost all the datasets. Moreover, for larger datasets, LSH Forest outperforms Annoy at large margins with respect to accuracy and query speed. Observations from these graphs prove that LSH Forest is competitive with FLANN for large datasets.&lt;/p&gt;
+</description>
+				<pubDate>Sun, 17 Aug 2014 00:00:00 +0530</pubDate>
+				<link>http://maheshakya.github.io//gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html</link>
+				<guid isPermaLink="true">http://maheshakya.github.io//gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html</guid>
+			</item>
+		
+			<item>
 				<title>A demonstration of the usage of Locality Sensitive Hashing Forest in approximate nearest neighbor search</title>
 				<description>&lt;p&gt;This is a demonstration to explain how to use the approximate nearest neighbor search implementation using locality sensitive hashing in &lt;a href=&quot;http://scikit-learn.org/stable/&quot;&gt;scikit-learn&lt;/a&gt; and to illustrate the behavior of the nearest neighbor queries as the parameters vary. This implementation has an API which is essentially as same as the &lt;a href=&quot;http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors&quot;&gt;NearestNeighbors&lt;/a&gt; module as approximate nearest neighbor search is used to speed up the queries at the cost of accuracy when the database is very large.&lt;/p&gt;
 
@@ -962,53 +996,6 @@ Because number of ratings for a movie by users is significantly low when conside
 				<pubDate>Sun, 18 May 2014 00:00:00 +0530</pubDate>
 				<link>http://maheshakya.github.io//gsoc/2014/05/18/preparing-a-bench-marking-data-set-using-singula-value-decomposition-on-movielens-data.html</link>
 				<guid isPermaLink="true">http://maheshakya.github.io//gsoc/2014/05/18/preparing-a-bench-marking-data-set-using-singula-value-decomposition-on-movielens-data.html</guid>
-			</item>
-		
-			<item>
-				<title>GSoC2014: Approximate nearest neighbor search using LSH</title>
-				<description>&lt;p&gt;This project has been initiated as a Google summer of code project. &lt;a href=&quot;https://www.python.org/&quot;&gt;Python Software foundation&lt;/a&gt; serves as an &amp;quot;umbrella organization&amp;quot; to a variety of Python related open source projects. &lt;a href=&quot;http://scikit-learn.org/stable/index.html&quot;&gt;Scikit-learn&lt;/a&gt; is a machine learning module which operates under that umbrella. I&amp;#39;m instigating this project under that module. In the following sections, I will describe what this really is with help of the essence of my project proposal. This is just a head start of the journey and you will be able to obtain a clear picture as this proceeds.&lt;/p&gt;
-
-&lt;h2&gt;The struggle for nearest neighbor search&lt;/h2&gt;
-
-&lt;p&gt;Nearest neighbor search is a well known problem which can be defined as follows: given a collection of n data points, create a data structure which, given any query point, reports the data points that is closest to the query. This problem holds a major importance in certain applications: data mining, databases, data analysis, pattern recognition, similarity search, machine learning, image and video processing, information retrieval and statistics. To perform nearest neighbor search, there are several efficient algorithms known for the case where the dimension is low. But those methods suffer from either space or query time that is exponential in dimension.&lt;/p&gt;
-
-&lt;p&gt;In order to address the “Curse of Dimensionality” in large data sets, recent researches had been lead based on approximating neighbor search. It has been proven that in many cases, approximate nearest neighbor is as almost good as the exact one[1]. Locality Sensitive Hashing is one of those approximating methods. The key idea of LSH is to hash data points using several hash functions to ensure that for each function the probability of collision is much higher for objects that are close to each other than for those that are far apart.&lt;/p&gt;
-
-&lt;h2&gt;What does this have to do with me?&lt;/h2&gt;
-
-&lt;p&gt;In scikit-learn, currently exact nearest neighbor search is implemented, but when it comes to higher dimensions, it fails to perform efficiently[2]. So I&amp;#39;m taking an initiative to implement LSH based ANN for scikit-learn. In this project, several variants of LSH-ANN methods will be prototyped and evaluated. After identifying the most appropriate method for scikit-learn, it will be implemented in accordance with scikit-learn&amp;#39;s API and documentation levels, which includes narrative documentation. Then with the results obtained from prototyping stage, storing and querying structure of ANN will be implemented. After that, ANN part will be integrated into &lt;code&gt;sklearn.neighbors&lt;/code&gt; module. Next comes the application of this method. Most of clustering algorithms use nearest neighbor search, therefore this method will be adapted to use in those modules in order to improve their operational speed. As these activities proceed, testing, examples and documentation will be covered. Bench marking will be done to assess the implementation.&lt;/p&gt;
-
-&lt;h2&gt;Milestones of the project&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Prototyping/Evaluating existing LSH based ANN methods (vanilla and others) in order to find the most appropriate method to have in scikit-learn. There is no point of having methods in scikit-learn which are impractical to use with real data.&lt;/li&gt;
-&lt;li&gt;Approximating neighbor search uses hashing algorithms of LSH family. These algorithms will be implemented.&lt;/li&gt;
-&lt;li&gt;Implementation of an efficient storing structure to retain trained/hashed data.&lt;/li&gt;
-&lt;li&gt;Integrating the ANN search into current implementation of neighbor search, so that this can be used with the existing API.&lt;/li&gt;
-&lt;li&gt;Improving speed of existing clustering models with the implemented ANN search.&lt;/li&gt;
-&lt;li&gt;Completing tests, examples, documentation and bench marking.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Well that&amp;#39;s it for the moment. I will guide you through when the things are in motion. &lt;/p&gt;
-
-&lt;h2&gt;Abbreviations&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;LSH : Locality sensitive hashing&lt;/li&gt;
-&lt;li&gt;ANN : Approximate nearest neighbor&lt;/li&gt;
-&lt;li&gt;API : Application programming interface&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;References&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;A. Andoni and P. Indyk,&amp;quot;Near-Optimal Hashing Algorithms for Approximate Nearest Neighbor in High Dimensions&amp;quot;, Available[online]:&lt;a href=&quot;http://people.csail.mit.edu/indyk/p117-andoni.pdf&quot;&gt;http://people.csail.mit.edu/indyk/p117-andoni.pdf&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;R. Rehurek, &amp;quot;Performance Shootout of Nearest Neighbours: Contestants&amp;quot;, Available[online]:&lt;a href=&quot;http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/&quot;&gt;http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-				<pubDate>Sun, 04 May 2014 15:44:56 +0530</pubDate>
-				<link>http://maheshakya.github.io//gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html</link>
-				<guid isPermaLink="true">http://maheshakya.github.io//gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html</guid>
 			</item>
 		
 	</channel>
