@@ -13,7 +13,9 @@ Synthetic datasets of different sizes (varying `n_samples` and `n_features`) are
 1. Index building time of each ANN (Approximate Nearest Neighbor) implementation.
 2. Accuracy of nearest neighbors queries with their query times.
 
-Python code used for this evaluation can be found in this [Gist](https://gist.github.com/maheshakya/b7bcf915c9d5bab89d8d).
+Python code used for this evaluation can be found in this [Gist](https://gist.github.com/maheshakya/b7bcf915c9d5bab89d8d). Parameters of 
+`LSHForest` (`n_estimators=10` and `n_candidates=50`) are kept fixed during this experiment. Accuracies can be raised by tuning these 
+parameters.
 
 ## Results
 
