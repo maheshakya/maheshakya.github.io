@@ -68,7 +68,7 @@ import pickle
 data_file = pd.read_table(r'ratings.dat', sep = '::', header=None)
 {% endhighlight %}
 
-Here, have assumed that the `ratings.dat` file from MovieLens 1M data will be in the working directory. Only reason I am using pandas data frame is its' convenience of usage. You can directly open the file and proceed. But then you will have to change following steps to adapt to method.
+Here,I have assumed that the `ratings.dat` file from MovieLens 1M data will be in the working directory. Only reason I am using pandas data frame is its' convenience of usage. You can directly open the file and proceed. But then you will have to change following steps to adapt to that method.
 
 3)  Extract required meta information from the data set.
 {% highlight python %}
@@ -81,13 +81,13 @@ number_of_columns = len(movies)
 movie_indices, user_indices = {}, {}
  
 for i in range(len(movies)):
-    movie_indices[movies.values[i]] = i
+    movie_indices[movies[i]] = i
     
 for i in range(len(users)):
-    user_indices[users.values[i]] = i
+    user_indices[users[i]] = i
 {% endhighlight %}
 
-As the user IDs and movie IDs are not consecutive number, a proper mapping is required. It will be used when inserting data into the matrix. At this point, you can delete the loaded data frame in order to save memory. But it is optional.
+As the user IDs and movie IDs are not continueous integers(there are missing numbers inbetween), a proper mapping is required. It will be used when inserting data into the matrix. At this point, you can delete the loaded data frame in order to save memory. But it is optional.
 
 4)  Creating the sparse matrix and inserting data.
 {% highlight python %}
