@@ -131,7 +131,7 @@ As `s` is a vector, we need to create a diagonal matrix form that with the diago
 {% highlight python %}
 s_diag_matrix = np.zeros((s.shape[0], s.shape[0]))
 
-for i in range(s.shape[0], s.shape[0]):
+for i in range(s.shape[0]):
     s_diag_matrix[i,i] = s[i]
 {% endhighlight %}
 
