@@ -17,7 +17,7 @@ Python code used for this evaluation can be found in this [Gist](https://gist.gi
 `LSHForest` (`n_estimators=10` and `n_candidates=50`) are kept fixed during this experiment. Accuracies can be raised by tuning these 
 parameters.
 
-## Results
+## Results 
 
 For each dataset, two graphs have been plotted according to the measures expressed in the above section.
 ![n_samples=1000, n_features=100](https://docs.google.com/drawings/d/1PqPDygNOpIIicm4YEdN5FwLgECzPSa2toAsGsczIUP0/pub?w=960&h=720)
