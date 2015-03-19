@@ -135,7 +135,7 @@ Because number of ratings for a movie by users is significantly low when conside
 <div class="highlight"><pre><code class="python"><span class="n">data_file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s">r&#39;ratings.dat&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;::&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Here, have assumed that the <code>ratings.dat</code> file from MovieLens 1M data will be in the working directory. Only reason I am using pandas data frame is its&#39; convenience of usage. You can directly open the file and proceed. But then you will have to change following steps to adapt to method.</p>
+<p>Here,I have assumed that the <code>ratings.dat</code> file from MovieLens 1M data will be in the working directory. Only reason I am using pandas data frame is its&#39; convenience of usage. You can directly open the file and proceed. But then you will have to change following steps to adapt to that method.</p>
 
 <p>3)  Extract required meta information from the data set.</p>
 
@@ -148,13 +148,13 @@ Because number of ratings for a movie by users is significantly low when conside
 <span class="n">movie_indices</span><span class="p">,</span> <span class="n">user_indices</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
  
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">movies</span><span class="p">)):</span>
-    <span class="n">movie_indices</span><span class="p">[</span><span class="n">movies</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="n">movie_indices</span><span class="p">[</span><span class="n">movies</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
     
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">users</span><span class="p">)):</span>
-    <span class="n">user_indices</span><span class="p">[</span><span class="n">users</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="n">user_indices</span><span class="p">[</span><span class="n">users</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
 </code></pre></div>
 
-<p>As the user IDs and movie IDs are not consecutive number, a proper mapping is required. It will be used when inserting data into the matrix. At this point, you can delete the loaded data frame in order to save memory. But it is optional.</p>
+<p>As the user IDs and movie IDs are not continueous integers(there are missing numbers inbetween), a proper mapping is required. It will be used when inserting data into the matrix. At this point, you can delete the loaded data frame in order to save memory. But it is optional.</p>
 
 <p>4)  Creating the sparse matrix and inserting data.</p>
 
@@ -198,7 +198,7 @@ Because number of ratings for a movie by users is significantly low when conside
 
 <div class="highlight"><pre><code class="python"><span class="n">s_diag_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
     <span class="n">s_diag_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 </code></pre></div>
 

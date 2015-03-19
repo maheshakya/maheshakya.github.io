@@ -2,7 +2,7 @@
 layout: post
 title:  "The Pythonizer!"
 date:   2014-04-06 15:40:56
-categories: jekyll update
+category: miscellaneous
 ---
 
 Though I'm a Python fanatic, Jekyll is inconceivably awesome! (It's Ruby)
