@@ -4,7 +4,7 @@ description: "maheshakyas' personal website"
 subheading: "maheshakyas' personal website"
 more: "read more"
 url: "https://www.facebook.com/pmaheshakya"
-baseurl: "/maheshakya.wijewardena" # comment out if in root directory
+#baseurl: "/maheshakya.wijewardena" # comment out if in root directory
 
 comments:
     disqus: "maheshakya"
