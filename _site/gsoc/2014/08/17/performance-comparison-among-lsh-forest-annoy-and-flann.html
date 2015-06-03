@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print" />
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
-
-    <title> Performance comparison among LSH Forest, ANNOY and FLANN </title>
-    <script>
+    <!-- Niklas Buschmann 2015 MIT <http://github.com/niklasbuschmann> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    
+    <meta name="description" content="">
+    <title> Performance comparison among LSH Forest, ANNOY and FLANN › Espy Yonder</title>
+    <link rel="canonical" href="https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html">
+    <link href="/maheshakya.wijewardena/main.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link rel="alternate" type="application/rss+xml" title="Espy Yonder &raquo; Feed" href="/maheshakya.wijewardena/feed.xml">
+    <script src="//maheshakya.disqus.com/embed.js" async></script>
+    
+  </head>
+  <body>
+    <header>
+      <h1><a href="/maheshakya.wijewardena/">Espy Yonder</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/maheshakya.wijewardena/">Home</a></li><li><a href="/maheshakya.wijewardena/archive.html">Archive</a></li><li><a href="/maheshakya.wijewardena/pages/about/index.html">About me</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <div>maheshakyas' personal website</div>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -26,85 +37,53 @@
   ga('send', 'pageview');
 
 </script>
-  </head>
-
-
-  <body>
-  <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '282511005256163',
-          xfbml      : true,
-          version    : 'v2.0'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <header>
-      <div class="inner">
-        <h1 > <a href="/" style="color:white"> Espy Yonder </a></h1>  
-        <h2>Maheshakyas' personal blog</h2>
-        
-        <a href="https://github.com/maheshakya" class="button"><small>View my profile on</small>GitHub</a>
-
-      </div>
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          
-          <h1>Performance comparison among LSH Forest, ANNOY and FLANN</h1>
-<p class="meta">17 Aug 2014</p>
+    <article>
+      <header>
+        <h2><a href="/gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html">Performance comparison among LSH Forest, ANNOY and FLANN</a></h2>
+        <p><time datetime="2014-08-17T00:00:00+05:30">Aug 17, 2014</time> • gsoc</p>
+      </header>
+      <div>
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<p>Finally, it is time to compare performance of Locality Sensitive Hashing Forest(approximate nearest neighbor search implementation in <a href="http://scikit-learn.org/stable/">scikit-learn</a>), <a href="https://github.com/spotify/annoy">Spotify Annoy</a> and <a href="http://www.cs.ubc.ca/research/flann/">FLANN</a>. </p>
+<p>Finally, it is time to compare performance of Locality Sensitive Hashing Forest(approximate nearest neighbor search implementation in <a href="http://scikit-learn.org/stable/">scikit-learn</a>), <a href="https://github.com/spotify/annoy">Spotify Annoy</a> and <a href="http://www.cs.ubc.ca/research/flann/">FLANN</a>.</p>
 
-<h2>Criteria</h2>
+<h2 id="criteria">Criteria</h2>
 
 <p>Synthetic datasets of different sizes (varying <code>n_samples</code> and <code>n_features</code>) are used for this evalutation. For each data set, following measures were calculated.</p>
 
 <ol>
-<li>Index building time of each ANN (Approximate Nearest Neighbor) implementation.</li>
-<li>Accuracy of nearest neighbors queries with their query times.</li>
+  <li>Index building time of each ANN (Approximate Nearest Neighbor) implementation.</li>
+  <li>Accuracy of nearest neighbors queries with their query times.</li>
 </ol>
 
 <p>Python code used for this evaluation can be found in this <a href="https://gist.github.com/maheshakya/b7bcf915c9d5bab89d8d">Gist</a>. Parameters of 
 <code>LSHForest</code> (<code>n_estimators=10</code> and <code>n_candidates=50</code>) are kept fixed during this experiment. Accuracies can be raised by tuning these 
 parameters.</p>
 
-<h2>Results</h2>
+<h2 id="results">Results</h2>
 
 <p>For each dataset, two graphs have been plotted according to the measures expressed in the above section.
-<img src="https://docs.google.com/drawings/d/1PqPDygNOpIIicm4YEdN5FwLgECzPSa2toAsGsczIUP0/pub?w=960&amp;h=720" alt="n_samples=1000, n_features=100">
-<img src="https://docs.google.com/drawings/d/1v7mtz_xC_9njA-d3rzUYYfbJrzKr0kX5-sBfVOj-yCs/pub?w=960&amp;h=720" alt="n_samples=1000, n_features=500">
-<img src="https://docs.google.com/drawings/d/1gl65_N8mKJPGFardWwUt-8WXtqYbIeJM2jbAuk5qKJg/pub?w=960&amp;h=720" alt="n_samples=6000, n_features=3000">
-<img src="https://docs.google.com/drawings/d/1GIIjyHOG03WxNOEHhF4p19uP_9JZ9ctyYRRJp2HvCp4/pub?w=960&amp;h=720" alt="n_samples=10000, n_features=100">
-<img src="https://docs.google.com/drawings/d/1DFA6i-s661Liplq_lysUyz0KvIH4CnByA5jsEuCw7ig/pub?w=960&amp;h=720" alt="n_samples=10000, n_features=500">
-<img src="https://docs.google.com/drawings/d/14ta-LAR9KdPRaTDDJgKWYHpPsVhqvxCs9rjwHStbRz0/pub?w=960&amp;h=720" alt="n_samples=10000, n_features=1000">
-<img src="https://docs.google.com/drawings/d/1KoQ3wXMb-rm4ZGW8d2mMGCcsvxGPU1lgSJTCA0IbRec/pub?w=960&amp;h=720" alt="n_samples=10000, n_features=6000">
-<img src="https://docs.google.com/drawings/d/1RIr-jf818iQIIaOOi5C_sX87ynAR6cBVI1FF25Wbq9o/pub?w=960&amp;h=720" alt="n_samples=50000, n_features=5000">
-<img src="https://docs.google.com/drawings/d/1onzy44K6Yk4CcX4msTGLJK61UFNOqkkEzZLH3yZrKtY/pub?w=960&amp;h=720" alt="n_samples=100000, n_features=1000">
+<img src="https://docs.google.com/drawings/d/1PqPDygNOpIIicm4YEdN5FwLgECzPSa2toAsGsczIUP0/pub?w=960&amp;h=720" alt="n_samples=1000, n_features=100" />
+<img src="https://docs.google.com/drawings/d/1v7mtz_xC_9njA-d3rzUYYfbJrzKr0kX5-sBfVOj-yCs/pub?w=960&amp;h=720" alt="n_samples=1000, n_features=500" />
+<img src="https://docs.google.com/drawings/d/1gl65_N8mKJPGFardWwUt-8WXtqYbIeJM2jbAuk5qKJg/pub?w=960&amp;h=720" alt="n_samples=6000, n_features=3000" />
+<img src="https://docs.google.com/drawings/d/1GIIjyHOG03WxNOEHhF4p19uP_9JZ9ctyYRRJp2HvCp4/pub?w=960&amp;h=720" alt="n_samples=10000, n_features=100" />
+<img src="https://docs.google.com/drawings/d/1DFA6i-s661Liplq_lysUyz0KvIH4CnByA5jsEuCw7ig/pub?w=960&amp;h=720" alt="n_samples=10000, n_features=500" />
+<img src="https://docs.google.com/drawings/d/14ta-LAR9KdPRaTDDJgKWYHpPsVhqvxCs9rjwHStbRz0/pub?w=960&amp;h=720" alt="n_samples=10000, n_features=1000" />
+<img src="https://docs.google.com/drawings/d/1KoQ3wXMb-rm4ZGW8d2mMGCcsvxGPU1lgSJTCA0IbRec/pub?w=960&amp;h=720" alt="n_samples=10000, n_features=6000" />
+<img src="https://docs.google.com/drawings/d/1RIr-jf818iQIIaOOi5C_sX87ynAR6cBVI1FF25Wbq9o/pub?w=960&amp;h=720" alt="n_samples=50000, n_features=5000" />
+<img src="https://docs.google.com/drawings/d/1onzy44K6Yk4CcX4msTGLJK61UFNOqkkEzZLH3yZrKtY/pub?w=960&amp;h=720" alt="n_samples=100000, n_features=1000" />
 It is evident that index building times of LSH Forest and FLANN are almost incomparable to that of Annoy for almost all the datasets. Moreover, for larger datasets, LSH Forest outperforms Annoy at large margins with respect to accuracy and query speed. Observations from these graphs prove that LSH Forest is competitive with FLANN for large datasets.</p>
+
 
 
 If you have any questions or comments, please post them below. If
 you liked this post, you can
-<a href="https://twitter.com/intent/tweet?url=http://maheshakya.github.io//gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html&text=Performance comparison among LSH Forest, ANNOY and FLANN&via=Wmaheshakya" 
+<a href="https://twitter.com/intent/tweet?url=https://www.facebook.com/pmaheshakya/gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html&text=Performance comparison among LSH Forest, ANNOY and FLANN&via=Wmaheshakya" 
    target="_blank">
   share it with your followers.</a> 
-And don't forget to  
-<a href="https://twitter.com/Wmaheshakya">
-  follow me on Twitter</a>!
+
   <!-- Add Disqus comments. -->
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -122,26 +101,18 @@ And don't forget to
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-
-          
-        </section>
-
-        <aside id="sidebar">
-          <a href="/pages/about" class="button">about me</a>
-          <a href="/feed.xml" class="button">RSS feed</a>
-          <a href="https://github.com/maheshakya/maheshakya.github.io/archive/master.zip" class="button">
-            <small>Download this blog</small>
-            .zip file
-          </a>
-
-          <div class="fb-like" data-href="/gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-
-
-        </aside>
       </div>
-    </div>
+      
+      
+      <div id="disqus_thread"></div>
+      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    </article>
 
-    
-
+    <footer>
+      <span><a href="https://www.facebook.com/pmaheshakya">pruthuvi maheshakya wijewardena</a></span>
+      <span><a href="https://github.com/maheshakya"><i class="fa fa-github-square"></i></a><a href="https://twitter.com/Wmaheshakya"><i class="fa fa-twitter-square"></i></a><a href="https://plus.google.com/u/0/+MaheshakyaWijewardena/"><i class="fa fa-google-plus-square"></i></a><a href="https://www.youtube.com/channel/UCGCNlASS-LWH8PYd1Me5-Zg/feed"><i class="fa fa-youtube-square"></i></a></span>
+      <span>&copy; 2015</span>
+    </footer>
   </body>
 </html>

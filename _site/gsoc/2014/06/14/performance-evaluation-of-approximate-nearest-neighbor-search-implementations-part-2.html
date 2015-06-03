@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print" />
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
-
-    <title> Performance evaluation of Approximate Nearest Neighbor search implementations - Part 2 </title>
-    <script>
+    <!-- Niklas Buschmann 2015 MIT <http://github.com/niklasbuschmann> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    
+    <meta name="description" content="maheshakyas' personal website">
+    <title> Performance evaluation of Approximate Nearest Neighbor search implementations - Part 2 › Espy Yonder</title>
+    <link rel="canonical" href="https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/06/14/performance-evaluation-of-approximate-nearest-neighbor-search-implementations-part-2.html">
+    <link href="/maheshakya.wijewardena/main.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link rel="alternate" type="application/rss+xml" title="Espy Yonder &raquo; Feed" href="/maheshakya.wijewardena/feed.xml">
+    <script src="//maheshakya.disqus.com/embed.js" async></script>
+    
+  </head>
+  <body>
+    <header>
+      <h1><a href="/maheshakya.wijewardena/">Espy Yonder</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/maheshakya.wijewardena/">Home</a></li><li><a href="/maheshakya.wijewardena/archive.html">Archive</a></li><li><a href="/maheshakya.wijewardena/pages/about/index.html">About me</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <div>maheshakyas' personal website</div>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -26,123 +37,91 @@
   ga('send', 'pageview');
 
 </script>
-  </head>
-
-
-  <body>
-  <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '282511005256163',
-          xfbml      : true,
-          version    : 'v2.0'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <header>
-      <div class="inner">
-        <h1 > <a href="/" style="color:white"> Espy Yonder </a></h1>  
-        <h2>Maheshakyas' personal blog</h2>
-        
-        <a href="https://github.com/maheshakya" class="button"><small>View my profile on</small>GitHub</a>
-
-      </div>
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          
-          <h1>Performance evaluation of Approximate Nearest Neighbor search implementations - Part 2</h1>
-<p class="meta">14 Jun 2014</p>
+    <article>
+      <header>
+        <h2><a href="/gsoc/2014/06/14/performance-evaluation-of-approximate-nearest-neighbor-search-implementations-part-2.html">Performance evaluation of Approximate Nearest Neighbor search implementations - Part 2</a></h2>
+        <p><time datetime="2014-06-14T00:00:00+05:30">Jun 14, 2014</time> • gsoc</p>
+      </header>
+      <div>
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<p>This continues from the post <a href="/gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html">Performance evaluation of Approximate Nearest Neighbor search implementations - Part 1</a>. The evaluation about the memory consumption is already completed in that post. In this post, the next two aspects of the evaluation framework, precision and query speed will be discussed. </p>
+<p>This continues from the post <a href="/gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html">Performance evaluation of Approximate Nearest Neighbor search implementations - Part 1</a>. The evaluation about the memory consumption is already completed in that post. In this post, the next two aspects of the evaluation framework, precision and query speed will be discussed.</p>
 
 <p>When measuring the performance of Approximate nearest neighbor search methods, expressing precision and the query speed independently is less useful since the entire idea of approximating is to obtain the desired precision within a better time period. In order to evaluate precision, an ANN implementation should be able to provide a multiple number of neighbors(rather than just the nearest neighbor). After obtaining all data points in the data set from the ANN method, first few entires in the that neighbors list(ten neighbors in my evaluation tests) are taken as the neighbors of ground truth of that particular ANN method. These set of data points are compared against neighbors retrieved when the number of queried neighbors is varied. Precision tests are adapted from the <a href="https://github.com/spotify/annoy/blob/master/examples/precision_test.py">tests performed for ANNOY</a>.</p>
 
 <p>This precision measure eliminates some of our candidate ANN implementations because those are not capable of producing a multiple number of neighbors. Obtaining multiple neighbors is an essential requirement of for precision tests described above as well the general applications of nearest neighbor search. Therefore, for the precision tests, only <a href="https://github.com/spotify/annoy">ANNOY</a>, <a href="http://www.cs.ubc.ca/research/flann/">FLANN</a>, <a href="http://www.kgraph.org/">KGraph</a> and LSH Forest are taken into consideration. All evaluation tests, LSH forest implementation and the plots can be found in <a href="https://github.com/maheshakya/Performance_evaluations_ANN">this Github repository</a>.</p>
 
-<p>Before jumping into comparisons, I thought it is imperative to get a notion on the characteristics of the LSH forest implementation. Unlike other ANN implementations, LSH forest provides some user controlled parameters to tune the forest and queries in different scenarios.  </p>
+<p>Before jumping into comparisons, I thought it is imperative to get a notion on the characteristics of the LSH forest implementation. Unlike other ANN implementations, LSH forest provides some user controlled parameters to tune the forest and queries in different scenarios.</p>
 
-<p>For the entire forest: </p>
+<p>For the entire forest:</p>
 
 <ul>
-<li>Number of trees</li>
-<li>Maximum hash length</li>
+  <li>Number of trees</li>
+  <li>Maximum hash length</li>
 </ul>
 
 <p>For queries:</p>
 
 <ul>
-<li>c : A value which determines the number of candidates chosen into the neighbors set. This acts with the number of trees.</li>
-<li>A lower bound for the maximum depth of hashes considered.</li>
+  <li>c : A value which determines the number of candidates chosen into the neighbors set. This acts with the number of trees.</li>
+  <li>A lower bound for the maximum depth of hashes considered.</li>
 </ul>
 
 <p>In these precision tests, all the those factors but <code>c</code> are fixed to constant values as follows:</p>
 
 <ul>
-<li>Number of trees = 10</li>
-<li>Maximum hash length = 32</li>
-<li>Lower bound = 4</li>
+  <li>Number of trees = 10</li>
+  <li>Maximum hash length = 32</li>
+  <li>Lower bound = 4</li>
 </ul>
 
 <p>The same data set which has been prepared using <a href="/gsoc/2014/05/18/preparing-a-bench-marking-data-set-using-singula-value-decomposition-on-movielens-data.html">singular value decomposition on movielens data</a> is used in all of these tests. Following are the resulting graphs of the performance of LSH forest. Time is measured in seconds.
-<img src="https://docs.google.com/drawings/d/14CLx4l4VNxJzINJUurlSsrXGl9iWH9fjVH1OideeVO0/pub?w=960&amp;h=720" alt="precision vs c LSHF">
-<img src="https://docs.google.com/drawings/d/1Qr0bHs9Q9pnoszRn-PgGEC5mFMNhwQzqkJ4K4vHYjCw/pub?w=960&amp;h=720" alt="precision vs time LSHF">
-<img src="https://docs.google.com/drawings/d/1EPkeWOfMt7y6_nKk0StNri71xkrwEtoX-8TySqmM8tk/pub?w=960&amp;h=720" alt="precision vs number of candidates LSHF">
-<img src="https://docs.google.com/drawings/d/1klhtpde7N5YLHuCZHX6ekTEuD54IPVM5Tgltj5Xukqk/pub?w=960&amp;h=720" alt="number of candidates vs c LSHF"></p>
+<img src="https://docs.google.com/drawings/d/14CLx4l4VNxJzINJUurlSsrXGl9iWH9fjVH1OideeVO0/pub?w=960&amp;h=720" alt="precision vs c LSHF" />
+<img src="https://docs.google.com/drawings/d/1Qr0bHs9Q9pnoszRn-PgGEC5mFMNhwQzqkJ4K4vHYjCw/pub?w=960&amp;h=720" alt="precision vs time LSHF" />
+<img src="https://docs.google.com/drawings/d/1EPkeWOfMt7y6_nKk0StNri71xkrwEtoX-8TySqmM8tk/pub?w=960&amp;h=720" alt="precision vs number of candidates LSHF" />
+<img src="https://docs.google.com/drawings/d/1klhtpde7N5YLHuCZHX6ekTEuD54IPVM5Tgltj5Xukqk/pub?w=960&amp;h=720" alt="number of candidates vs c LSHF" /></p>
 
 <p>The next section of this post illustrates the performance comparisons among ANNOY, FLANN, LSH forest and KGraph. Precision vs. time graphs are used for this comparison. 
-<img src="https://docs.google.com/drawings/d/1Lx8jRYyGbHBD8JzCG_0-HpO14fXyu-pMcto26gsa5zw/pub?w=960&amp;h=720" alt="precision vs time LSHF and ANNOY">
-<img src="https://docs.google.com/drawings/d/1kfUAr2W6WP_OL4l_vGZ-zaEXirG0jstFkk-r2TAH6rU/pub?w=960&amp;h=720" alt="precision vs time FLANN &amp; LSHF">
+<img src="https://docs.google.com/drawings/d/1Lx8jRYyGbHBD8JzCG_0-HpO14fXyu-pMcto26gsa5zw/pub?w=960&amp;h=720" alt="precision vs time LSHF and ANNOY" />
+<img src="https://docs.google.com/drawings/d/1kfUAr2W6WP_OL4l_vGZ-zaEXirG0jstFkk-r2TAH6rU/pub?w=960&amp;h=720" alt="precision vs time FLANN &amp; LSHF" />
 Comparing ANNOY, FLANN and LSHF in one place:
-<img src="https://docs.google.com/drawings/d/1EQTMURuWB7hjoi9r0sGS2Z-IqL_Z_4kg7K5hC6sSt-g/pub?w=960&amp;h=720" alt="precision vs time LSHF, ANNOY &amp; FLANN"></p>
+<img src="https://docs.google.com/drawings/d/1EQTMURuWB7hjoi9r0sGS2Z-IqL_Z_4kg7K5hC6sSt-g/pub?w=960&amp;h=720" alt="precision vs time LSHF, ANNOY &amp; FLANN" /></p>
 
 <p>KGraph has a significantly higher precision rate than other ANN implementations.(Rather than approximating, it gives the actual nearest neighbors according the KGraph documentation )
-<img src="https://docs.google.com/drawings/d/1HRED65X5AlRuYIo1YaeU6D6ouVufdD8N3v1FFldNESg/pub?w=960&amp;h=720" alt="precision vs time LSHF &amp; KGraph"> </p>
+<img src="https://docs.google.com/drawings/d/1HRED65X5AlRuYIo1YaeU6D6ouVufdD8N3v1FFldNESg/pub?w=960&amp;h=720" alt="precision vs time LSHF &amp; KGraph" /></p>
 
-<p>One of the main considerations of these evaluations is the maintainability of the code. Therefore, any implementation which goes into <a href="http://scikit-learn.org/stable/">scikit-learn</a> should have reasonably less complex code. Both FLANN and KGraph use complex data structures and algorithms to achieve higher speeds. ANNOY has a reasonably passable precision-query speed combination with a less complex implementation. Our current implementation of LSH forest has been able to beat ANNOY in precision-query speed comparison. </p>
+<p>One of the main considerations of these evaluations is the maintainability of the code. Therefore, any implementation which goes into <a href="http://scikit-learn.org/stable/">scikit-learn</a> should have reasonably less complex code. Both FLANN and KGraph use complex data structures and algorithms to achieve higher speeds. ANNOY has a reasonably passable precision-query speed combination with a less complex implementation. Our current implementation of LSH forest has been able to beat ANNOY in precision-query speed comparison.</p>
 
-<h2>Indexing speeds of ANN implementations</h2>
+<h2 id="indexing-speeds-of-ann-implementations">Indexing speeds of ANN implementations</h2>
 
 <p>In addition to precision and query speed, a measure of indexing speed has a major importance. Therefore as a final step for this evaluation, I will provide you a description on indexing speed for the same data set used above for each ANN implementation.</p>
 
 <ul>
-<li>KGraph                   : 65.1286380291 seconds</li>
-<li>ANNOY (metric=&#39;Angular&#39;) : 47.5299789906 seconds</li>
-<li>FLANN                    : 0.314314842224 seconds</li>
-<li>LSHF                     : 3.73900985718 seconds</li>
+  <li>KGraph                   : 65.1286380291 seconds</li>
+  <li>ANNOY (metric=’Angular’) : 47.5299789906 seconds</li>
+  <li>FLANN                    : 0.314314842224 seconds</li>
+  <li>LSHF                     : 3.73900985718 seconds</li>
 </ul>
 
 <p>In my next post, I will discuss about the implementation of LSH forest in detail and how ANN methods will be implemented in scikit-learn.</p>
 
-<h3>Acronyms:</h3>
+<h3 id="acronyms">Acronyms:</h3>
 
 <ol>
-<li>ANN : Approximate Nearest Neighbors</li>
-<li>LSH : Locality Sensitive Hashing</li>
+  <li>ANN : Approximate Nearest Neighbors</li>
+  <li>LSH : Locality Sensitive Hashing</li>
 </ol>
+
 
 
 If you have any questions or comments, please post them below. If
 you liked this post, you can
-<a href="https://twitter.com/intent/tweet?url=http://maheshakya.github.io//gsoc/2014/06/14/performance-evaluation-of-approximate-nearest-neighbor-search-implementations-part-2.html&text=Performance evaluation of Approximate Nearest Neighbor search implementations - Part 2&via=Wmaheshakya" 
+<a href="https://twitter.com/intent/tweet?url=https://www.facebook.com/pmaheshakya/gsoc/2014/06/14/performance-evaluation-of-approximate-nearest-neighbor-search-implementations-part-2.html&text=Performance evaluation of Approximate Nearest Neighbor search implementations - Part 2&via=Wmaheshakya" 
    target="_blank">
   share it with your followers.</a> 
-And don't forget to  
-<a href="https://twitter.com/Wmaheshakya">
-  follow me on Twitter</a>!
+
   <!-- Add Disqus comments. -->
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -160,26 +139,18 @@ And don't forget to
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-
-          
-        </section>
-
-        <aside id="sidebar">
-          <a href="/pages/about" class="button">about me</a>
-          <a href="/feed.xml" class="button">RSS feed</a>
-          <a href="https://github.com/maheshakya/maheshakya.github.io/archive/master.zip" class="button">
-            <small>Download this blog</small>
-            .zip file
-          </a>
-
-          <div class="fb-like" data-href="/gsoc/2014/06/14/performance-evaluation-of-approximate-nearest-neighbor-search-implementations-part-2.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-
-
-        </aside>
       </div>
-    </div>
+      
+      
+      <div id="disqus_thread"></div>
+      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    </article>
 
-    
-
+    <footer>
+      <span><a href="https://www.facebook.com/pmaheshakya">pruthuvi maheshakya wijewardena</a></span>
+      <span><a href="https://github.com/maheshakya"><i class="fa fa-github-square"></i></a><a href="https://twitter.com/Wmaheshakya"><i class="fa fa-twitter-square"></i></a><a href="https://plus.google.com/u/0/+MaheshakyaWijewardena/"><i class="fa fa-google-plus-square"></i></a><a href="https://www.youtube.com/channel/UCGCNlASS-LWH8PYd1Me5-Zg/feed"><i class="fa fa-youtube-square"></i></a></span>
+      <span>&copy; 2015</span>
+    </footer>
   </body>
 </html>
