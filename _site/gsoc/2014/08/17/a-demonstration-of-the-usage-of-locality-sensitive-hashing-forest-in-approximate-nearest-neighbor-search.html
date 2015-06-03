@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print" />
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
-
-    <title> A demonstration of the usage of Locality Sensitive Hashing Forest in approximate nearest neighbor search </title>
-    <script>
+    <!-- Niklas Buschmann 2015 MIT <http://github.com/niklasbuschmann> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    
+    <meta name="description" content="">
+    <title> A demonstration of the usage of Locality Sensitive Hashing Forest in approximate nearest neighbor search › Espy Yonder</title>
+    <link rel="canonical" href="https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/08/17/a-demonstration-of-the-usage-of-locality-sensitive-hashing-forest-in-approximate-nearest-neighbor-search.html">
+    <link href="/maheshakya.wijewardena/main.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link rel="alternate" type="application/rss+xml" title="Espy Yonder &raquo; Feed" href="/maheshakya.wijewardena/feed.xml">
+    <script src="//maheshakya.disqus.com/embed.js" async></script>
+    
+  </head>
+  <body>
+    <header>
+      <h1><a href="/maheshakya.wijewardena/">Espy Yonder</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/maheshakya.wijewardena/">Home</a></li><li><a href="/maheshakya.wijewardena/archive.html">Archive</a></li><li><a href="/maheshakya.wijewardena/pages/about/index.html">About me</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <div>maheshakyas' personal website</div>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -26,43 +37,12 @@
   ga('send', 'pageview');
 
 </script>
-  </head>
-
-
-  <body>
-  <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '282511005256163',
-          xfbml      : true,
-          version    : 'v2.0'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <header>
-      <div class="inner">
-        <h1 > <a href="/" style="color:white"> Espy Yonder </a></h1>  
-        <h2>Maheshakyas' personal blog</h2>
-        
-        <a href="https://github.com/maheshakya" class="button"><small>View my profile on</small>GitHub</a>
-
-      </div>
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          
-          <h1>A demonstration of the usage of Locality Sensitive Hashing Forest in approximate nearest neighbor search</h1>
-<p class="meta">17 Aug 2014</p>
+    <article>
+      <header>
+        <h2><a href="/gsoc/2014/08/17/a-demonstration-of-the-usage-of-locality-sensitive-hashing-forest-in-approximate-nearest-neighbor-search.html">A demonstration of the usage of Locality Sensitive Hashing Forest in approximate nearest neighbor search</a></h2>
+        <p><time datetime="2014-08-17T00:00:00+05:30">Aug 17, 2014</time> • gsoc</p>
+      </header>
+      <div>
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -71,7 +51,7 @@
 
 <p>Before beginning the demonstration, background has to be set. First, the required modules are loaded and a synthetic dataset is created for testing.</p>
 
-<div class="highlight"><pre><code class="python"><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets.samples_generator</span> <span class="kn">import</span> <span class="n">make_blobs</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">LSHForest</span>
@@ -86,19 +66,18 @@
 
 <span class="c"># Generate sample data</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
-                  <span class="n">centers</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
+                  <span class="n">centers</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></div>
 
-<p>There are two main parameters which affect queries in the LSH Forest implementation. </p>
+<p>There are two main parameters which affect queries in the LSH Forest implementation.</p>
 
 <ol>
-<li><code>n_estimators</code> : Number of trees in the LSH Forest.</li>
-<li><code>n_candidates</code> : Number of candidates chosen from each tree for distance calculation.</li>
+  <li><code>n_estimators</code> : Number of trees in the LSH Forest.</li>
+  <li><code>n_candidates</code> : Number of candidates chosen from each tree for distance calculation.</li>
 </ol>
 
 <p>In the first experiment, average accuracies are measured as the value of <code>n_estimators</code> vary. <code>n_candidates</code> is kept fixed. <code>slearn.neighbors.NearestNeighbors</code> used to obtain the true neighbors so that the returned approximate neighbors can be compared against.</p>
 
-<div class="highlight"><pre><code class="python"><span class="c"># Set `n_estimators` values</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Set `n_estimators` values</span>
 <span class="n">n_estimators_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
 <span class="n">accuracies_trees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_estimators_values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
@@ -120,12 +99,11 @@
         <span class="n">ratio</span> <span class="o">=</span> <span class="n">intersection</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_neighbors</span><span class="p">)</span>
         <span class="n">accuracies_trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ratio</span>
 
-    <span class="n">accuracies_trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracies_trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_iter</span><span class="p">)</span>
-</code></pre></div>
+    <span class="n">accuracies_trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracies_trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_iter</span><span class="p">)</span></code></pre></div>
 
 <p>Similarly, average accuracy vs <code>n_candidates</code> is also measured.</p>
 
-<div class="highlight"><pre><code class="python"><span class="c"># Set `n_candidate` values</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Set `n_candidate` values</span>
 <span class="n">n_candidates_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
 <span class="n">accuracies_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_candidates_values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
@@ -147,15 +125,14 @@
         <span class="n">ratio</span> <span class="o">=</span> <span class="n">intersection</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_neighbors</span><span class="p">)</span>
         <span class="n">accuracies_c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ratio</span>
 
-    <span class="n">accuracies_c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracies_c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_iter</span><span class="p">)</span>
-</code></pre></div>
+    <span class="n">accuracies_c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracies_c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_iter</span><span class="p">)</span></code></pre></div>
 
 <p>You can get a clear view of the behavior of queries from the following plots.
-<img src="https://docs.google.com/drawings/d/1NLa73eY1JDspoYBWW5bYl0JPoXTyA64JZWunQ4JYVO8/pub?w=960&amp;h=720" alt="accuracies_c_l"></p>
+<img src="https://docs.google.com/drawings/d/1NLa73eY1JDspoYBWW5bYl0JPoXTyA64JZWunQ4JYVO8/pub?w=960&amp;h=720" alt="accuracies_c_l" /></p>
 
 <p>The next experiment demonstrates the behavior of queries for different database sizes (<code>n_samples</code>).</p>
 
-<div class="highlight"><pre><code class="python"><span class="c"># Initialize the range of `n_samples`</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Initialize the range of `n_samples`</span>
 <span class="n">n_samples_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">]</span>
 <span class="n">average_times</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="c"># Calculate the average query time</span>
@@ -178,21 +155,19 @@
         <span class="n">average_time</span> <span class="o">=</span> <span class="n">average_time</span> <span class="o">+</span> <span class="n">T</span>
 
     <span class="n">average_time</span> <span class="o">=</span> <span class="n">average_time</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_iter</span><span class="p">)</span>
-    <span class="n">average_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">average_time</span><span class="p">)</span>
-</code></pre></div>
+    <span class="n">average_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">average_time</span><span class="p">)</span></code></pre></div>
 
 <p><code>n_samples</code> space is defined as [10, 100, 1000, 10000, 100000]. Query time for a single neighbor is measure for these different values of <code>n_samples</code>.
-<img src="https://docs.google.com/drawings/d/1KZwjo9Cx33kK-kTNayAT-eb79TPCbvX-kidyoPO7VJA/pub?w=960&amp;h=720" alt="query_time_vs_n_samples"></p>
+<img src="https://docs.google.com/drawings/d/1KZwjo9Cx33kK-kTNayAT-eb79TPCbvX-kidyoPO7VJA/pub?w=960&amp;h=720" alt="query_time_vs_n_samples" /></p>
+
 
 
 If you have any questions or comments, please post them below. If
 you liked this post, you can
-<a href="https://twitter.com/intent/tweet?url=http://maheshakya.github.io//gsoc/2014/08/17/a-demonstration-of-the-usage-of-locality-sensitive-hashing-forest-in-approximate-nearest-neighbor-search.html&text=A demonstration of the usage of Locality Sensitive Hashing Forest in approximate nearest neighbor search&via=Wmaheshakya" 
+<a href="https://twitter.com/intent/tweet?url=https://www.facebook.com/pmaheshakya/gsoc/2014/08/17/a-demonstration-of-the-usage-of-locality-sensitive-hashing-forest-in-approximate-nearest-neighbor-search.html&text=A demonstration of the usage of Locality Sensitive Hashing Forest in approximate nearest neighbor search&via=Wmaheshakya" 
    target="_blank">
   share it with your followers.</a> 
-And don't forget to  
-<a href="https://twitter.com/Wmaheshakya">
-  follow me on Twitter</a>!
+
   <!-- Add Disqus comments. -->
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -210,26 +185,18 @@ And don't forget to
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-
-          
-        </section>
-
-        <aside id="sidebar">
-          <a href="/pages/about" class="button">about me</a>
-          <a href="/feed.xml" class="button">RSS feed</a>
-          <a href="https://github.com/maheshakya/maheshakya.github.io/archive/master.zip" class="button">
-            <small>Download this blog</small>
-            .zip file
-          </a>
-
-          <div class="fb-like" data-href="/gsoc/2014/08/17/a-demonstration-of-the-usage-of-locality-sensitive-hashing-forest-in-approximate-nearest-neighbor-search.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-
-
-        </aside>
       </div>
-    </div>
+      
+      
+      <div id="disqus_thread"></div>
+      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    </article>
 
-    
-
+    <footer>
+      <span><a href="https://www.facebook.com/pmaheshakya">pruthuvi maheshakya wijewardena</a></span>
+      <span><a href="https://github.com/maheshakya"><i class="fa fa-github-square"></i></a><a href="https://twitter.com/Wmaheshakya"><i class="fa fa-twitter-square"></i></a><a href="https://plus.google.com/u/0/+MaheshakyaWijewardena/"><i class="fa fa-google-plus-square"></i></a><a href="https://www.youtube.com/channel/UCGCNlASS-LWH8PYd1Me5-Zg/feed"><i class="fa fa-youtube-square"></i></a></span>
+      <span>&copy; 2015</span>
+    </footer>
   </body>
 </html>

@@ -1,15 +1,32 @@
-port: 40000
-auto: true
-safe: true
-server: true
-pygments: true
-markdown: redcarpet
+title: "Espy Yonder"
+author: "pruthuvi maheshakya wijewardena"
+description: "maheshakyas' personal website"
+subheading: "maheshakyas' personal website"
+more: "read more"
+url: "https://www.facebook.com/pmaheshakya"
+baseurl: "/maheshakya.wijewardena" # comment out if in root directory
 
-#permalinks
-permalinks: pretty
+comments:
+    disqus: "maheshakya"
+#    isso: "comments.mysite.org"
 
-name: Espy Yonder
-description: This is my personal blog created in order to espy yonder 
-url: http://maheshakya.github.io/
+style:
+#    body: "whitesmoke"
+    padding: 33%
+    anchor: "#46f"
+    serif-heading: true
+    nav: "#181818"
+#    headline: "#06f"
+    description: "white"
+    article:
+        odd: "#ffffff"
+        even: "#222222"
 
-category: [GSoC, Other]
+links:
+  - github: "https://github.com/maheshakya"
+  - twitter: "https://twitter.com/Wmaheshakya"
+  - google-plus: "https://plus.google.com/u/0/+MaheshakyaWijewardena/"
+  - youtube: "https://www.youtube.com/channel/UCGCNlASS-LWH8PYd1Me5-Zg/feed"
+
+excerpt_separator: "\n\n\n"
+defaults: [{scope: {path: ""}, values: {layout: "default"}}, {scope: {path: "", type: "posts"}, values: {comments: true}}]

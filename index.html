@@ -1,23 +1,17 @@
 ---
-layout: default
-title: Maheshakyas' Blog
+layout: blank
 ---
-
-<!-- <div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% for page in site.posts %}
+    <article>
+      <header>
+        <h2><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></h2>
+        <p>{% if page.author %}{{ page.author }} • {% endif %}{% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>{% endif %}{% if page.categories %} • {{ page.categories | array_to_sentence_string }}{% endif %}</p>
+      </header>
+      <div>
+{{ page.excerpt }}
+      </div>
+      <footer>
+        <p><a href="{{ page.url | prepend: site.baseurl }}">{{ site.more }} &raquo;</a></p>
+      </footer>
+    </article>
     {% endfor %}
-  </ul>
-</div> -->
-
-<div id="home">
-  <a href="pages/machine_learning"><img src="images/machinelearning.png"></a>
-  <a href="pages/cognitive_science_and_computational_neuroscience"><img src="images/cognitive.png"></a>
-  <a href="pages/life_and_nature"><img src="images/life.png"></a>
-  <a href="pages/culture"><img src="images/culture.png"></a>
-  <a href="pages/sketch_book"><img src="images/sketchbook.png"></a>
-  <a href="pages/projects"><img src="images/myprojects.png"></a>  
-  <a href="pages/miscellaneous"><img src="images/miscellaneous.png"></a>  
-</div>

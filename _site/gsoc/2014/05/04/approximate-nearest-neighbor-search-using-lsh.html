@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print" />
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
-
-    <title> GSoC2014: Approximate nearest neighbor search using LSH </title>
-    <script>
+    <!-- Niklas Buschmann 2015 MIT <http://github.com/niklasbuschmann> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    
+    <meta name="description" content="maheshakyas' personal website">
+    <title> GSoC2014: Approximate nearest neighbor search using LSH › Espy Yonder</title>
+    <link rel="canonical" href="https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html">
+    <link href="/maheshakya.wijewardena/main.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link rel="alternate" type="application/rss+xml" title="Espy Yonder &raquo; Feed" href="/maheshakya.wijewardena/feed.xml">
+    <script src="//maheshakya.disqus.com/embed.js" async></script>
+    
+  </head>
+  <body>
+    <header>
+      <h1><a href="/maheshakya.wijewardena/">Espy Yonder</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/maheshakya.wijewardena/">Home</a></li><li><a href="/maheshakya.wijewardena/archive.html">Archive</a></li><li><a href="/maheshakya.wijewardena/pages/about/index.html">About me</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <div>maheshakyas' personal website</div>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -26,96 +37,59 @@
   ga('send', 'pageview');
 
 </script>
-  </head>
-
-
-  <body>
-  <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '282511005256163',
-          xfbml      : true,
-          version    : 'v2.0'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <header>
-      <div class="inner">
-        <h1 > <a href="/" style="color:white"> Espy Yonder </a></h1>  
-        <h2>Maheshakyas' personal blog</h2>
-        
-        <a href="https://github.com/maheshakya" class="button"><small>View my profile on</small>GitHub</a>
-
-      </div>
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          
-          <h1>GSoC2014: Approximate nearest neighbor search using LSH</h1>
-<p class="meta">04 May 2014</p>
+    <article>
+      <header>
+        <h2><a href="/gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html">GSoC2014: Approximate nearest neighbor search using LSH</a></h2>
+        <p><time datetime="2014-05-04T15:44:56+05:30">May 4, 2014</time> • gsoc</p>
+      </header>
+      <div>
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<p>This project has been initiated as a Google summer of code project. <a href="https://www.python.org/">Python Software foundation</a> serves as an &quot;umbrella organization&quot; to a variety of Python related open source projects. <a href="http://scikit-learn.org/stable/index.html">Scikit-learn</a> is a machine learning module which operates under that umbrella. I&#39;m instigating this project under that module. In the following sections, I will describe what this really is with help of the essence of my project proposal. This is just a head start of the journey and you will be able to obtain a clear picture as this proceeds.</p>
+<p>This project has been initiated as a Google summer of code project. <a href="https://www.python.org/">Python Software foundation</a> serves as an “umbrella organization” to a variety of Python related open source projects. <a href="http://scikit-learn.org/stable/index.html">Scikit-learn</a> is a machine learning module which operates under that umbrella. I’m instigating this project under that module. In the following sections, I will describe what this really is with help of the essence of my project proposal. This is just a head start of the journey and you will be able to obtain a clear picture as this proceeds.</p>
 
-<h2>The struggle for nearest neighbor search</h2>
-
+<h2 id="the-struggle-for-nearest-neighbor-search">The struggle for nearest neighbor search</h2>
 <p>Nearest neighbor search is a well known problem which can be defined as follows: given a collection of n data points, create a data structure which, given any query point, reports the data points that is closest to the query. This problem holds a major importance in certain applications: data mining, databases, data analysis, pattern recognition, similarity search, machine learning, image and video processing, information retrieval and statistics. To perform nearest neighbor search, there are several efficient algorithms known for the case where the dimension is low. But those methods suffer from either space or query time that is exponential in dimension.</p>
 
 <p>In order to address the “Curse of Dimensionality” in large data sets, recent researches had been lead based on approximating neighbor search. It has been proven that in many cases, approximate nearest neighbor is as almost good as the exact one[1]. Locality Sensitive Hashing is one of those approximating methods. The key idea of LSH is to hash data points using several hash functions to ensure that for each function the probability of collision is much higher for objects that are close to each other than for those that are far apart.</p>
 
-<h2>What does this have to do with me?</h2>
+<h2 id="what-does-this-have-to-do-with-me">What does this have to do with me?</h2>
+<p>In scikit-learn, currently exact nearest neighbor search is implemented, but when it comes to higher dimensions, it fails to perform efficiently[2]. So I’m taking an initiative to implement LSH based ANN for scikit-learn. In this project, several variants of LSH-ANN methods will be prototyped and evaluated. After identifying the most appropriate method for scikit-learn, it will be implemented in accordance with scikit-learn’s API and documentation levels, which includes narrative documentation. Then with the results obtained from prototyping stage, storing and querying structure of ANN will be implemented. After that, ANN part will be integrated into <code>sklearn.neighbors</code> module. Next comes the application of this method. Most of clustering algorithms use nearest neighbor search, therefore this method will be adapted to use in those modules in order to improve their operational speed. As these activities proceed, testing, examples and documentation will be covered. Bench marking will be done to assess the implementation.</p>
 
-<p>In scikit-learn, currently exact nearest neighbor search is implemented, but when it comes to higher dimensions, it fails to perform efficiently[2]. So I&#39;m taking an initiative to implement LSH based ANN for scikit-learn. In this project, several variants of LSH-ANN methods will be prototyped and evaluated. After identifying the most appropriate method for scikit-learn, it will be implemented in accordance with scikit-learn&#39;s API and documentation levels, which includes narrative documentation. Then with the results obtained from prototyping stage, storing and querying structure of ANN will be implemented. After that, ANN part will be integrated into <code>sklearn.neighbors</code> module. Next comes the application of this method. Most of clustering algorithms use nearest neighbor search, therefore this method will be adapted to use in those modules in order to improve their operational speed. As these activities proceed, testing, examples and documentation will be covered. Bench marking will be done to assess the implementation.</p>
-
-<h2>Milestones of the project</h2>
-
+<h2 id="milestones-of-the-project">Milestones of the project</h2>
 <ol>
-<li>Prototyping/Evaluating existing LSH based ANN methods (vanilla and others) in order to find the most appropriate method to have in scikit-learn. There is no point of having methods in scikit-learn which are impractical to use with real data.</li>
-<li>Approximating neighbor search uses hashing algorithms of LSH family. These algorithms will be implemented.</li>
-<li>Implementation of an efficient storing structure to retain trained/hashed data.</li>
-<li>Integrating the ANN search into current implementation of neighbor search, so that this can be used with the existing API.</li>
-<li>Improving speed of existing clustering models with the implemented ANN search.</li>
-<li>Completing tests, examples, documentation and bench marking.</li>
+  <li>Prototyping/Evaluating existing LSH based ANN methods (vanilla and others) in order to find the most appropriate method to have in scikit-learn. There is no point of having methods in scikit-learn which are impractical to use with real data.</li>
+  <li>Approximating neighbor search uses hashing algorithms of LSH family. These algorithms will be implemented.</li>
+  <li>Implementation of an efficient storing structure to retain trained/hashed data.</li>
+  <li>Integrating the ANN search into current implementation of neighbor search, so that this can be used with the existing API.</li>
+  <li>Improving speed of existing clustering models with the implemented ANN search.</li>
+  <li>Completing tests, examples, documentation and bench marking.</li>
 </ol>
 
-<p>Well that&#39;s it for the moment. I will guide you through when the things are in motion. </p>
+<p>Well that’s it for the moment. I will guide you through when the things are in motion.</p>
 
-<h2>Abbreviations</h2>
-
+<h2 id="abbreviations">Abbreviations</h2>
 <ul>
-<li>LSH : Locality sensitive hashing</li>
-<li>ANN : Approximate nearest neighbor</li>
-<li>API : Application programming interface</li>
+  <li>LSH : Locality sensitive hashing</li>
+  <li>ANN : Approximate nearest neighbor</li>
+  <li>API : Application programming interface</li>
 </ul>
 
-<h2>References</h2>
-
+<h2 id="references">References</h2>
 <ol>
-<li>A. Andoni and P. Indyk,&quot;Near-Optimal Hashing Algorithms for Approximate Nearest Neighbor in High Dimensions&quot;, Available[online]:<a href="http://people.csail.mit.edu/indyk/p117-andoni.pdf">http://people.csail.mit.edu/indyk/p117-andoni.pdf</a></li>
-<li>R. Rehurek, &quot;Performance Shootout of Nearest Neighbours: Contestants&quot;, Available[online]:<a href="http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/">http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/</a></li>
+  <li>A. Andoni and P. Indyk,”Near-Optimal Hashing Algorithms for Approximate Nearest Neighbor in High Dimensions”, Available[online]:<a href="http://people.csail.mit.edu/indyk/p117-andoni.pdf">http://people.csail.mit.edu/indyk/p117-andoni.pdf</a></li>
+  <li>R. Rehurek, “Performance Shootout of Nearest Neighbours: Contestants”, Available[online]:<a href="http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/">http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/</a></li>
 </ol>
+
 
 
 If you have any questions or comments, please post them below. If
 you liked this post, you can
-<a href="https://twitter.com/intent/tweet?url=http://maheshakya.github.io//gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html&text=GSoC2014: Approximate nearest neighbor search using LSH&via=Wmaheshakya" 
+<a href="https://twitter.com/intent/tweet?url=https://www.facebook.com/pmaheshakya/gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html&text=GSoC2014: Approximate nearest neighbor search using LSH&via=Wmaheshakya" 
    target="_blank">
   share it with your followers.</a> 
-And don't forget to  
-<a href="https://twitter.com/Wmaheshakya">
-  follow me on Twitter</a>!
+
   <!-- Add Disqus comments. -->
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -133,26 +107,18 @@ And don't forget to
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-
-          
-        </section>
-
-        <aside id="sidebar">
-          <a href="/pages/about" class="button">about me</a>
-          <a href="/feed.xml" class="button">RSS feed</a>
-          <a href="https://github.com/maheshakya/maheshakya.github.io/archive/master.zip" class="button">
-            <small>Download this blog</small>
-            .zip file
-          </a>
-
-          <div class="fb-like" data-href="/gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-
-
-        </aside>
       </div>
-    </div>
+      
+      
+      <div id="disqus_thread"></div>
+      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    </article>
 
-    
-
+    <footer>
+      <span><a href="https://www.facebook.com/pmaheshakya">pruthuvi maheshakya wijewardena</a></span>
+      <span><a href="https://github.com/maheshakya"><i class="fa fa-github-square"></i></a><a href="https://twitter.com/Wmaheshakya"><i class="fa fa-twitter-square"></i></a><a href="https://plus.google.com/u/0/+MaheshakyaWijewardena/"><i class="fa fa-google-plus-square"></i></a><a href="https://www.youtube.com/channel/UCGCNlASS-LWH8PYd1Me5-Zg/feed"><i class="fa fa-youtube-square"></i></a></span>
+      <span>&copy; 2015</span>
+    </footer>
   </body>
 </html>
