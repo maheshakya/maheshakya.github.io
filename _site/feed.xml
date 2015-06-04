@@ -5,9 +5,22 @@
     <description>maheshakyas&#39; personal website</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 04 Jun 2015 22:33:33 +0530</pubDate>
-    <lastBuildDate>Thu, 04 Jun 2015 22:33:33 +0530</lastBuildDate>
+    <pubDate>Thu, 04 Jun 2015 22:52:12 +0530</pubDate>
+    <lastBuildDate>Thu, 04 Jun 2015 22:52:12 +0530</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>A quick guide to plotting with python and matplotlib - part 2</title>
+        <description>&lt;p&gt;In the previous part of this guide, we have discussed on how to create basic components of a plot. It’s time to move into some advanced material.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 04 Jun 2015 00:00:00 +0530</pubDate>
+        <link>//miscellaneous/2015/06/04/a-quick-guide-plotting-with-python-and-matplotlib-2.html</link>
+        <guid isPermaLink="true">//miscellaneous/2015/06/04/a-quick-guide-plotting-with-python-and-matplotlib-2.html</guid>
+        
+        
+        <category>miscellaneous</category>
+        
+      </item>
     
       <item>
         <title>A quick guide to plotting with python and matplotlib - part 1</title>
@@ -138,7 +151,7 @@
 
 &lt;p&gt;&lt;img src=&quot;https://docs.google.com/drawings/d/1TKLhYlSUnMBKrMvQOIbkwR968EbDWX6MpNI_PFJUSuQ/pub?w=960&amp;amp;h=720&quot; alt=&quot;plot_2&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Only a little work is left to do… What? Naming the axes and entitling the plot. It takes only \(3\) lines of code. Add these line just before the &lt;code&gt;plt.show()&lt;/code&gt; function.&lt;/p&gt;
+&lt;p&gt;Only a little work is left to do… What? Naming the axes and entitling the plot. It takes only \(3\) lines of code. Add these lines just above the &lt;code&gt;plt.show()&lt;/code&gt; function.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Sets x-axis&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;This is my x-axis&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;

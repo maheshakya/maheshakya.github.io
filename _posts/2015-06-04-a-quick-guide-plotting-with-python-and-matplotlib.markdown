@@ -93,7 +93,7 @@ Now, simply add the legend code segment just before the `plt.show()` in the firs
 
 ![plot_2](https://docs.google.com/drawings/d/1TKLhYlSUnMBKrMvQOIbkwR968EbDWX6MpNI_PFJUSuQ/pub?w=960&h=720)
 
-Only a little work is left to do... What? Naming the axes and entitling the plot. It takes only \\(3\\) lines of code. Add these line just before the `plt.show()` function.
+Only a little work is left to do... What? Naming the axes and entitling the plot. It takes only \\(3\\) lines of code. Add these lines just above the `plt.show()` function.
 
 {% highlight python %}
 # Sets x-axis
