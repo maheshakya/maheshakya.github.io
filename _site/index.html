@@ -39,6 +39,161 @@
     
     <article>
       <header>
+        <h2><a href="/miscellaneous/2015/06/04/a-quick-guide-plotting-with-python-and-matplotlib.html">A quick guide to plotting with python and matplotlib - part 1</a></h2>
+        <p><time datetime="2015-06-04T00:00:00+05:30">Jun 4, 2015</time> • miscellaneous</p>
+      </header>
+      <div>
+<p>Representation of information and data visualization can be often considered as one of the most indispensable feats that requires subtlest attention in the present community of science and technology. So that’s that. Now let’s hop into plotting!</p>
+
+<p>Python has this amazing library called <a href="http://matplotlib.org/"><strong>matplotlib</strong></a> where you can create plots of almost everything you  can ever wish of (yes, it supports almost all sorts of plots that can be drawn with <a href="http://www.r-project.org/"><strong>R</strong></a> now). But for a novice, this could be a little tricky at the beginning. Figuring out how to draw exactly what you might need is kind of a headache, since you don’t have much experience in manipulating the resources packeged with this library. The documentation indeed provides a nice overview of what this library is capable of, but still one might want to create simple, yet the weirdest plot that no documentation or <a href="http://stackoverflow.com/"><em>Stack Overflow</em></a> answer could ever help (I guess I’m one of them and there are many others I know as well). So, let’s try out some fundamental techniques first and then heed the deeper ones. These are some of the graphs I wanted to plot in many differenct circumstances. I assume these would provide you at least some assistance in creating your own plots. I’ll be using <a href="http://www.numpy.org/"><strong>numpy</strong></a> library as well to create required data in these demonstrations. Note that <strong>matplotlib</strong> and <strong>numpy</strong> are imported in advance.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span></code></pre></div>
+
+<h1 id="lines-connecting-scatter-points-with-different-marker-for-each-line">Lines connecting scatter points with different marker for each line</h1>
+
+<p>The term <code>marker</code> refers to a symbol that represents a point in a graph. There are numerous markers in <strong>matplotlib</strong>, so we will choose a few of them to demonstrate this. Typical syntax for scatter plot is <code>plt.scatter(x, y, marker=m)</code> where <code>x</code> is the set of the x-co-ordinates, <code>y</code> is the set of y-co-ordinates (these are compulsory arguments for <code>scatter</code> function) and <code>m</code> is the marker we are going to use. Here are some example markers:</p>
+
+<ul>
+  <li>‘o’</li>
+  <li>’+’</li>
+  <li>‘v’</li>
+  <li>‘*’</li>
+</ul>
+
+<p>Let’s plot now.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># There are 3 lines</span>
+<span class="n">num_of_lines</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c"># Defines a coluor for each line</span>
+<span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;crimson&#39;</span><span class="p">,</span> <span class="s">&#39;chartreuse&#39;</span><span class="p">]</span> 
+
+<span class="c"># Defines a marker for each line</span>
+<span class="n">markers</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="s">&#39;*&#39;</span><span class="p">]</span>
+
+<span class="c"># Creates x array with numbers ranged from 0 to 10(exclusive)</span>
+<span class="c"># Creates an empty list for y co-ordinates in each line</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c"># For each line</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_of_lines</span><span class="p">):</span>
+    <span class="c"># Adds to y according to y=ix+1 function</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c"># This is where plotting happens!!!</span>
+<span class="c"># For each line</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_of_lines</span><span class="p">):</span>
+    <span class="c"># Scatter plot with point_size^2 = 75, and with respective colors</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="n">markers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="c"># Connects points with lines, and with respective colours</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c"># Show grid in the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="c"># Finally, display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></code></pre></div>
+
+<p><img src="https://docs.google.com/drawings/d/1f4e4RIevPIcHI-ZVTzPRC3fh6gsG6qz1hGMeJ9Y_ajk/pub?w=960&amp;h=720" alt="plot_1" /></p>
+
+<p>Fabulas, isn’t it? Now we shall add a simple <strong>legend</strong> to this plot. This is what we are going to do. The upper left corner seems like an open space. So, let’s add the legend there. A <code>Rectangle</code> is used to represent an entry in the legend.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Creates 3 Rectangles</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c"># Adds the legend into plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;line1&#39;</span><span class="p">,</span> <span class="s">&#39;line2&#39;</span><span class="p">,</span> <span class="s">&#39;line3&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;best&#39;</span><span class="p">)</span></code></pre></div>
+
+<p>In the <code>legend</code> function, in addition to rectangles and the names of the entries, it is possible to specify the location of the legend as well. <strong>‘best’</strong> gives best position for the legend in strict sense of word (which is the upper left corner). The other locations are as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Position</th>
+      <th style="text-align: center">#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">‘best’</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">‘upper right’</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">‘upper left’</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">‘lower left’</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">‘lower right’</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">‘right’</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">‘center left’</td>
+      <td style="text-align: center">6</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">‘center right’</td>
+      <td style="text-align: center">7</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">‘lower center’</td>
+      <td style="text-align: center">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">‘upper center’</td>
+      <td style="text-align: center">9</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">‘center’</td>
+      <td style="text-align: center">10</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Note that you can even use the corresponding number to specify the location.</em></p>
+
+<p>Now, simply add the legend code segment just before the <code>plt.show()</code> in the first code. You will see that there is a nice legend at the upper left corner.</p>
+
+<p><img src="https://docs.google.com/drawings/d/1TKLhYlSUnMBKrMvQOIbkwR968EbDWX6MpNI_PFJUSuQ/pub?w=960&amp;h=720" alt="plot_2" /></p>
+
+<p>Only a little work is left to do… What? Naming the axes and entitling the plot. It takes only \(3\) lines of code. Add these line just before the <code>plt.show()</code> function.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Sets x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;This is my x-axis&#39;</span><span class="p">)</span>
+
+<span class="c"># Sets y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;This is your y-axis&#39;</span><span class="p">)</span>
+
+<span class="c"># Sets title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;This is our title&quot;</span><span class="p">)</span></code></pre></div>
+
+<p><img src="https://docs.google.com/drawings/d/1uQmm-dhvkYS65xjugbT35EHcas5ywsawx0_2eFTC19c/pub?w=960&amp;h=720" alt="plot_3" /></p>
+
+<p>Now you know how to create the basic components of a plot. This will be the end of the first part of this guide. More interesting stuff will follow in the next parts.</p>
+
+
+      </div>
+      <footer>
+        <p><a href="/miscellaneous/2015/06/04/a-quick-guide-plotting-with-python-and-matplotlib.html">read more &raquo;</a></p>
+      </footer>
+    </article>
+    
+    <article>
+      <header>
         <h2><a href="/gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html">Performance comparison among LSH Forest, ANNOY and FLANN</a></h2>
         <p><time datetime="2014-08-17T00:00:00+05:30">Aug 17, 2014</time> • gsoc</p>
       </header>
