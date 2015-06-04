@@ -43,7 +43,56 @@
         <p><time datetime="2015-06-04T00:00:00+05:30">Jun 4, 2015</time> • miscellaneous</p>
       </header>
       <div>
-<p>In the previous part of this guide, we have discussed on how to create basic components of a plot. It’s time to move into some advanced material.</p>
+<p>In the <a href="/miscellaneous/2015/06/04/a-quick-guide-plotting-with-python-and-matplotlib.html">previous part</a> of this guide, we have discussed on how to create basic components of a plot. It’s time to move into some advanced material. This is a continuation of the <a href="/miscellaneous/2015/06/04/a-quick-guide-plotting-with-python-and-matplotlib.html">part 1</a> of this guide, assuming that you have read and grasped it already.</p>
+
+<h1 id="a-bar-chart-grouped-accoring-to-some-variable">A bar chart grouped accoring to some variable</h1>
+
+<p>In this plot, a bar chart will be created grouped based on a variable with each group having its’ own similar components. You may know what it actually looks like after plotting then it will be easy to analyze the code and learn.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c"># Defines the sizes of the axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">140</span><span class="p">])</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s">&quot;crimson&quot;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s">&quot;burlywood&quot;</span><span class="p">)</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s">&quot;chartreuse&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;category 1&#39;</span><span class="p">,</span><span class="s">&#39;category 2&#39;</span><span class="p">,</span><span class="s">&#39;category 3&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="c"># Defines labels for each group</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;        &#39;</span><span class="p">,</span> <span class="s">&#39;      1&#39;</span><span class="p">,</span> <span class="s">&#39;        &#39;</span><span class="p">,</span> <span class="s">&#39;        &#39;</span><span class="p">,</span> <span class="s">&#39;      2&#39;</span><span class="p">,</span> <span class="s">&#39;        &#39;</span><span class="p">,</span> <span class="s">&#39;        &#39;</span><span class="p">,</span> <span class="s">&#39;      4&#39;</span><span class="p">,</span> <span class="s">&#39;        &#39;</span><span class="p">]</span>
+
+<span class="c"># Creates discrete values for x co-ordinates (widths of the bars)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c"># Defines some random set of values for y (heights of the bars)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">55.433</span><span class="p">,</span> <span class="mf">55.855</span><span class="p">,</span> <span class="mf">55.719</span><span class="p">,</span> <span class="mf">55.433</span><span class="p">,</span> <span class="mf">90.199</span><span class="p">,</span> <span class="mf">93.563</span><span class="p">,</span> <span class="mf">55.433</span><span class="p">,</span> <span class="mf">104.807</span><span class="p">,</span> <span class="mf">106.693</span><span class="p">])</span>
+ 
+<span class="c"># Replaces the names in the x-axis with labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+<span class="c"># Creates the bar chart</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">left</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;crimson&#39;</span><span class="p">,</span> <span class="s">&#39;burlywood&#39;</span><span class="p">,</span> <span class="s">&#39;chartreuse&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;This is your y-axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;This is my x-axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;This is our title&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></code></pre></div>
+
+<p><img src="https://docs.google.com/drawings/d/17Fx3dWiy6119BrOkSOyTLZWY01ekxIQihSIIKlk8lDA/pub?w=960&amp;h=720" alt="plot_4" /></p>
+
+<p>No we’ll try to analyze each new individual component of this code piece. Starting from the beginning:</p>
+
+<ul>
+  <li><code>plt.axis([0,14, 0,140])</code> sets the limits of x-axis from \(0\) to \(14\) and limits of y-axis from \(0\) to \(140\)</li>
+  <li><code>labels = ['        ', '      1', '        ', '        ', '      2', '        ', '        ', '      4', '        ']</code> is used to create a representation for a group name. Here, there are \(9\) elements in the list, since there are \(9\) bars. Those bars need to be grouped into \(3\) groups, hence for each group a label is given. Each label should be displayed right below the bar at the middle of each group.</li>
+  <li><code>plt.xticks(x, labels)</code> replaces the display names of the values on x-axis with the labels, but the actual co-ordinates of the bars remain same at those previously defined x-axis values.</li>
+  <li><code>plt.bar(left = x, height=y, color=['crimson', 'burlywood', 'chartreuse'])</code> is where the actual bars are plotted. For parameter <code>left</code>, x values are given so that the left end of the bars will be equal to the first element in <code>x</code>. For <code>height</code> parameter, y values are given. <code>color</code> parameter uses the given set of colors and applies those set of colors on the bars in a circular order. Here, only \(3\) colors are given, so those colors rotate around the \(9\) bars exactly \(3\) times.</li>
+</ul>
 
 
       </div>
@@ -60,7 +109,7 @@
       <div>
 <p>Representation of information and data visualization can be often considered as one of the most indispensable feats that requires subtlest attention in the present community of science and technology. So that’s that. Now let’s hop into plotting!</p>
 
-<p>Python has this amazing library called <a href="http://matplotlib.org/"><strong>matplotlib</strong></a> where you can create plots of almost everything you  can ever wish of (yes, it supports almost all sorts of plots that can be drawn with <a href="http://www.r-project.org/"><strong>R</strong></a> now). But for a novice, this could be a little tricky at the beginning. Figuring out how to draw exactly what you might need is kind of a headache, since you don’t have much experience in manipulating the resources packeged with this library. The documentation indeed provides a nice overview of what this library is capable of, but still one might want to create simple, yet the weirdest plot that no documentation or <a href="http://stackoverflow.com/"><em>Stack Overflow</em></a> answer could ever help (I guess I’m one of them and there are many others I know as well). So, let’s try out some fundamental techniques first and then heed the deeper ones. These are some of the graphs I wanted to plot in many differenct circumstances. I assume these would provide you at least some assistance in creating your own plots. I’ll be using <a href="http://www.numpy.org/"><strong>numpy</strong></a> library as well to create required data in these demonstrations. Note that <strong>matplotlib</strong> and <strong>numpy</strong> are imported in advance.</p>
+<p>Python has this amazing library called <a href="http://matplotlib.org/"><strong>matplotlib</strong></a> where you can create plots of almost everything you  can ever wish of (yes, it supports almost all sorts of plots that can be drawn with <a href="http://www.r-project.org/"><strong>R</strong></a> now). But for a novice, this could be a little tricky at the beginning. Figuring out how to draw exactly what you might need is kind of a headache, since you don’t have much experience in manipulating the resources packeged with this library. The documentation indeed provides a nice overview of what this library is capable of, but still one might want to create simple, yet the weirdest plot that no documentation or <a href="http://stackoverflow.com/"><em>Stack Overflow</em></a> answer could ever help (I guess I’m one of them and there are many others I know as well). So, let’s try out some fundamental techniques first and then heed the deeper ones. These are some of the graphs I wanted to plot in many differenct circumstances. I assume these would provide you at least some assistance in creating your own plots. I’ll be using <a href="http://www.numpy.org/"><strong>numpy</strong></a> library as well to create required data in these demonstrations. <em>Note that <strong>matplotlib</strong> and <strong>numpy</strong> are imported in advance.</em></p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span></code></pre></div>
