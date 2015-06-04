@@ -75,7 +75,7 @@ body > footer {
 body {
   background: white; }
   body > * {
-    padding: 1em calc(33% - 6.6em); }
+    padding: 1em calc(20% - 4em); }
   body > header, body > footer {
     background: #181818;
     color: white; }
@@ -91,6 +91,16 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 2px; }
   header h1, header h2, header h3, header h4, header h5, header h6 {
     text-transform: uppercase; }
+
+body > div:first-of-type {
+  background: #f3f3f4;
+  color: black; }
+  body > div:first-of-type h1 {
+    padding-top: 1em;
+    padding-bottom: 1em; }
+
+nav ul {
+  margin: 0; }
 
 article:nth-of-type(even) {
   background: #222222;
