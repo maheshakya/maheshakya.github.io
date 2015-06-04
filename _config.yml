@@ -3,7 +3,7 @@ author: "pruthuvi maheshakya wijewardena"
 description: "maheshakyas' personal website"
 subheading: "maheshakyas' personal website"
 more: "read more"
-url: "https://www.facebook.com/pmaheshakya"
+url: "/"
 #baseurl: "/maheshakya.wijewardena" # comment out if in root directory
 
 comments:
@@ -12,11 +12,11 @@ comments:
 
 style:
 #    body: "whitesmoke"
-    padding: 33%
+    padding: 20%
     anchor: "#46f"
     serif-heading: true
     nav: "#181818"
-#    headline: "#06f"
+    headline: "#f3f3f4"
     description: "white"
     article:
         odd: "#ffffff"
@@ -27,6 +27,9 @@ links:
   - twitter: "https://twitter.com/Wmaheshakya"
   - google-plus: "https://plus.google.com/u/0/+MaheshakyaWijewardena/"
   - youtube: "https://www.youtube.com/channel/UCGCNlASS-LWH8PYd1Me5-Zg/feed"
+  - linkedin: "https://www.linkedin.com/in/maheshakya"
+  - facebook: "https://www.facebook.com/pmaheshakya"
+  - rss: "/feed.xml"
 
 excerpt_separator: "\n\n\n"
 defaults: [{scope: {path: ""}, values: {layout: "default"}}, {scope: {path: "", type: "posts"}, values: {comments: true}}]

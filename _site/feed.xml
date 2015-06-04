@@ -3,10 +3,10 @@
   <channel>
     <title>Espy Yonder</title>
     <description>maheshakyas&#39; personal website</description>
-    <link>https://www.facebook.com/pmaheshakya/maheshakya.wijewardena</link>
-    <atom:link href="https://www.facebook.com/pmaheshakya/maheshakya.wijewardenafeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 04 Jun 2015 00:07:39 +0530</pubDate>
-    <lastBuildDate>Thu, 04 Jun 2015 00:07:39 +0530</lastBuildDate>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 04 Jun 2015 10:10:26 +0530</pubDate>
+    <lastBuildDate>Thu, 04 Jun 2015 10:10:26 +0530</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -41,8 +41,8 @@ parameters.&lt;/p&gt;
 It is evident that index building times of LSH Forest and FLANN are almost incomparable to that of Annoy for almost all the datasets. Moreover, for larger datasets, LSH Forest outperforms Annoy at large margins with respect to accuracy and query speed. Observations from these graphs prove that LSH Forest is competitive with FLANN for large datasets.&lt;/p&gt;
 </description>
         <pubDate>Sun, 17 Aug 2014 00:00:00 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html</guid>
+        <link>//gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html</link>
+        <guid isPermaLink="true">//gsoc/2014/08/17/performance-comparison-among-lsh-forest-annoy-and-flann.html</guid>
         
         
         <category>gsoc</category>
@@ -165,8 +165,8 @@ It is evident that index building times of LSH Forest and FLANN are almost incom
 &lt;img src=&quot;https://docs.google.com/drawings/d/1KZwjo9Cx33kK-kTNayAT-eb79TPCbvX-kidyoPO7VJA/pub?w=960&amp;amp;h=720&quot; alt=&quot;query_time_vs_n_samples&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 17 Aug 2014 00:00:00 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/gsoc/2014/08/17/a-demonstration-of-the-usage-of-locality-sensitive-hashing-forest-in-approximate-nearest-neighbor-search.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/08/17/a-demonstration-of-the-usage-of-locality-sensitive-hashing-forest-in-approximate-nearest-neighbor-search.html</guid>
+        <link>//gsoc/2014/08/17/a-demonstration-of-the-usage-of-locality-sensitive-hashing-forest-in-approximate-nearest-neighbor-search.html</link>
+        <guid isPermaLink="true">//gsoc/2014/08/17/a-demonstration-of-the-usage-of-locality-sensitive-hashing-forest-in-approximate-nearest-neighbor-search.html</guid>
         
         
         <category>gsoc</category>
@@ -192,8 +192,8 @@ It is evident that index building times of LSH Forest and FLANN are almost incom
 &lt;p&gt;After completing the implementation and benchmarking, it will be documented with the scikit-learn documentation standards.&lt;/p&gt;
 </description>
         <pubDate>Tue, 05 Aug 2014 00:00:00 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/gsoc/2014/08/05/improvements-for-lsh-forest-implementation-and-its-applications.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/08/05/improvements-for-lsh-forest-implementation-and-its-applications.html</guid>
+        <link>//gsoc/2014/08/05/improvements-for-lsh-forest-implementation-and-its-applications.html</link>
+        <guid isPermaLink="true">//gsoc/2014/08/05/improvements-for-lsh-forest-implementation-and-its-applications.html</guid>
         
         
         <category>gsoc</category>
@@ -351,8 +351,8 @@ Suppose &lt;code&gt;distances&lt;/code&gt; is the returned distances from the &l
 &lt;p&gt;As provided in the guidelines in scikit-learn &lt;a href=&quot;http://scikit-learn.org/stable/developers/&quot;&gt;contributors’ page&lt;/a&gt;, &lt;a href=&quot;http://nose.readthedocs.org/en/latest/index.html&quot;&gt;Nose&lt;/a&gt; testing framework has been used to automate the testing process.&lt;/p&gt;
 </description>
         <pubDate>Thu, 24 Jul 2014 00:00:00 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/gsoc/2014/07/24/testing-lsh-forest.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/07/24/testing-lsh-forest.html</guid>
+        <link>//gsoc/2014/07/24/testing-lsh-forest.html</link>
+        <guid isPermaLink="true">//gsoc/2014/07/24/testing-lsh-forest.html</guid>
         
         
         <category>gsoc</category>
@@ -501,8 +501,8 @@ So this can be done by setting &lt;code&gt;x &amp;gt; lower_bound&lt;/code&gt; i
 &lt;p&gt;Performance of all these techniques were measured using Pythons’ &lt;code&gt;line_profiler&lt;/code&gt; and &lt;code&gt;memory_profiler&lt;/code&gt;. In my next post, I will explain concisely how these tools have been used to evaluate these implementations.&lt;/p&gt;
 </description>
         <pubDate>Mon, 07 Jul 2014 00:00:00 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/gsoc/2014/07/07/optimizations-on-locality-sensitive-hashing-forest-data-structure.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/07/07/optimizations-on-locality-sensitive-hashing-forest-data-structure.html</guid>
+        <link>//gsoc/2014/07/07/optimizations-on-locality-sensitive-hashing-forest-data-structure.html</link>
+        <guid isPermaLink="true">//gsoc/2014/07/07/optimizations-on-locality-sensitive-hashing-forest-data-structure.html</guid>
         
         
         <category>gsoc</category>
@@ -545,8 +545,8 @@ So this can be done by setting &lt;code&gt;x &amp;gt; lower_bound&lt;/code&gt; i
 &lt;p&gt;In my next post, I will enlighten you about the subtle optimizations done on the LSH forest data structure to find the best candidates at a maximum speed.&lt;/p&gt;
 </description>
         <pubDate>Sat, 28 Jun 2014 00:00:00 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/gsoc/2014/06/28/what-does-locality-sensitive-hashing-forests-do.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/06/28/what-does-locality-sensitive-hashing-forests-do.html</guid>
+        <link>//gsoc/2014/06/28/what-does-locality-sensitive-hashing-forests-do.html</link>
+        <guid isPermaLink="true">//gsoc/2014/06/28/what-does-locality-sensitive-hashing-forests-do.html</guid>
         
         
         <category>gsoc</category>
@@ -623,8 +623,8 @@ Comparing ANNOY, FLANN and LSHF in one place:
 &lt;/ol&gt;
 </description>
         <pubDate>Sat, 14 Jun 2014 00:00:00 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/gsoc/2014/06/14/performance-evaluation-of-approximate-nearest-neighbor-search-implementations-part-2.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/06/14/performance-evaluation-of-approximate-nearest-neighbor-search-implementations-part-2.html</guid>
+        <link>//gsoc/2014/06/14/performance-evaluation-of-approximate-nearest-neighbor-search-implementations-part-2.html</link>
+        <guid isPermaLink="true">//gsoc/2014/06/14/performance-evaluation-of-approximate-nearest-neighbor-search-implementations-part-2.html</guid>
         
         
         <category>gsoc</category>
@@ -778,8 +778,8 @@ Comparing ANNOY, FLANN and LSHF in one place:
 &lt;/ol&gt;
 </description>
         <pubDate>Sun, 01 Jun 2014 00:00:00 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/gsoc/2014/06/01/lsh-forest-with-sorted-arrays-and-binary-search.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/06/01/lsh-forest-with-sorted-arrays-and-binary-search.html</guid>
+        <link>//gsoc/2014/06/01/lsh-forest-with-sorted-arrays-and-binary-search.html</link>
+        <guid isPermaLink="true">//gsoc/2014/06/01/lsh-forest-with-sorted-arrays-and-binary-search.html</guid>
         
         
         <category>gsoc</category>
@@ -844,8 +844,8 @@ I will discuss how the evaluation framework is designed to evaluate the performa
 &lt;p&gt;Cheers!&lt;/p&gt;
 </description>
         <pubDate>Sun, 25 May 2014 00:00:00 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html</guid>
+        <link>//gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html</link>
+        <guid isPermaLink="true">//gsoc/2014/05/25/performance-evaluation-of-approximate-nearest-neighbor-search-implementations---part-1.html</guid>
         
         
         <category>gsoc</category>
@@ -996,8 +996,8 @@ Because number of ratings for a movie by users is significantly low when conside
 
 </description>
         <pubDate>Sun, 18 May 2014 00:00:00 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/gsoc/2014/05/18/preparing-a-bench-marking-data-set-using-singula-value-decomposition-on-movielens-data.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/05/18/preparing-a-bench-marking-data-set-using-singula-value-decomposition-on-movielens-data.html</guid>
+        <link>//gsoc/2014/05/18/preparing-a-bench-marking-data-set-using-singula-value-decomposition-on-movielens-data.html</link>
+        <guid isPermaLink="true">//gsoc/2014/05/18/preparing-a-bench-marking-data-set-using-singula-value-decomposition-on-movielens-data.html</guid>
         
         
         <category>gsoc</category>
@@ -1042,8 +1042,8 @@ Because number of ratings for a movie by users is significantly low when conside
 &lt;/ol&gt;
 </description>
         <pubDate>Sun, 04 May 2014 15:44:56 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html</guid>
+        <link>//gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html</link>
+        <guid isPermaLink="true">//gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html</guid>
         
         
         <category>gsoc</category>
@@ -1066,8 +1066,8 @@ Because number of ratings for a movie by users is significantly low when conside
 
 </description>
         <pubDate>Sun, 06 Apr 2014 21:10:56 +0530</pubDate>
-        <link>https://www.facebook.com/pmaheshakya/miscellaneous/2014/04/06/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">https://www.facebook.com/pmaheshakya/maheshakya.wijewardena/miscellaneous/2014/04/06/welcome-to-jekyll.html</guid>
+        <link>//miscellaneous/2014/04/06/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">//miscellaneous/2014/04/06/welcome-to-jekyll.html</guid>
         
         
         <category>miscellaneous</category>
