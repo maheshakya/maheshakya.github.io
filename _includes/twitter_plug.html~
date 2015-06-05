@@ -1,6 +1,6 @@
 
 If you have any questions or comments, please post them below. If
 you liked this post, you can
-<a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text={{ page.title }}&via=Wmaheshakya" 
+<a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}&via=Wmaheshakya" 
    target="_blank">
   share it with your followers.</a> 
