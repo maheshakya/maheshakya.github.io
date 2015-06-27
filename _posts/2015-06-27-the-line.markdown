@@ -1,0 +1,6 @@
+---
+layout: post
+title: "The Line"
+category: life
+---
+![title_image](https://docs.google.com/drawings/d/1UGw-KSDXmA1x6K3l2LnexsLAQ20s-biaQ8P0wH22n5I/pub?w=1434&h=791){: .center-image }

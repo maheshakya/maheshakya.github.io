@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "GSoC2014: Approximate nearest neighbor search using LSH"
-date:   2014-05-04 10:14:56
 category: GSoC
 ---
 

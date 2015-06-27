@@ -236,6 +236,10 @@ article:nth-of-type(odd) {
 .fa {
   margin: 0 0.25em; }
 
+.center-image {
+  margin: 0 auto;
+  display: block; }
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }

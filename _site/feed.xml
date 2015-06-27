@@ -5,9 +5,22 @@
     <description>maheshakyas&#39; personal website</description>
     <link>http://maheshakya.github.io</link>
     <atom:link href="http://maheshakya.github.iofeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 05 Jun 2015 23:49:43 +0530</pubDate>
-    <lastBuildDate>Fri, 05 Jun 2015 23:49:43 +0530</lastBuildDate>
+    <pubDate>Sat, 27 Jun 2015 23:47:49 +0530</pubDate>
+    <lastBuildDate>Sat, 27 Jun 2015 23:47:49 +0530</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>The Line</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://docs.google.com/drawings/d/1UGw-KSDXmA1x6K3l2LnexsLAQ20s-biaQ8P0wH22n5I/pub?w=1434&amp;amp;h=791&quot; alt=&quot;title_image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 27 Jun 2015 00:00:00 +0530</pubDate>
+        <link>http://maheshakya.github.io/life/2015/06/27/the-line.html</link>
+        <guid isPermaLink="true">http://maheshakya.github.io/life/2015/06/27/the-line.html</guid>
+        
+        
+        <category>life</category>
+        
+      </item>
     
       <item>
         <title>A quick guide to plotting with python and matplotlib - part 2</title>
@@ -1256,7 +1269,7 @@ Because number of ratings for a movie by users is significantly low when conside
   &lt;li&gt;R. Rehurek, “Performance Shootout of Nearest Neighbours: Contestants”, Available[online]:&lt;a href=&quot;http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/&quot;&gt;http://radimrehurek.com/2013/12/performance-shootout-of-nearest-neighbours-contestants/&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
-        <pubDate>Sun, 04 May 2014 15:44:56 +0530</pubDate>
+        <pubDate>Sun, 04 May 2014 00:00:00 +0530</pubDate>
         <link>http://maheshakya.github.io/gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html</link>
         <guid isPermaLink="true">http://maheshakya.github.io/gsoc/2014/05/04/approximate-nearest-neighbor-search-using-lsh.html</guid>
         
