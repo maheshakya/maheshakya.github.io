@@ -1,3 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    
+    <meta name="description" content="maheshakyas' personal website">
+    <title>Espy Yonder</title>
+    <link rel="canonical" href="http://maheshakya.github.io/feed.xml">
+    <link href="/main.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link rel="alternate" type="application/rss+xml" title="Espy Yonder &raquo; Feed" href="/feed.xml">
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50627295-1', 'maheshakya.github.io');
+  ga('send', 'pageview');
+
+</script>
+  </head>
+  <body>
+    <header>
+      
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li><li><a href="/archive.html">Archive</a></li><li><a href="/categories.html">Categories</a></li><li><a href="/pages/about/index.html">About me</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div><h1><a href="/">Espy Yonder</a></h1></div>
+    <div>maheshakyas' personal website</div>
+    <article>
+      <header>
+        <h2><a href="/feed.xml"></a></h2>
+        <p></p>
+      </header>
+      <div>
+<div class="page">
+<!-- <h1 class="page-title"></h1> -->
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -5,22 +51,9 @@
     <description>maheshakyas&#39; personal website</description>
     <link>http://maheshakya.github.io</link>
     <atom:link href="http://maheshakya.github.iofeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 27 Jun 2015 23:47:49 +0530</pubDate>
-    <lastBuildDate>Sat, 27 Jun 2015 23:47:49 +0530</lastBuildDate>
+    <pubDate>Sun, 02 Aug 2015 18:43:54 +0530</pubDate>
+    <lastBuildDate>Sun, 02 Aug 2015 18:43:54 +0530</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
-    
-      <item>
-        <title>The Line</title>
-        <description>&lt;p&gt;&lt;img src=&quot;https://docs.google.com/drawings/d/1UGw-KSDXmA1x6K3l2LnexsLAQ20s-biaQ8P0wH22n5I/pub?w=1434&amp;amp;h=791&quot; alt=&quot;title_image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 27 Jun 2015 00:00:00 +0530</pubDate>
-        <link>http://maheshakya.github.io/life/2015/06/27/the-line.html</link>
-        <guid isPermaLink="true">http://maheshakya.github.io/life/2015/06/27/the-line.html</guid>
-        
-        
-        <category>life</category>
-        
-      </item>
     
       <item>
         <title>A quick guide to plotting with python and matplotlib - part 2</title>
@@ -1287,8 +1320,8 @@ Because number of ratings for a movie by users is significantly low when conside
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Hi, &amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;Gonaa&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Gonaa&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
 
@@ -1304,3 +1337,16 @@ Because number of ratings for a movie by users is significantly low when conside
     
   </channel>
 </rss>
+</div>
+      </div>
+      
+      
+    </article>
+
+    <footer>
+      <span><a href="http://maheshakya.github.io">pruthuvi maheshakya wijewardena</a></span>
+      <span><a href="https://github.com/maheshakya"><i class="fa fa-github-square"></i></a><a href="https://twitter.com/Wmaheshakya"><i class="fa fa-twitter-square"></i></a><a href="https://plus.google.com/u/0/+MaheshakyaWijewardena/"><i class="fa fa-google-plus-square"></i></a><a href="https://www.linkedin.com/in/maheshakya"><i class="fa fa-linkedin-square"></i></a><a href="https://www.facebook.com/pmaheshakya"><i class="fa fa-facebook-square"></i></a><a href="/feed.xml"><i class="fa fa-rss-square"></i></a></span>
+      <span>&copy; 2015</span>
+    </footer>
+  </body>
+</html>

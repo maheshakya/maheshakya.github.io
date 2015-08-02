@@ -75,7 +75,7 @@ body > footer {
 body {
   background: white; }
   body > * {
-    padding: 1em calc(20% - 4em); }
+    padding: 1em calc(30% - 6em); }
   body > header, body > footer {
     background: #181818;
     color: white; }

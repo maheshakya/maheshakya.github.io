@@ -13,8 +13,8 @@ Jekyll also offers powerful support for code snippets:
 def print_hi(name)
     print "Hi, " name
 
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+print_hi('Gonaa')
+#=> prints 'Hi, Gonaa' to STDOUT.
 {% endhighlight %}
 
 Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
