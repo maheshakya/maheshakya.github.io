@@ -59,6 +59,7 @@ To perform SVD on MovieLens data set and recompose the matrix with a lower rank,
 {% highlight python %}
 import pandas as pd
 import numpy as np
+import scipy.sparse as sp
 from scipy.sparse.linalg import svds
 import pickle
 {% endhighlight %}
