@@ -27,7 +27,7 @@ $$X = USV^T$$
 Suppose \\(X\\) has \\(n\\) rows and \\(d\\) columns. \\(U\\) is a matrix whose dimensions are \\(n \times n\\), \\(V\\) is another matrix whose dimensions are \\(d \times d\\), and \\(S\\) is a matrix whose dimensions are \\(n \times d\\), the same dimensions as \\(X\\). 
 In addition, \\(U^T U = I _ n\\) and \\(V^T V = I _ d\\)
 
-You can read and understand more about this decomposition method and how it work from this [article](http://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Dimensionality_Reduction/Singular_Value_Decomposition).
+You can read and understand more about this decomposition method and how it works from this [article](http://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Dimensionality_Reduction/Singular_Value_Decomposition).
 
 ### What is the significance of the SVD(Singular Value Decomposition) in machine learning and what does it have to do with MovieLens data?
 

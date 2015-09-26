@@ -51,8 +51,8 @@
     <description>maheshakyas&#39; personal website</description>
     <link>http://maheshakya.github.io</link>
     <atom:link href="http://maheshakya.github.iofeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 02 Aug 2015 18:43:54 +0530</pubDate>
-    <lastBuildDate>Sun, 02 Aug 2015 18:43:54 +0530</lastBuildDate>
+    <pubDate>Tue, 25 Aug 2015 09:22:24 +0530</pubDate>
+    <lastBuildDate>Tue, 25 Aug 2015 09:22:24 +0530</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -1140,7 +1140,7 @@ I will discuss how the evaluation framework is designed to evaluate the performa
 &lt;p&gt;Suppose \(X\) has \(n\) rows and \(d\) columns. \(U\) is a matrix whose dimensions are \(n \times n\), \(V\) is another matrix whose dimensions are \(d \times d\), and \(S\) is a matrix whose dimensions are \(n \times d\), the same dimensions as \(X\). 
 In addition, \(U^T U = I _ n\) and \(V^T V = I _ d\)&lt;/p&gt;
 
-&lt;p&gt;You can read and understand more about this decomposition method and how it work from this &lt;a href=&quot;http://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Dimensionality_Reduction/Singular_Value_Decomposition&quot;&gt;article&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can read and understand more about this decomposition method and how it works from this &lt;a href=&quot;http://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Dimensionality_Reduction/Singular_Value_Decomposition&quot;&gt;article&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;what-is-the-significance-of-the-svdsingular-value-decomposition-in-machine-learning-and-what-does-it-have-to-do-with-movielens-data&quot;&gt;What is the significance of the SVD(Singular Value Decomposition) in machine learning and what does it have to do with MovieLens data?&lt;/h3&gt;
 
