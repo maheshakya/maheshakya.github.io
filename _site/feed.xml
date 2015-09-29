@@ -51,9 +51,32 @@
     <description>maheshakyas&#39; personal website</description>
     <link>http://maheshakya.github.io</link>
     <atom:link href="http://maheshakya.github.iofeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 25 Aug 2015 09:22:24 +0530</pubDate>
-    <lastBuildDate>Tue, 25 Aug 2015 09:22:24 +0530</lastBuildDate>
+    <pubDate>Sun, 27 Sep 2015 01:20:02 +0530</pubDate>
+    <lastBuildDate>Sun, 27 Sep 2015 01:20:02 +0530</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>To bridge the gaps.</title>
+        <description>&lt;p&gt;A background - Importance of tools for machine learning and scientific computing as a whole&lt;/p&gt;
+
+&lt;p&gt;How effectively can we bring purely mathematical and mere conceptual models/mechanisms into the utilization of common man? Is it possible to&lt;/p&gt;
+
+&lt;p&gt;UI for HCI&lt;/p&gt;
+
+&lt;p&gt;distributed deployment - scalability&lt;/p&gt;
+
+&lt;p&gt;Open-source&lt;/p&gt;
+
+&lt;p&gt;What’s next?&lt;/p&gt;
+</description>
+        <pubDate>Sun, 27 Sep 2015 00:00:00 +0530</pubDate>
+        <link>http://maheshakya.github.io/technology/2015/09/27/to-bridge-the-gaps.html</link>
+        <guid isPermaLink="true">http://maheshakya.github.io/technology/2015/09/27/to-bridge-the-gaps.html</guid>
+        
+        
+        <category>technology</category>
+        
+      </item>
     
       <item>
         <title>A quick guide to plotting with python and matplotlib - part 2</title>
@@ -1174,6 +1197,7 @@ Because number of ratings for a movie by users is significantly low when conside
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pd&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.sparse&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sp&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.sparse.linalg&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;svds&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pickle&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
