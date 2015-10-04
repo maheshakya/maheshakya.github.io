@@ -10,15 +10,15 @@ The advent of tools for emulating learning theory has trasnpired amidst these co
 
 Frameworks which perform computational learning tasks had started to emerge approximately at the same time as the inception of Machine Learning as a another branch of Artificial Intelligence. At early stages,
 these frameworks basically emulated the exact algorithms with small samples of data and almost all of them were CLI (Command Line Interface) based frameworks. Majority of those were used only in laborotaries in
-very specific application and restricted to researchers. But our society has evolved much and progressed through a myriad of milestones along the path of artificial intelligence and nowadays almost all the organizations require some amount of
+very specific applications and restricted to researchers. But our society has evolved much and progressed through a myriad of milestones along the path of artificial intelligence and nowadays almost all the organizations require some amount of
 data analytics and machine learning to keep abreast with the ever-growing technology. This trend has as become exigent due to the massive amounts of data being collected and stored each and every day. With this inclination,
-the demand for the tools that conduct the entire range of workflows of data analytics has been elevated colossaly.
+the demand for the tools that conduct the entire range of workflow of data analytics has been elevated colossaly.
 
 As an open-source middleware based organization, WSO2 has been able to establish its' name among a vast amount of communities which seek different types of solutions in their variety of application domains. A few years ago,
 WSO2 entered into the arena of data analytics by providing a rich platform for batch analytics and real time data analytics ([WSO2 Data Analytics Server]() and [WSO2 Complex Event Processor](http://wso2.com/products/complex-event-processor/)). In order to fortify the
 hegemony that WSO2 has been able to build around data analytics, [**WSO2 Machine Learner**](http://wso2.com/products/machine-learner/) has been introduced with the intention of providing a rich, user friendly, flexible and scalable predictive analytics
 platform which is compatible with the standard machine learning methodologies and with the other products of WSO2 as well. At the humble nascent of the first release of WSO2 Machine Learner (version 1.0.0), this discussion will
-provide an elaborative overview on its' ambition of bridging the gaps that hinders prevailing predictive analytics tasks due to various reasons such as complexity, lack of skill in data analytics, inability to scale, real time prediction requirements, rapid increase of not analytized data storages, proprietary rights of software, etc.
+provide an elaborative overview on its' ambition of bridging the gaps that hinder prevailing predictive analytics tasks due to various reasons such as complexity, lack of skill in data analytics, inability to scale, real time prediction requirements, rapid increase of not analytized data storages, proprietary rights of software, etc.
 
 In the subsequent sections, you will be able to understand how WSO2 Machine Learner (WSO2 ML from this point onwards) can fit in and what sets it apart from other machine learning
 tools and frameworks available with respect to the following concerns.
@@ -45,7 +45,7 @@ WSO2 ML supports datasources such as csv/tsv files from local file system, files
 Analyzing  and visualizing the characteristics and structure of the data is considered one of the most imparative tasks in data science. Most often, choosing the **right** machine learning algorithm depends 
 on the understanding a user has about the data that he/she is dealing with.
 ![Know thy data](https://docs.google.com/drawings/d/1tZ1Sv7k1NK78Obe5GY9ievctmjaBJar5VA106jftCy4/pub?w=499&h=380 "Know Thy Data!"){: .center-image }
-WSO2 ML provides a plenty of tools to visualize data and get to know how the data more.
+WSO2 ML provides a plenty of tools to visualize data and get to know the data more.
 ![data exploration](https://docs.google.com/drawings/d/1soCBzrrpB1A7QXvoh3Mj4VsLvdpF2vRsV2u7fx8XreA/pub?w=960&h=720 "Data exploration!"){: .center-image }
 
 In order to identify relations among the features of datasets, know statistical metrics such as mean, standard deviation and skewness, indentify class imbalancies and frequencies, and to visualize how data is structured,
@@ -61,7 +61,7 @@ See more about [exploring data at WSO2 ML documentation](https://docs.wso2.com/d
 
 ### 3. Data preprocessing and feature engineering
 
-This is considered as the key of building a successful machine learning models within the data analytics community. WSO2 ML version 1.0.0 provides some primitive techniques of data proprocessing such as feature
+This is considered as the key of building a successful machine learning model within the data analytics community. WSO2 ML version 1.0.0 provides some primitive techniques of data proprocessing such as feature
 selection and missing value handling with mean imputation and discarding.
 
 ### 4. Learning algorithms
@@ -69,14 +69,14 @@ selection and missing value handling with mean imputation and discarding.
 This initial release of WSO2 ML supports supervised learning and unsupervised learning. It has a set of algorithms for numerical prediction, classification and clustering.
 
 - Numerical prediction - Linear Regression, Ridge Regression, Lasso Regression
-- Classfication - Logistice Regression, Naive Bayes, Decision Tree, Random Forest and Support Vector Machine
+- Classfication - Logistic Regression, Naive Bayes, Decision Tree, Random Forest and Support Vector Machines
 - Clustering - K-Means
 
 For each of these learning algorithm, user can set the corresponding parameters that specify how algorithm should behave with respect to convergence, regularization, information gain, etc. These are called hyper-parameters. 
 
 ### 5. Prediction
 
-Users can use the trained models to predict the values. Feature values can be provided via the UI or a file that contains feature values can be uploaded and the prediction can be obtained for the entire set of records
+Users can use the trained models to predict the values. Feature values can be provided via the UI or a file that contains feature values can be uploaded and the predictions can be obtained for the entire set of records
 in the file.
 
 ### 6. Model Evaluation and comparison
@@ -113,7 +113,7 @@ Most of the industries are suffering from the scarcity of knowledge workers of d
                                     
 **- Hal Varian, Google chief economist, 2009**
 
-There are solid evidences that analytics skills will be one of the most sought after requirements in the future industrial communities. But gaining such immense knowledge and experience in a short periods of time is not an plausible. 
+There are solid evidences that analytics skills will be one of the most sought after requirements in the future industrial communities. But gaining such immense knowledge and experience in a short period of time is not an plausible. 
 WSO2 ML is here to help you. For novice data analysts, it provides a very verbose and highly interactive guided process. Therefore anyone with basic understanding of software can use WSO2 ML with ease.
 
 ![Guided process](https://docs.google.com/drawings/d/18kSP3WoqtwYH45nR4nT1ERiNTpIs6GwpqUvaH6tEMJQ/pub?w=960&h=720 "Guided Process"){: .center-image }
