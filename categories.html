@@ -27,3 +27,12 @@ title: "Categories"
     {% endif %}
 {% endfor %}
 </ul>
+
+<h1>Technology</h1>
+<ul>
+{% for post in site.posts %}
+    {% if post.categories contains 'technology' %}
+        <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endif %}
+{% endfor %}
+</ul>
