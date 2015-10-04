@@ -51,8 +51,8 @@
     <description>maheshakyas&#39; personal website</description>
     <link>http://maheshakya.github.io</link>
     <atom:link href="http://maheshakya.github.iofeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 05 Oct 2015 00:48:21 +0530</pubDate>
-    <lastBuildDate>Mon, 05 Oct 2015 00:48:21 +0530</lastBuildDate>
+    <pubDate>Mon, 05 Oct 2015 01:10:08 +0530</pubDate>
+    <lastBuildDate>Mon, 05 Oct 2015 01:10:08 +0530</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -63,15 +63,15 @@ The advent of tools for emulating learning theory has trasnpired amidst these co
 
 &lt;p&gt;Frameworks which perform computational learning tasks had started to emerge approximately at the same time as the inception of Machine Learning as a another branch of Artificial Intelligence. At early stages,
 these frameworks basically emulated the exact algorithms with small samples of data and almost all of them were CLI (Command Line Interface) based frameworks. Majority of those were used only in laborotaries in
-very specific application and restricted to researchers. But our society has evolved much and progressed through a myriad of milestones along the path of artificial intelligence and nowadays almost all the organizations require some amount of
+very specific applications and restricted to researchers. But our society has evolved much and progressed through a myriad of milestones along the path of artificial intelligence and nowadays almost all the organizations require some amount of
 data analytics and machine learning to keep abreast with the ever-growing technology. This trend has as become exigent due to the massive amounts of data being collected and stored each and every day. With this inclination,
-the demand for the tools that conduct the entire range of workflows of data analytics has been elevated colossaly.&lt;/p&gt;
+the demand for the tools that conduct the entire range of workflow of data analytics has been elevated colossaly.&lt;/p&gt;
 
 &lt;p&gt;As an open-source middleware based organization, WSO2 has been able to establish its’ name among a vast amount of communities which seek different types of solutions in their variety of application domains. A few years ago,
 WSO2 entered into the arena of data analytics by providing a rich platform for batch analytics and real time data analytics (&lt;a href=&quot;&quot;&gt;WSO2 Data Analytics Server&lt;/a&gt; and &lt;a href=&quot;http://wso2.com/products/complex-event-processor/&quot;&gt;WSO2 Complex Event Processor&lt;/a&gt;). In order to fortify the
 hegemony that WSO2 has been able to build around data analytics, &lt;a href=&quot;http://wso2.com/products/machine-learner/&quot;&gt;&lt;strong&gt;WSO2 Machine Learner&lt;/strong&gt;&lt;/a&gt; has been introduced with the intention of providing a rich, user friendly, flexible and scalable predictive analytics
 platform which is compatible with the standard machine learning methodologies and with the other products of WSO2 as well. At the humble nascent of the first release of WSO2 Machine Learner (version 1.0.0), this discussion will
-provide an elaborative overview on its’ ambition of bridging the gaps that hinders prevailing predictive analytics tasks due to various reasons such as complexity, lack of skill in data analytics, inability to scale, real time prediction requirements, rapid increase of not analytized data storages, proprietary rights of software, etc.&lt;/p&gt;
+provide an elaborative overview on its’ ambition of bridging the gaps that hinder prevailing predictive analytics tasks due to various reasons such as complexity, lack of skill in data analytics, inability to scale, real time prediction requirements, rapid increase of not analytized data storages, proprietary rights of software, etc.&lt;/p&gt;
 
 &lt;p&gt;In the subsequent sections, you will be able to understand how WSO2 Machine Learner (WSO2 ML from this point onwards) can fit in and what sets it apart from other machine learning
 tools and frameworks available with respect to the following concerns.&lt;/p&gt;
@@ -99,7 +99,7 @@ tools and frameworks available with respect to the following concerns.&lt;/p&gt;
 &lt;p&gt;Analyzing  and visualizing the characteristics and structure of the data is considered one of the most imparative tasks in data science. Most often, choosing the &lt;strong&gt;right&lt;/strong&gt; machine learning algorithm depends 
 on the understanding a user has about the data that he/she is dealing with.
 &lt;img src=&quot;https://docs.google.com/drawings/d/1tZ1Sv7k1NK78Obe5GY9ievctmjaBJar5VA106jftCy4/pub?w=499&amp;amp;h=380&quot; alt=&quot;Know thy data&quot; title=&quot;Know Thy Data!&quot; class=&quot;center-image&quot; /&gt;
-WSO2 ML provides a plenty of tools to visualize data and get to know how the data more.
+WSO2 ML provides a plenty of tools to visualize data and get to know the data more.
 &lt;img src=&quot;https://docs.google.com/drawings/d/1soCBzrrpB1A7QXvoh3Mj4VsLvdpF2vRsV2u7fx8XreA/pub?w=960&amp;amp;h=720&quot; alt=&quot;data exploration&quot; title=&quot;Data exploration!&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In order to identify relations among the features of datasets, know statistical metrics such as mean, standard deviation and skewness, indentify class imbalancies and frequencies, and to visualize how data is structured,
@@ -117,7 +117,7 @@ WSO2 ML provides the following graphs which are considered as standard methods o
 
 &lt;h3 id=&quot;data-preprocessing-and-feature-engineering&quot;&gt;3. Data preprocessing and feature engineering&lt;/h3&gt;
 
-&lt;p&gt;This is considered as the key of building a successful machine learning models within the data analytics community. WSO2 ML version 1.0.0 provides some primitive techniques of data proprocessing such as feature
+&lt;p&gt;This is considered as the key of building a successful machine learning model within the data analytics community. WSO2 ML version 1.0.0 provides some primitive techniques of data proprocessing such as feature
 selection and missing value handling with mean imputation and discarding.&lt;/p&gt;
 
 &lt;h3 id=&quot;learning-algorithms&quot;&gt;4. Learning algorithms&lt;/h3&gt;
@@ -126,7 +126,7 @@ selection and missing value handling with mean imputation and discarding.&lt;/p&
 
 &lt;ul&gt;
   &lt;li&gt;Numerical prediction - Linear Regression, Ridge Regression, Lasso Regression&lt;/li&gt;
-  &lt;li&gt;Classfication - Logistice Regression, Naive Bayes, Decision Tree, Random Forest and Support Vector Machine&lt;/li&gt;
+  &lt;li&gt;Classfication - Logistic Regression, Naive Bayes, Decision Tree, Random Forest and Support Vector Machines&lt;/li&gt;
   &lt;li&gt;Clustering - K-Means&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -134,7 +134,7 @@ selection and missing value handling with mean imputation and discarding.&lt;/p&
 
 &lt;h3 id=&quot;prediction&quot;&gt;5. Prediction&lt;/h3&gt;
 
-&lt;p&gt;Users can use the trained models to predict the values. Feature values can be provided via the UI or a file that contains feature values can be uploaded and the prediction can be obtained for the entire set of records
+&lt;p&gt;Users can use the trained models to predict the values. Feature values can be provided via the UI or a file that contains feature values can be uploaded and the predictions can be obtained for the entire set of records
 in the file.&lt;/p&gt;
 
 &lt;h3 id=&quot;model-evaluation-and-comparison&quot;&gt;6. Model Evaluation and comparison&lt;/h3&gt;
@@ -172,7 +172,7 @@ It helps the users to get an insight about the models they have trained and make
 
 &lt;p&gt;&lt;strong&gt;- Hal Varian, Google chief economist, 2009&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;There are solid evidences that analytics skills will be one of the most sought after requirements in the future industrial communities. But gaining such immense knowledge and experience in a short periods of time is not an plausible. 
+&lt;p&gt;There are solid evidences that analytics skills will be one of the most sought after requirements in the future industrial communities. But gaining such immense knowledge and experience in a short period of time is not an plausible. 
 WSO2 ML is here to help you. For novice data analysts, it provides a very verbose and highly interactive guided process. Therefore anyone with basic understanding of software can use WSO2 ML with ease.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://docs.google.com/drawings/d/18kSP3WoqtwYH45nR4nT1ERiNTpIs6GwpqUvaH6tEMJQ/pub?w=960&amp;amp;h=720&quot; alt=&quot;Guided process&quot; title=&quot;Guided Process&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
@@ -256,6 +256,54 @@ and many more!&lt;/li&gt;
         <pubDate>Sun, 04 Oct 2015 00:00:00 +0530</pubDate>
         <link>http://maheshakya.github.io/technology/2015/10/04/to-bridge-the-gaps.html</link>
         <guid isPermaLink="true">http://maheshakya.github.io/technology/2015/10/04/to-bridge-the-gaps.html</guid>
+        
+        
+        <category>technology</category>
+        
+      </item>
+    
+      <item>
+        <title>To bridge the gaps - The debut of WSO2 Machine Learner</title>
+        <description>&lt;p&gt;A background - Importance of tools for machine learning and scientific computing as a whole&lt;/p&gt;
+
+&lt;p&gt;How effectively can we bring purely mathematical and mere conceptual models/mechanisms into the utilization of common man? Is it plausible to make the prerequisite technical know-how for dealing with such models
+indifferent among multiple ranges of intellectual levels? That said, are these mechanisms capable of functioning with a variety of applications and data. To which extent can these scale?
+The advent of tools for emulating learning theory has trasnpired amidts these concerns.&lt;/p&gt;
+
+&lt;p&gt;Frameworks which perform computational learning tasks had started to emerge approximately at the same time as the inception of Machine Learning as a another branch of Artificial Intelligence. At early stages,
+these frameworks basically emulated the exact algorithms with small samples of data and almost all of them were CLI based frameworks (Command Line Interface). Majority of them were used only in laborotaries in
+very specific application. But our society has evolved much and progressed through a myriad of milestones along the path of artificial intelligence and nowadays almost all the organizations require some amount of
+data analytics and machine learning to keep abreast with the ever-growing technology. This trend has as become exigent due to the massive amounts of data being collected and stored each and every day. With this inclination,
+the demand for the tools that conduct the entire range of workflows of data analytics as been elevated colossaly.&lt;/p&gt;
+
+&lt;p&gt;When creating tools, we mainly consider following aspects:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;HCI - userbility&lt;/li&gt;
+  &lt;li&gt;Scalability&lt;/li&gt;
+  &lt;li&gt;Lisence - availability to users&lt;/li&gt;
+  &lt;li&gt;Use cases and compatibility with others&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;UI for HCI&lt;/p&gt;
+
+&lt;p&gt;Guided process
+Advanced visualizations - for analysing/ preprocessing/ feature engineering
+Results interpretation - identify what’s wrong? and where’s wrong? predicted vs actual
+And more?&lt;/p&gt;
+
+&lt;p&gt;distributed deployment - scalability
+Spark&lt;/p&gt;
+
+&lt;p&gt;Open-source&lt;/p&gt;
+
+&lt;p&gt;Connectivity with other data analytics tools&lt;/p&gt;
+
+&lt;p&gt;What’s next?&lt;/p&gt;
+</description>
+        <pubDate>Sun, 27 Sep 2015 00:00:00 +0530</pubDate>
+        <link>http://maheshakya.github.io/technology/2015/09/27/to-bridge-the-gaps.html</link>
+        <guid isPermaLink="true">http://maheshakya.github.io/technology/2015/09/27/to-bridge-the-gaps.html</guid>
         
         
         <category>technology</category>
