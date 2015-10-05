@@ -51,8 +51,8 @@
     <description>maheshakyas&#39; personal website</description>
     <link>http://maheshakya.github.io</link>
     <atom:link href="http://maheshakya.github.iofeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 05 Oct 2015 09:46:46 +0530</pubDate>
-    <lastBuildDate>Mon, 05 Oct 2015 09:46:46 +0530</lastBuildDate>
+    <pubDate>Mon, 05 Oct 2015 11:19:33 +0530</pubDate>
+    <lastBuildDate>Mon, 05 Oct 2015 11:19:33 +0530</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -65,7 +65,7 @@ The advent of tools for emulating learning theory has trasnpired amidst these co
 these frameworks basically emulated the exact algorithms with small samples of data and almost all of them were CLI (Command Line Interface) based frameworks. Majority of those were used only in laborotaries in
 very specific applications and restricted to researchers. But our society has evolved much and progressed through a myriad of milestones along the path of artificial intelligence and nowadays almost all the organizations require some amount of
 data analytics and machine learning to keep abreast with the ever-growing technology. This trend has as become exigent due to the massive amounts of data being collected and stored each and every day. With this inclination,
-the demand for the tools that conduct the entire range of workflow of data analytics has been elevated colossaly.&lt;/p&gt;
+the demand for the tools that conduct the entire range of workflows of data analytics has been elevated colossaly.&lt;/p&gt;
 
 &lt;p&gt;As an open-source middleware based organization, WSO2 has been able to establish its’ name among a vast amount of communities which seek different types of solutions in their variety of application domains. A few years ago,
 WSO2 entered into the arena of data analytics by providing a rich platform for batch analytics and real time data analytics (&lt;a href=&quot;&quot;&gt;WSO2 Data Analytics Server&lt;/a&gt; and &lt;a href=&quot;http://wso2.com/products/complex-event-processor/&quot;&gt;WSO2 Complex Event Processor&lt;/a&gt;). In order to fortify the
@@ -144,7 +144,7 @@ It helps the users to get an insight about the models they have trained and make
 
 &lt;ul&gt;
   &lt;li&gt;Accuracy&lt;/li&gt;
-  &lt;li&gt;Area under ROC curce&lt;/li&gt;
+  &lt;li&gt;Area under ROC curve&lt;/li&gt;
   &lt;li&gt;Confusion Matrix&lt;/li&gt;
   &lt;li&gt;Predicted vs. Actual graphs&lt;/li&gt;
   &lt;li&gt;Feature importances&lt;/li&gt;

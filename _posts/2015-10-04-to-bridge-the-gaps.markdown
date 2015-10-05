@@ -12,7 +12,7 @@ Frameworks which perform computational learning tasks had started to emerge appr
 these frameworks basically emulated the exact algorithms with small samples of data and almost all of them were CLI (Command Line Interface) based frameworks. Majority of those were used only in laborotaries in
 very specific applications and restricted to researchers. But our society has evolved much and progressed through a myriad of milestones along the path of artificial intelligence and nowadays almost all the organizations require some amount of
 data analytics and machine learning to keep abreast with the ever-growing technology. This trend has as become exigent due to the massive amounts of data being collected and stored each and every day. With this inclination,
-the demand for the tools that conduct the entire range of workflow of data analytics has been elevated colossaly.
+the demand for the tools that conduct the entire range of workflows of data analytics has been elevated colossaly.
 
 As an open-source middleware based organization, WSO2 has been able to establish its' name among a vast amount of communities which seek different types of solutions in their variety of application domains. A few years ago,
 WSO2 entered into the arena of data analytics by providing a rich platform for batch analytics and real time data analytics ([WSO2 Data Analytics Server]() and [WSO2 Complex Event Processor](http://wso2.com/products/complex-event-processor/)). In order to fortify the
@@ -85,7 +85,7 @@ WSO2 ML allows you to retain a fraction of the training data and evaluate your t
 It helps the users to get an insight about the models they have trained and make decisions based on the interpretations of the results. Some of the evaluation metrics are:
 
 - Accuracy
-- Area under ROC curce
+- Area under ROC curve
 - Confusion Matrix
 - Predicted vs. Actual graphs
 - Feature importances
