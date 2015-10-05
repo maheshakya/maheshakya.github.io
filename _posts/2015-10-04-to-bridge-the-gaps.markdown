@@ -113,7 +113,7 @@ Most of the industries are suffering from the scarcity of knowledge workers of d
                                     
 **- Hal Varian, Google chief economist, 2009**
 
-There are solid evidences that analytics skills will be one of the most sought after requirements in the future industrial communities. But gaining such immense knowledge and experience in a short period of time is not an plausible. 
+There are solid evidences that analytics skills will be one of the most sought after requirements in the future industrial communities. But gaining such immense knowledge and experience in a short period of time is not plausible. 
 WSO2 ML is here to help you. For novice data analysts, it provides a very verbose and highly interactive guided process. Therefore anyone with basic understanding of software can use WSO2 ML with ease.
 
 ![Guided process](https://docs.google.com/drawings/d/18kSP3WoqtwYH45nR4nT1ERiNTpIs6GwpqUvaH6tEMJQ/pub?w=960&h=720 "Guided Process"){: .center-image }
@@ -142,7 +142,7 @@ analyzing sample datasets. It is not recommended to use the standalone mode for 
 ### 2. With external Spark cluster
 
 WSO2 ML with external Spark cluster allows to bring the maximum efficiency of the machine learning tasks and utilize the resources to reach the highest achievable performance. By allocating sufficient resources to the Spark cluster,
-WSO2 ML can be used to perform predictive analytics with any preferred sizes of datasets without having to worry about performance. This setting is recommended for working with very large datasets and processor intensive algorithms.
+WSO2 ML can be used to perform predictive analytics with any preferred sizes of datasets without having to worry about performance. This setting is recommended for working with very large datasets and CPU intensive algorithms.
 
 ### 3. With WSO2 Data Analytics Server as Spark cluster
 

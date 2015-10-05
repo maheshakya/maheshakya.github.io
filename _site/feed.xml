@@ -51,8 +51,8 @@
     <description>maheshakyas&#39; personal website</description>
     <link>http://maheshakya.github.io</link>
     <atom:link href="http://maheshakya.github.iofeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 05 Oct 2015 01:10:08 +0530</pubDate>
-    <lastBuildDate>Mon, 05 Oct 2015 01:10:08 +0530</lastBuildDate>
+    <pubDate>Mon, 05 Oct 2015 09:46:46 +0530</pubDate>
+    <lastBuildDate>Mon, 05 Oct 2015 09:46:46 +0530</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -172,7 +172,7 @@ It helps the users to get an insight about the models they have trained and make
 
 &lt;p&gt;&lt;strong&gt;- Hal Varian, Google chief economist, 2009&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;There are solid evidences that analytics skills will be one of the most sought after requirements in the future industrial communities. But gaining such immense knowledge and experience in a short period of time is not an plausible. 
+&lt;p&gt;There are solid evidences that analytics skills will be one of the most sought after requirements in the future industrial communities. But gaining such immense knowledge and experience in a short period of time is not plausible. 
 WSO2 ML is here to help you. For novice data analysts, it provides a very verbose and highly interactive guided process. Therefore anyone with basic understanding of software can use WSO2 ML with ease.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://docs.google.com/drawings/d/18kSP3WoqtwYH45nR4nT1ERiNTpIs6GwpqUvaH6tEMJQ/pub?w=960&amp;amp;h=720&quot; alt=&quot;Guided process&quot; title=&quot;Guided Process&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
@@ -200,7 +200,7 @@ analyzing sample datasets. It is not recommended to use the standalone mode for 
 &lt;h3 id=&quot;with-external-spark-cluster&quot;&gt;2. With external Spark cluster&lt;/h3&gt;
 
 &lt;p&gt;WSO2 ML with external Spark cluster allows to bring the maximum efficiency of the machine learning tasks and utilize the resources to reach the highest achievable performance. By allocating sufficient resources to the Spark cluster,
-WSO2 ML can be used to perform predictive analytics with any preferred sizes of datasets without having to worry about performance. This setting is recommended for working with very large datasets and processor intensive algorithms.&lt;/p&gt;
+WSO2 ML can be used to perform predictive analytics with any preferred sizes of datasets without having to worry about performance. This setting is recommended for working with very large datasets and CPU intensive algorithms.&lt;/p&gt;
 
 &lt;h3 id=&quot;with-wso2-data-analytics-server-as-spark-cluster&quot;&gt;3. With WSO2 Data Analytics Server as Spark cluster&lt;/h3&gt;
 
@@ -256,54 +256,6 @@ and many more!&lt;/li&gt;
         <pubDate>Sun, 04 Oct 2015 00:00:00 +0530</pubDate>
         <link>http://maheshakya.github.io/technology/2015/10/04/to-bridge-the-gaps.html</link>
         <guid isPermaLink="true">http://maheshakya.github.io/technology/2015/10/04/to-bridge-the-gaps.html</guid>
-        
-        
-        <category>technology</category>
-        
-      </item>
-    
-      <item>
-        <title>To bridge the gaps - The debut of WSO2 Machine Learner</title>
-        <description>&lt;p&gt;A background - Importance of tools for machine learning and scientific computing as a whole&lt;/p&gt;
-
-&lt;p&gt;How effectively can we bring purely mathematical and mere conceptual models/mechanisms into the utilization of common man? Is it plausible to make the prerequisite technical know-how for dealing with such models
-indifferent among multiple ranges of intellectual levels? That said, are these mechanisms capable of functioning with a variety of applications and data. To which extent can these scale?
-The advent of tools for emulating learning theory has trasnpired amidts these concerns.&lt;/p&gt;
-
-&lt;p&gt;Frameworks which perform computational learning tasks had started to emerge approximately at the same time as the inception of Machine Learning as a another branch of Artificial Intelligence. At early stages,
-these frameworks basically emulated the exact algorithms with small samples of data and almost all of them were CLI based frameworks (Command Line Interface). Majority of them were used only in laborotaries in
-very specific application. But our society has evolved much and progressed through a myriad of milestones along the path of artificial intelligence and nowadays almost all the organizations require some amount of
-data analytics and machine learning to keep abreast with the ever-growing technology. This trend has as become exigent due to the massive amounts of data being collected and stored each and every day. With this inclination,
-the demand for the tools that conduct the entire range of workflows of data analytics as been elevated colossaly.&lt;/p&gt;
-
-&lt;p&gt;When creating tools, we mainly consider following aspects:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;HCI - userbility&lt;/li&gt;
-  &lt;li&gt;Scalability&lt;/li&gt;
-  &lt;li&gt;Lisence - availability to users&lt;/li&gt;
-  &lt;li&gt;Use cases and compatibility with others&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;UI for HCI&lt;/p&gt;
-
-&lt;p&gt;Guided process
-Advanced visualizations - for analysing/ preprocessing/ feature engineering
-Results interpretation - identify what’s wrong? and where’s wrong? predicted vs actual
-And more?&lt;/p&gt;
-
-&lt;p&gt;distributed deployment - scalability
-Spark&lt;/p&gt;
-
-&lt;p&gt;Open-source&lt;/p&gt;
-
-&lt;p&gt;Connectivity with other data analytics tools&lt;/p&gt;
-
-&lt;p&gt;What’s next?&lt;/p&gt;
-</description>
-        <pubDate>Sun, 27 Sep 2015 00:00:00 +0530</pubDate>
-        <link>http://maheshakya.github.io/technology/2015/09/27/to-bridge-the-gaps.html</link>
-        <guid isPermaLink="true">http://maheshakya.github.io/technology/2015/09/27/to-bridge-the-gaps.html</guid>
         
         
         <category>technology</category>
