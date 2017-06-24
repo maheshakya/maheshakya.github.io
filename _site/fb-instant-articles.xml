@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title></title>
+    <link>http://localhost:4000</link>
+    <description>
+      A personal website.
+    </description>
+    
+        
+            <item>
+                <title>test post</title>
+                <link>http://localhost:4000/2017/06/24/test-post/</link>
+                <content:encoded>
+                    <![CDATA[
+                    
+
+                    ]]>
+                </content:encoded>
+                <guid isPermaLink="false">/2017/06/24/test-post/</guid>
+                <description>
+                    
+                    Just to test
+                    
+                </description>
+                <pubDate>Sat, 24 Jun 2017 03:13:00 -0600</pubDate>
+                <author>Pruthuvi Maheshakya Wijewardena</author>
+            </item>
+        
+    
+  </channel>
+</rss>
