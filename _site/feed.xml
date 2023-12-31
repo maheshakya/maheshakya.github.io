@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>maheshakyas' website</title>
+    <title>maheshakyas&apos; website</title>
     <description>A personal website.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>test post</title>
-        <description>
+        <title>First Post</title>
+        <description>&lt;p&gt;So I’m starting to write about things that I find interesting. This is not a new year’s resolution. It just happened to be end of the year when I started writing this post.&lt;/p&gt;
 </description>
-        <pubDate>Sat, 24 Jun 2017 03:13:00 -0600</pubDate>
-        <link>http://localhost:4000/2017/06/24/test-post/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/06/24/test-post/</guid>
+        <pubDate>Sat, 30 Dec 2023 13:20:00 -0800</pubDate>
+        <link>http://localhost:4000/2023/12/30/first-post/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023/12/30/first-post/</guid>
       </item>
     
   </channel>

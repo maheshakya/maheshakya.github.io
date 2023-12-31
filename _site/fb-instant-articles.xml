@@ -9,21 +9,21 @@
     
         
             <item>
-                <title>test post</title>
-                <link>http://localhost:4000/2017/06/24/test-post/</link>
+                <title>First Post</title>
+                <link>http://localhost:4000/2023/12/30/first-post/</link>
                 <content:encoded>
                     <![CDATA[
-                    
+                    <p>So I’m starting to write about things that I find interesting. This is not a new year’s resolution. It just happened to be end of the year when I started writing this post.</p>
 
                     ]]>
                 </content:encoded>
-                <guid isPermaLink="false">/2017/06/24/test-post/</guid>
+                <guid isPermaLink="false">/2023/12/30/first-post/</guid>
                 <description>
                     
-                    Just to test
+                    I decided to write about things.
                     
                 </description>
-                <pubDate>Sat, 24 Jun 2017 03:13:00 -0600</pubDate>
+                <pubDate>Sat, 30 Dec 2023 13:20:00 -0800</pubDate>
                 <author>Pruthuvi Maheshakya Wijewardena</author>
             </item>
         

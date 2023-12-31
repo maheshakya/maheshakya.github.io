@@ -18,6 +18,7 @@ task :post, :title do |t, args|
     layout: post
     title: #{title}
     date: #{Time.new.strftime('%Y-%m-%d %H:%M')}
+    summary: todo
     categories:
     ---
 
@@ -45,6 +46,7 @@ task :draft, :title do |t, args|
     layout: post
     title: #{title}
     date: #{Time.new.strftime('%Y-%m-%d %H:%M')}
+    summary: todo
     categories:
     ---
 
