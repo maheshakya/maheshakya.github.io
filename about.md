@@ -11,6 +11,7 @@ I am a Data and Applied Scientist at Microsoft.
 I was a Postdoctoral Researcher at NYU Tandon School of Engineering.  
 Before that I completed my Ph.D. in Computer Science at the University of Utah.  
 
+Email: pmaheshakya4@gmail.com\
 [Google Scholar](https://scholar.google.com/citations?user=-MHL9kQAAAAJ&hl=en) &nbsp; [LinkedIn](https://www.linkedin.com/in/maheshakya/) &nbsp; [Github](https://github.com/maheshakya)
 
 <style type="text/css">
