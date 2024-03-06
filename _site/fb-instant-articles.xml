@@ -9,6 +9,52 @@
     
         
             <item>
+                <title>Now You&apos;re Here...</title>
+                <link>http://localhost:4000/2024/02/06/now-you-re-here/</link>
+                <content:encoded>
+                    <![CDATA[
+                    <p>It does feel surreal when you think about it. I’m not very good at putting things into words, but I’m compelled to articulate something here: <em>There is a little human in our home! and he is perfect</em>. Isn’t that wonderful?</p>
+
+<p><img src="../../../../images/baby.jpg" alt="Baby" /></p>
+
+<p class="image-caption"><em>The world is your’s.</em></p>
+
+<style type="text/css">
+    img {
+        width: 187px;
+        height: 400px;
+    }
+
+    img {
+        display:block;
+        float:none;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .image-caption {
+        text-align: center;
+        font-size: .5rem;
+        color: grey;
+    }
+</style>
+
+
+                    ]]>
+                </content:encoded>
+                <guid isPermaLink="false">/2024/02/06/now-you-re-here/</guid>
+                <description>
+                    
+                    The world is your&apos;s.
+                    
+                </description>
+                <pubDate>Tue, 06 Feb 2024 07:16:00 -0800</pubDate>
+                <author>Pruthuvi Maheshakya Wijewardena</author>
+            </item>
+        
+    
+        
+            <item>
                 <title>First Post</title>
                 <link>http://localhost:4000/2023/12/30/first-post/</link>
                 <content:encoded>
