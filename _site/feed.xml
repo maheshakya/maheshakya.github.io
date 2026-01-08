@@ -7,6 +7,40 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Another One</title>
+        <description>&lt;p&gt;Wow… there’s another one.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../images/baby_2.jpg&quot; alt=&quot;Baby&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;image-caption&quot;&gt;&lt;em&gt;The world is your’s too.&lt;/em&gt;&lt;/p&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;
+    img {
+        width: 365px;
+        height: 400px;
+    }
+
+    img {
+        display:block;
+        float:none;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .image-caption {
+        text-align: center;
+        font-size: .5rem;
+        color: grey;
+    }
+&lt;/style&gt;
+
+</description>
+        <pubDate>Thu, 08 Jan 2026 13:27:00 -0800</pubDate>
+        <link>http://localhost:4000/2026/01/08/another-one/</link>
+        <guid isPermaLink="true">http://localhost:4000/2026/01/08/another-one/</guid>
+      </item>
+    
+      <item>
         <title>Now You&apos;re Here...</title>
         <description>&lt;p&gt;It does feel surreal when you think about it. I’m not very good at putting things into words, but I’m compelled to articulate something here: &lt;em&gt;There is a little human in our home! and he is perfect&lt;/em&gt;. Isn’t that wonderful?&lt;/p&gt;
 
